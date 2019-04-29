@@ -116,6 +116,8 @@ Screenshots of Trello board(s)
 
 *12. Describe your project’s models in terms of the relationships (active record associations) they have with each other.*
 
+For the user to address relationship, we had to decide between a 'one-to-one' relationship or a 'one-to-many' to allow for multiple users to live at the same address. We decided to go with a one-to-one, possibly creating duplicate addresses, to avoid any issues if/when the user decided to change their address.
+
 *13. Provide your database schema design.*
 
 *14. Provide User stories for your App.*
