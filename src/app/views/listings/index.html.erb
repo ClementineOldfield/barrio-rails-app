@@ -1,0 +1,8 @@
+<h1>Listings</h1>
+
+<% @listings.each do |listing| %>
+  <div class="card">
+    <%= image_tag listing.picture if listing.picture.attached? %>
+    <p><%= listing.title %></p>
+  </div>
+<% end %>
