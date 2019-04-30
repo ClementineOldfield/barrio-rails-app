@@ -2,7 +2,8 @@
 
 <% @listings.each do |listing| %>
   <div class="card">
-    <%= image_tag listing.picture if listing.picture.attached? %>
+    <% p listing.image.url %>
+    <%= image_tag listing.image.url %>
     <p><%= listing.title %></p>
   </div>
 <% end %>
