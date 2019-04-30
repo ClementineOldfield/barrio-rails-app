@@ -137,3 +137,25 @@ For the user to address relationship, we had to decide between a 'one-to-one' re
 *21. Discuss methods you will use to protect information and data.*
 
 *22. Research what your legal obligations are in relation to handling user data.*
+The information lifecycle
+If you handle personal information, you should consider how you will protect personal information during the stages of its lifecycle.
+
+Personal information security throughout the lifecycle involves:
+
+1. considering whether it is actually necessary to collect and hold personal information in order to carry out your functions or activities
+    We believe the email is the least intrusive way of logging in, rather than the mobile phone number. Furthermore, we want to ensure a minimun security, so it wouldn´t be enough
+    to ask only for name and last name.
+    
+    Finally, address is needed so that nearby offers can be shown to the user.
+    
+2. planning how personal information will be handled by embedding privacy protections into the design of information handling practices
+
+3. assessing the risks associated with the collection of the personal information due to a new act, practice, change to an existing project or as part of business as usual
+    
+4. taking appropriate steps and putting into place strategies to protect personal information that you hold
+
+5. destruction or de-identification of the personal information when it is no longer needed.
+
+To effectively protect personal information throughout its lifecycle, you will need to be aware of when and how you are collecting it and when and how you hold it. As noted above, your personal information holdings can be dynamic and change without any necessarily conscious or deliberate action.
+
+Additionally, the lifecycle may include the passing of personal information to a third party for storage, processing or destruction.

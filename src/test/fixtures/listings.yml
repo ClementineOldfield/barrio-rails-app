@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  title: MyString
+  body: MyText
+  price: 1
+  category: one
+  quantity: 1
+  is_available: false
+
+two:
+  user: two
+  title: MyString
+  body: MyText
+  price: 1
+  category: two
+  quantity: 1
+  is_available: false
