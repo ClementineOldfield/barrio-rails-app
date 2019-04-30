@@ -45,11 +45,11 @@ if Listing.count == 0
   end
 end
 
-tags = ['food', 'fitness', 'community', 'baking']
+tags = ['eggs', 'bread', 'community', 'school', 'animals']
 
 if Listing.first.image == nil
   (1..20).each do |i|
-    url = Faker::LoremFlickr.image("400x320", [tags[rand(0..3)], tags[rand(0..3)]])
+    url = Faker::LoremFlickr.image("400x320", [tags[rand(0..4)], tags[rand(0..4)]])
     Listing.find(i).image = Image.new(
       url: url
     )
