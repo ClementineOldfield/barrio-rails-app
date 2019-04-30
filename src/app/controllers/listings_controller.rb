@@ -1,9 +1,10 @@
 class ListingsController < ApplicationController
   before_action :set_listing, only: [:show, :edit, :update, :destroy]
-  
+
   def index
     @listings = Listing.all
   end
+  
   def create; end
   def show; end
   def edit; end
