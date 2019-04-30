@@ -2,8 +2,11 @@
 
 <% @listings.each do |listing| %>
   <div class="card">
-    <% p listing.image.url %>
-    <%= image_tag listing.image.url %>
-    <p><%= listing.title %></p>
+    <%= link_to listing_path(listing.id) do %>
+      <%= image_tag listing.image.url %>
+      <p>
+        <%= listing.title %>
+      </p>
+    <% end %>
   </div>
 <% end %>
