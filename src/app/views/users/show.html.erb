@@ -1,14 +1,23 @@
-<h1>About You</h1>
-<p>I am your neighbour</p>
+<head>
+<link rel="stylesheet" href="users.scss">
+</head>
+<div class="left_profile">
+  <div>
+    <img href=<%= User.find(params[:id]).image %>>
+    <p><%= @user.first_name %></p>
+    <button>Edit profile</button>
+  </div>
+</div>
+<div class="right_profile">
+  <div>
+    <h1>About You</h1>
+    <p><%= @user.bio %></p>
+  <div>
+</div>
 
-<img>
-<p>Name<p>
-<button>Edit profile</button>
+<h2>What you offer</h2>
 
-<h1>What you offer</h1>
-<img>
-<button>Edit</button>
-<button>Delete</button>
+
 
 
 
