@@ -1,7 +1,15 @@
 class UsersController < ApplicationController
+    before_action :authenticate_user!
+    
     def create
     #create new user
-    @user = user
+    user = User.create(
+      first_name: params.first_name,
+      last_name: params.last_name,
+      bio: params.bio,
+      email: params.email,
+      encrypted_password: params.password
+    )
     redirect_to user_path
     end
 
