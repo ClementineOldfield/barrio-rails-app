@@ -45,10 +45,13 @@ if Listing.count == 0
   end
 end
 
+tags = ['food', 'fitness', 'community', 'baking']
+
 if Listing.first.image == nil
   (1..20).each do |i|
+    url = Faker::LoremFlickr.image("400x320", [tags[rand(0..3)], tags[rand(0..3)]])
     Listing.find(i).image = Image.new(
-      url: Faker::LoremPixel.image("50x60", false, 'food')
+      url: url
     )
     p "Created image #{i}"
   end
