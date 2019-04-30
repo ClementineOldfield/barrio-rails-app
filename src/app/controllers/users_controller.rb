@@ -1,7 +1,12 @@
 class UsersController < ApplicationController
     def create
     #create new user
-    
+    @user = user
+    redirect_to user_path
+    end
+
+    def new
+    #show new user
     end
 
     def update 
