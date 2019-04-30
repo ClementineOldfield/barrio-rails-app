@@ -5,19 +5,29 @@
 
   <div class="field">
     <%= f.label :first_name %><br />
-    <%= f.email_field :first_name, autofocus: true, autocomplete: "First Name" %>
+    <%= f.text_field :first_name, autofocus: true, autocomplete: "First Name" %>
   </div>
 
    <div class="field">
     <%= f.label :last_name %><br />
-    <%= f.email_field :last_name, autofocus: true, autocomplete: "Last Name" %>
+    <%= f.text_field :last_name, autofocus: true, autocomplete: "Last Name" %>
   </div>
 
-   <div class="field">
-    <%= f.label :email %><br /> 
+  <div class="field">
+    <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
+  <div class="field">
+    <%= f.label :picture %>
+    <%= f.file_field :picture, accept: "image/png,image/gif,image/jpeg,image/jpg" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :about %><br />
+    <%= f.text_area :about, autofocus: true, autocomplete: "About" %>
+  </div>
+  
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
