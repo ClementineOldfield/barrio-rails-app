@@ -8,22 +8,26 @@
 
 require 'faker'
 
-if Category.count == 0
-  Category.create( name: "Fruit, Vegetables & Produce" )
-  Category.create( name: "Music & Entertainment" )
-  Category.create( name: "Clothing" )
-end
-
 if User.count == 0
   (1..10).each do |i|
-    User.create(
+    user = User.new(
       first_name: Faker::Name.first_name,
       last_name: Faker::Name.last_name,
       bio: Faker::Lorem.paragraphs(rand(1..3)),
       email: Faker::Internet.email,
       encrypted_password: "test"
     )
+    user.save!(validate: false)
+    p "Created user #{i}"
+    p user
   end
+end
+
+if Category.count == 0
+  Category.create( name: "Fruit, Vegetables & Produce" )
+  Category.create( name: "Music & Entertainment" )
+  Category.create( name: "Clothing" )
+  p "Created Categories"
 end
 
 if Listing.count == 0
@@ -37,14 +41,15 @@ if Listing.count == 0
       quantity: rand(3..10),
       is_available: true
     )
+    p "Created Listing #{i}"
   end
-  
 end
 
-if Listing.find(1).image == nil
+if Listing.first.image == nil
   (1..20).each do |i|
     Listing.find(i).image = Image.new(
       url: Faker::LoremPixel.image("50x60", false, 'food')
     )
+    p "Created image #{i}"
   end
 end
