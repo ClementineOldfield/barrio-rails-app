@@ -1,0 +1,36 @@
+<h2>Edit Listing</h2>
+
+<%= form_with model: @listing, local: true do |f| %>
+  <%= image_tag @listing.image if @listing.image.attached? %>
+  <div class="field">
+    <%= f.label :featured_image %>
+    <%= f.file_field :featured_image, accept: "image/png,image/gif,image/jpeg,image/jpg" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title, autofocus: true%>
+  </div>
+
+  <div class="field">
+    <%= f.label :body %>
+    <%= f.text_area :body, autofocus: true%>
+  </div>
+
+  <div class="field">
+    <%= f.label :price %>
+    <%= f.number_field :price, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :quantity %>
+    <%= f.number_field :quantity, autofocus: true %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Update"  %>
+  </div>
+
+<% end %>
+
+<%= link_to "Back", :back %>
