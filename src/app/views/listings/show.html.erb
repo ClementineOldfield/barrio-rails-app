@@ -1,6 +1,10 @@
 <div class="flex-container">
   <div class="col">
     <%= image_tag(@listing.image.url, class: "featured-image") %>
+    <div class="listing-owner-container">
+      <%= image_tag(@listing.user.image.url, class: "avatar") %>
+      <h4><%= @listing.user.first_name %></h4>
+    </div>
   </div>
   <div class="col">
     <h1><%= @listing.title %></h1>
