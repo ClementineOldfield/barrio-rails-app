@@ -91,3 +91,11 @@ if Listing.first.image == nil
     p "Created image #{i}, Random = #{random}, url = #{url}"
   end
 end
+
+if Address.count == 0
+  users.each do |user|
+    user.address = Address.new(
+      
+    )
+  end
+end
