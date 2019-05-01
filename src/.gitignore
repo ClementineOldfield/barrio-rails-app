@@ -23,6 +23,9 @@
 /public/assets
 .byebug_history
 
+# Ignore credentials.yml file for pair programming
+/config/credentials.yml.enc
+
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
