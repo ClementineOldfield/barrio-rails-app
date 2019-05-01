@@ -3,10 +3,12 @@
 <div class="flex-container">
   <div class="col">
     <%= image_tag(@listing.image, class: "featured-image") if @listing.image.attached? %>
-    <div class="listing-owner-container">
-      <%= image_tag(@listing.image, class: "avatar") if @listing.image.attached? %>
-      <h4><%= @listing.user.first_name %></h4>
-    </div>
+    <%= link_to user_path(@listing.user.id) do %>
+      <div class="listing-owner-container">
+        <%= image_tag(@listing.user.image, class: "avatar") if @listing.user.image.attached? %>
+        <h4><%= @listing.user.first_name %></h4>
+      </div>
+    <% end %>
   </div>
   <div class="col">
     <h1><%= @listing.title %></h1>
