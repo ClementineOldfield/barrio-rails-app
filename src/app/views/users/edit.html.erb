@@ -1,4 +1,23 @@
-<body>
-<h1>Edit your profile</h1>
 
-</body>
+<h2>Edit your profile</h2>
+
+<%= form_with url: user_path do |f| %>
+  <div class="field">
+    <%= f.label :picture %>
+    <%= f.file_field :picture, accept: "image/png,image/gif,image/jpeg,image/jpg" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :bio %>
+    <%= f.text_area :bio, autofocus: true, autocomplete: "Bio" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Update"  %>
+  </div>
+
+<% end %>
+
+<p><%= link_to "Edit my account settings", edit_user_registration_path %></p>
+
+<%= link_to "Back", :back %>
