@@ -1,6 +1,8 @@
 <header>
   <div class="logo">
-    <%= image_tag "logo.png", class: "logo" %>
+    <%= link_to root_path do %> 
+      <%= image_tag "logo.png", class: "logo" %>
+    <% end %>
   </div>
   <%= link_to "logout", destroy_user_session_path, method: :delete if user_signed_in? %>
 </header>
