@@ -3,9 +3,9 @@
 </head>
 <div class="left_profile">
   <div>
-    <img href=<%= User.find(params[:id]).image %>>
+    <% image_tag(@user.image.url)%>
     <p><%= @user.first_name %></p>
-    <button>Edit profile</button>
+    <button><%= link_to "Edit profile", edit_user_path%></button>
   </div>
 </div>
 <div class="right_profile">
