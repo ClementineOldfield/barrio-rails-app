@@ -3,7 +3,7 @@
 <% @listings.each do |listing| %>
   <div class="card">
     <%= link_to listing_path(listing.id) do %>
-      <%= image_tag(listing.image.url, class: "listing-image") %>
+      <%= image_tag(listing.image, class: "listing-image") if listing.image.attached? %>
       <p>
         <%= listing.title %>
       </p>

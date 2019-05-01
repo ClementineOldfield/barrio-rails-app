@@ -1,8 +1,10 @@
+<button><%= link_to "Edit Listing", edit_listing_path%></button>
+
 <div class="flex-container">
   <div class="col">
-    <%= image_tag(@listing.image.url, class: "featured-image") %>
+    <%= image_tag(@listing.image, class: "featured-image") if @listing.image.attached? %>
     <div class="listing-owner-container">
-      <%= image_tag(@listing.user.image.url, class: "avatar") %>
+      <%= image_tag(@listing.image, class: "avatar") if @listing.image.attached? %>
       <h4><%= @listing.user.first_name %></h4>
     </div>
   </div>

@@ -4,12 +4,25 @@ class ListingsController < ApplicationController
   def index
     @listings = Listing.all
   end
+
+  def show; end
   
   def create; end
-  def show; end
-  def edit; end
   def new; end
-  def update; end
+
+  def edit; end
+  def update
+    new_params = params[:listing]
+    @listing.update(
+      image: new_params[:featured_image],
+      title: new_params[:title],
+      body: new_params[:body],
+      price: new_params[:price],
+      quantity: new_params[:quantity]
+    )
+    redirect_to listing_path
+  end
+  
   def destroy; end
 
   private 
