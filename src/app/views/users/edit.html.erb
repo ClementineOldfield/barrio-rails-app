@@ -1,10 +1,10 @@
 
 <h2>Edit your profile</h2>
 
-<%= form_for(@user) do |f| %>
+<%= form_with model: @user, local: true do |f| %>
   <div class="field">
-    <%= f.label :picture %>
-    <%= f.file_field :picture, accept: "image/png,image/gif,image/jpeg,image/jpg" %>
+    <%= f.label :profile_image %>
+    <%= f.file_field :profile_image, accept: "image/png,image/gif,image/jpeg,image/jpg" %>
   </div>
 
   <div class="field">
