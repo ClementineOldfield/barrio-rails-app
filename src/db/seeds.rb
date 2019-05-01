@@ -19,32 +19,34 @@ if User.count == 0
       password_confirmation: "test"
     )
     user.save!(validate: false)
+
+    user.image.attach(io: File.open('app/assets/images/default_profile.png'), filename: 'default_profile.png', content_type: 'image/png')
     p "Created user #{i}"
     p user
   end
 end
 
 users = User.all
-profiles = [
-  'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
-  'https://images.pexels.com/photos/678783/pexels-photo-678783.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
-  'https://images.pexels.com/photos/1687675/pexels-photo-1687675.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
-  'https://images.pexels.com/photos/428361/pexels-photo-428361.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
-  'https://images.pexels.com/photos/952005/pexels-photo-952005.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
-  'https://images.pexels.com/photos/633432/pexels-photo-633432.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
-  'https://images.pexels.com/photos/2078467/pexels-photo-2078467.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
-  'https://images.pexels.com/photos/1031081/pexels-photo-1031081.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
-  'https://images.pexels.com/photos/889511/pexels-photo-889511.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
-  'https://images.pexels.com/photos/64385/pexels-photo-64385.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500'
-]
+# profiles = [
+#   'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
+#   'https://images.pexels.com/photos/678783/pexels-photo-678783.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
+#   'https://images.pexels.com/photos/1687675/pexels-photo-1687675.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
+#   'https://images.pexels.com/photos/428361/pexels-photo-428361.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
+#   'https://images.pexels.com/photos/952005/pexels-photo-952005.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
+#   'https://images.pexels.com/photos/633432/pexels-photo-633432.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
+#   'https://images.pexels.com/photos/2078467/pexels-photo-2078467.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
+#   'https://images.pexels.com/photos/1031081/pexels-photo-1031081.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
+#   'https://images.pexels.com/photos/889511/pexels-photo-889511.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
+#   'https://images.pexels.com/photos/64385/pexels-photo-64385.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500'
+# ]
 
-if User.first.image == nil
-  users.each_with_index do |user, i|
-    user.image = Image.new(
-      url: profiles[i]
-    )
-  end
-end
+# if User.first.image == nil
+#   users.each_with_index do |user, i|
+#     user.image = Image.new(
+#       url: profiles[i]
+#     )
+#   end
+# end
 
 if Category.count == 0
   Category.create( name: "Fruit, Vegetables & Produce" )

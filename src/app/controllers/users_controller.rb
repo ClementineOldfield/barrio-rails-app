@@ -8,9 +8,6 @@ class UsersController < ApplicationController
 
   def update 
     #updating Bio and Image only
-    
-
-    byebug
 
     @user.update(
       bio: params[:user][:bio],
@@ -31,7 +28,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    byebug
   #show user profile 
     
   end
