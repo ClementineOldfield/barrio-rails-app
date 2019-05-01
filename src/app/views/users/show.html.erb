@@ -15,11 +15,13 @@
   <div>
 </div>
 
+
 <h2>What you offer</h2>
 
-
-
-
-
-
-
+<ul>
+  <% @user.listings.each do |listing| %>
+    <%= link_to listing_path(listing.id) do %>
+      <li><%= listing.title %></li>
+    <% end %>
+  <% end %>
+</ul>

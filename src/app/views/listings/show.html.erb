@@ -1,13 +1,20 @@
+<button><%= link_to "Edit Listing", edit_listing_path%></button>
+
 <div class="flex-container">
   <div class="col">
-    <%= image_tag(@listing.image.url, class: "featured-image") %>
-    <div class="listing-owner-container">
-      <%= image_tag(@listing.user.image.url, class: "avatar") %>
-      <h4><%= @listing.user.first_name %></h4>
-    </div>
+    <%= image_tag(@listing.image, class: "featured-image") if @listing.image.attached? %>
+    <%= link_to user_path(@listing.user.id) do %>
+      <div class="listing-owner-container">
+        <%= image_tag(@listing.user.image, class: "avatar") if @listing.user.image.attached? %>
+        <h4><%= @listing.user.first_name %></h4>
+      </div>
+    <% end %>
   </div>
   <div class="col">
     <h1><%= @listing.title %></h1>
+    <p>
+      <%= @listing.body %>
+    </p>
   </div>
 </div>
 
