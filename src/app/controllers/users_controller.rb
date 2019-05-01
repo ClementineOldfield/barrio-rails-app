@@ -17,10 +17,13 @@ class UsersController < ApplicationController
   end
 
   def destroy
-
+    #deletes user information
+    User.find(params[:id]).destroy
+    redirect_to users_url
   end
 
-  def show 
+  def show
+  #show user profile 
     
   end
 
