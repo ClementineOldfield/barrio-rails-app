@@ -15,7 +15,8 @@ if User.count == 0
       last_name: Faker::Name.last_name,
       bio: Faker::Lorem.paragraphs(rand(1..3)),
       email: Faker::Internet.email,
-      encrypted_password: "test"
+      password: "test",
+      password_confirmation: "test"
     )
     user.save!(validate: false)
     p "Created user #{i}"
@@ -95,7 +96,7 @@ end
 if Address.count == 0
   users.each do |user|
     user.address = Address.new(
-      
+
     )
   end
 end

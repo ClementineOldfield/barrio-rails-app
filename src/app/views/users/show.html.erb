@@ -3,7 +3,7 @@
 </head>
 <div class="left_profile">
   <div>
-    <% image_tag(@user.image.url)%>
+    <%= image_tag @user.image if @user.image.attached? %>
     <p><%= @user.first_name %></p>
     <button><%= link_to "Edit profile", edit_user_path%></button>
   </div>
