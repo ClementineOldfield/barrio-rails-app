@@ -7,8 +7,16 @@ class UsersController < ApplicationController
   end
 
   def update 
-    #updating (PATCH) Bio and Image only
+    #updating Bio and Image only
+    
 
+    byebug
+
+    @user.update(
+      bio: params[:user][:bio],
+      image: params[:user][:profile_image]
+    )
+    redirect_to user_path
   end
 
   def edit 
@@ -23,6 +31,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    byebug
   #show user profile 
     
   end
