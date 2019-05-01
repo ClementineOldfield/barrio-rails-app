@@ -4,10 +4,20 @@
 
 nav {
   width: 100%;
+  display: flex;
+  align-items: flex-end;
 }
 
 nav ul {
   display: flex;
   flex-direction: row;
+  justify-content: space-around;
   align-items: center;
+
+}
+
+li {
+  list-style: none;
+  align-items: center;
+  
 }
