@@ -1,7 +1,7 @@
 
 <h2>Edit your profile</h2>
 
-<%= form_with url: user_path do |f| %>
+<%= form_for(@user) do |f| %>
   <div class="field">
     <%= f.label :picture %>
     <%= f.file_field :picture, accept: "image/png,image/gif,image/jpeg,image/jpg" %>
