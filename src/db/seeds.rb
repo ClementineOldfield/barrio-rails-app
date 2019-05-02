@@ -19,32 +19,14 @@ if User.count == 0
       password_confirmation: "test"
     )
     user.save!(validate: false)
+
+    user.image.attach(io: File.open('app/assets/images/default_profile.png'), filename: 'default_profile.png', content_type: 'image/png')
     p "Created user #{i}"
     p user
   end
 end
 
 users = User.all
-profiles = [
-  'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
-  'https://images.pexels.com/photos/678783/pexels-photo-678783.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
-  'https://images.pexels.com/photos/1687675/pexels-photo-1687675.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
-  'https://images.pexels.com/photos/428361/pexels-photo-428361.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
-  'https://images.pexels.com/photos/952005/pexels-photo-952005.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
-  'https://images.pexels.com/photos/633432/pexels-photo-633432.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
-  'https://images.pexels.com/photos/2078467/pexels-photo-2078467.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
-  'https://images.pexels.com/photos/1031081/pexels-photo-1031081.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
-  'https://images.pexels.com/photos/889511/pexels-photo-889511.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
-  'https://images.pexels.com/photos/64385/pexels-photo-64385.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500'
-]
-
-if User.first.image == nil
-  users.each_with_index do |user, i|
-    user.image = Image.new(
-      url: profiles[i]
-    )
-  end
-end
 
 if Category.count == 0
   Category.create( name: "Fruit, Vegetables & Produce" )
@@ -64,34 +46,11 @@ if Listing.count == 0
       quantity: rand(3..10),
       is_available: true
     )
+    Listing.find(i).image.attach(io: File.open('app/assets/images/bread.jpeg'), filename: 'bread.jpeg', content_type: 'image/jpeg')
     p "Created Listing #{i}"
   end
 end
 
-images = [
-  'https://images.pexels.com/photos/1033716/pexels-photo-1033716.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-  'https://images.pexels.com/photos/841297/pexels-photo-841297.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-  'https://images.pexels.com/photos/1042402/pexels-photo-1042402.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-  'https://images.pexels.com/photos/428301/pexels-photo-428301.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
-  'https://images.pexels.com/photos/264537/pexels-photo-264537.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-  'https://images.pexels.com/photos/8148/kitchen-cookies-work-cake-8148.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-  'https://images.pexels.com/photos/461060/pexels-photo-461060.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
-  'https://images.pexels.com/photos/1453006/pexels-photo-1453006.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
-  'https://images.pexels.com/photos/325521/pexels-photo-325521.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-  'https://images.pexels.com/photos/7096/people-woman-coffee-meeting.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-  'https://images.pexels.com/photos/207896/pexels-photo-207896.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
-]
-
-if Listing.first.image == nil
-  (1..20).each do |i|
-    random = rand(0...images.length)
-    url = images[random]
-    Listing.find(i).image = Image.new(
-      url: url
-    )
-    p "Created image #{i}, Random = #{random}, url = #{url}"
-  end
-end
 
 if Address.count == 0
   users.each do |user|

@@ -13,12 +13,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     super
     @user = User.find_by_email(params[:user][:email])
-    @user.image = Image.new(
-      url: "https://cnam.ca/wp-content/uploads/2018/06/default-profile.gif"
-    )
+    # @user.image = Image.new(
+    #   url: "https://cnam.ca/wp-content/uploads/2018/06/default-profile.gif"
+    # )
 
     @user.update(
-      bio: "lorem ipsum" #WHY IS THIS NOT WORKING?!!
+      image: image_path(default_profile)
+      bio: "lorem ipsum" 
     )
   end
 

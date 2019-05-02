@@ -3,6 +3,7 @@
 
 <%= form_with model: @user, local: true do |f| %>
   <div class="field">
+    <%= image_tag @user.image if @user.image.attached? %>
     <%= f.label :profile_image %>
     <%= f.file_field :profile_image, accept: "image/png,image/gif,image/jpeg,image/jpg" %>
   </div>

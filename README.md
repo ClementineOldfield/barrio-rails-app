@@ -63,9 +63,13 @@ lorem ipsum
 
 lorem ipsum
 
-
 # The Planning Process
 
+## Database Design
+
+### Initial ER Diagram
+
+![Initial ER Diagram](docs/barrio-er-diagram.png)
 
 ## Project Timeline
 
