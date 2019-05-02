@@ -20,21 +20,13 @@
     </div>
     <div class="low_footer">
       <div class="social_media">
-        <%= link_to pages_path do %> 
-          <%= image_tag "linkedin.png", class: "linkedin" %>
-        <% end %>
-        <%= link_to pages_path do %> 
-          <%= image_tag "twitter.png", class: "twitter" %>
-        <% end %>
-        <%= link_to pages_path do %> 
-          <%= image_tag "youtube.png", class: "youtube" %>
-        <% end %>
-        <%= link_to pages_path do %> 
-          <%= image_tag "facebook.png", class: "facebook" %>
-        <% end %>
-        <%= link_to pages_path do %> 
-          <%= image_tag "instagram.png", class: "instagram" %>
-        <% end %>
+          <%= fa_icon "linkedin", class: "linkedin" %>
+        <%# fa_icon "camera-retro"
+        # => <i class="fa fa-camera-retro"></i> %>
+          <%= fa_icon "twitter", class: "twitter" %>
+          <%= fa_icon "youtube", class: "youtube" %>
+          <%= fa_icon "facebook", class: "facebook" %>
+          <%= fa_icon "instagram", class: "instagram" %>
       </div>
       <div class="license">
         <p>Copyright © 2019 Clementine Oldfield & Juan Manuel Sanchez-Ortiz All Rights Reserved.</p>                  
