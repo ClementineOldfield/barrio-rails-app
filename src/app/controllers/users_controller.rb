@@ -40,8 +40,8 @@ class UsersController < ApplicationController
   end
 
   def authorize_user
-    if @listing.user_id != current_user.id
-      redirect_to listings_path
+    if @user.id != current_user.id
+      redirect_to dash_path
     end
   end
 
