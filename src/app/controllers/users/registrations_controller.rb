@@ -15,9 +15,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user = User.find_by_email(params[:user][:email])
 
     @user.update(
-      image: image_path(default_profile),
       bio: "lorem ipsum" 
     )
+    
+    @user.image.attach(io: File.open('app/assets/images/default_profile.png'), filename: 'default_profile.png', content_type: 'image/png')
   end
 
   # GET /resource/edit

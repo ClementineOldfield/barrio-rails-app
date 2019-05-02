@@ -1,5 +1,6 @@
 class ListingsController < ApplicationController
   before_action :set_listing, only: [:show, :edit, :update, :destroy]
+  before_action :authorize_user, only: [:edit, :update, :destroy]
 
   def index
     @listings = Listing.all
@@ -60,5 +61,11 @@ class ListingsController < ApplicationController
   def set_listing
     @id = params[:id]
     @listing = Listing.find(@id)
+  end
+
+  def authorize_user
+    unless current_user.listings.include? @listing
+      redirect_to dash_path
+    end
   end
 end
