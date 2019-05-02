@@ -1,3 +1,5 @@
+@import "font-awesome";
+
 h1, h2, h3, h4, p, a {
   font-family: Hevetica, sans-serif;
 }
@@ -21,6 +23,7 @@ h1, h2, h3, h4, p, a {
 .footer {
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 
 .high_footer {
@@ -28,36 +31,83 @@ h1, h2, h3, h4, p, a {
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+  // background-color: rgb(147, 39, 39);
+  // border-bottom: rgb(0, 0, 0);
+  padding-bottom: 10px;
 }
+
+.legal {
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+.help {
+  display: flex;
+  flex-direction: column;
+}
+
+
 
 .low_footer {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+  // background-color: rgb(99, 91, 91);
 }
 
 .footer_logo {
+  text-align: left;
 
 }
 
-.legal {
-  
-}
-
-.help {
-
-}
-
-.social_media img {
+.social_media {
   display: inline-block;
+  display: flex;
+  margin-top: 20px;
+}
+
+.social_media a {
+  text-decoration: none;
+}
+
+.twitter {
   width: 40px;
   height: 40px;
   border-radius: 50%;
   background-color: rgba(0,0,0,0);
-  text-align: center;
+}
+
+.linkedin {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(0,0,0,0);
+}
+
+.youtube {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(0,0,0,0);
+}
+
+.instagram {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(0,0,0,0);
+}
+
+.facebook {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(0,0,0,0);
 }
 
 .license {
-
+ font-size: 15px;
 }
