@@ -7,13 +7,15 @@ Rails.application.routes.draw do
       registrations: 'users/registrations'
     }
   get "/", to: "pages#index", as: "root"
+  get "/contact", to: "pages#contact", as: "contact"
+  post "/contact", to: "pages#contact"
+  get "/about", to: "pages#about", as: "about"
   
   resources :listings
   resources :users
   resources :pages
-
-  get "/contact", to: "pages#contact", as: "contact"
-  get "/about", to: "pages#about", as: "about"
+  
+  
 end
 
 

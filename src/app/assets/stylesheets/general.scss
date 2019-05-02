@@ -17,3 +17,48 @@ h1, h2, h3, h4, p, a {
 .logo {
   width: 200px;
 }
+
+.footer {
+  display: flex;
+  flex-direction: column;
+}
+
+.high_footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.low_footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.footer_logo {
+
+}
+
+.legal {
+  
+}
+
+.help {
+
+}
+
+.social_media img {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(0,0,0,0);
+  text-align: center;
+  transition: background-color 2.s
+}
+
+.license {
+
+}
