@@ -8,7 +8,7 @@ class ListingsController < ApplicationController
 
   def show
     
-    session = Stripe::Checkout::Session.create(
+    @stripe_session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],
       line_items: [{
         name: @listing.title,
@@ -21,7 +21,6 @@ class ListingsController < ApplicationController
       success_url: 'https://localhost:3000/success',
       cancel_url: 'https://localhost:3000/cancel',
     )
-
   end
   
   def create; end
