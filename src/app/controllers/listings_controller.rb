@@ -19,8 +19,8 @@ class ListingsController < ApplicationController
         quantity: 1,
       }],
       
-      success_url: 'http://localhost:3000/payments/success',
-      cancel_url: 'http://localhost:3000/cancel'
+      success_url: 'http://localhost:3000/purchases/success',
+      cancel_url: 'http://localhost:3000/purchases/cancel'
     ) 
     @stripe_session_id = stripe_session.id
   end
