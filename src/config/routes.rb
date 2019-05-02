@@ -6,16 +6,17 @@ Rails.application.routes.draw do
       sessions: 'users/sessions',
       registrations: 'users/registrations'
     }
-  get "/", to: "pages#index", as: "root"
-  get "/contact", to: "pages#contact", as: "contact"
-  post "/contact", to: "pages#contact"
-  get "/about", to: "pages#about", as: "about"
-  
   resources :listings
   resources :users
   resources :pages
   
-  
+  get "/", to: "pages#index", as: "root"
+  get "/contact", to: "pages#contact", as: "contact"
+  get "/about", to: "pages#about", as: "about"
+  get "/dashboard", to: "pages#dash", as: "dash"
+
+  post "/favourite", to: "listings#set_favourite", as: "set_favourite"
+  delete "/favourite", to: "listings#unset_favourite", as: "unset_favourite"
 end
 
 

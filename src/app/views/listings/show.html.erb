@@ -15,6 +15,11 @@
     <p>
       <%= @listing.body %>
     </p>
+    <% if current_user.favourite_listings.include? @listing %>
+      <%= button_to 'Remove from Favourites', unset_favourite_path, method: :delete, params: { listing: @listing } %>
+    <% else %>
+      <%= button_to 'Add to Favourites', set_favourite_path, method: :post, params: { listing: @listing } %>
+    <% end %> 
   </div>
 </div>
 

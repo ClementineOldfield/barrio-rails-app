@@ -25,6 +25,20 @@ class ListingsController < ApplicationController
   
   def destroy; end
 
+  def set_favourite
+    favourite = Favourite.new(
+      listing_id: params[:listing],
+      user_id: current_user[:id]
+    )
+    favourite.save!
+    redirect_to listing_path params[:listing]
+  end
+
+  def unset_favourite
+    current_user.favourite_listings.delete params[:listing]
+    redirect_to listing_path params[:listing]
+  end
+
   private 
 
   def set_listing
