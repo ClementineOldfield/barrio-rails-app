@@ -31,7 +31,12 @@ class ListingsController < ApplicationController
       user_id: current_user[:id]
     )
     favourite.save!
-    puts "created #{favourite}"
+    redirect_to listing_path params[:listing]
+  end
+
+  def unset_favourite
+    current_user.favourite_listings.delete params[:listing]
+    redirect_to listing_path params[:listing]
   end
 
   private 
