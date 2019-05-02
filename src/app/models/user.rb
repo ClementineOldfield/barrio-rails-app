@@ -7,7 +7,8 @@ class User < ApplicationRecord
   has_many :listings
   has_one :address, dependent: :destroy
   has_many :purchases
-  # has_one :image, as: :imageable, dependent: :destroy
+  has_many :favourites
+  has_many :favourite_listings, through: :favourites, source: :listing
   has_one_attached :image
 end
 
