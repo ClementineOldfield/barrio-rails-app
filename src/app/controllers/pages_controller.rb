@@ -8,6 +8,8 @@ class PagesController < ApplicationController
   def dash
     @listings = Listing.all
     @favourites = current_user.favourite_listings
+
+    
   end
 
 end

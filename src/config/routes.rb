@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   get "/dashboard", to: "pages#dash", as: "dash"
 
   post "/favourite", to: "listings#set_favourite", as: "set_favourite"
+  delete "/favourite", to: "listings#unset_favourite", as: "unset_favourite"
 end
 
 
