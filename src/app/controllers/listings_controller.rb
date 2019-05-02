@@ -25,6 +25,15 @@ class ListingsController < ApplicationController
   
   def destroy; end
 
+  def set_favourite
+    favourite = Favourite.new(
+      listing_id: params[:listing],
+      user_id: current_user[:id]
+    )
+    favourite.save!
+    puts "created #{favourite}"
+  end
+
   private 
 
   def set_listing

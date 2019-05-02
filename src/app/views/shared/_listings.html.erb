@@ -1,8 +1,6 @@
-<!-- CAN DELETE ONCE PARTIAL IS INTEGRATED WITH DASHBOARD  -->
-
 <h1>Listings</h1>
 
-<% @listings.each do |listing| %>
+<% listings.each do |listing| %>
   <div class="card">
     <%= link_to listing_path(listing.id) do %>
       <%= image_tag(listing.image, class: "listing-image") if listing.image.attached? %>
