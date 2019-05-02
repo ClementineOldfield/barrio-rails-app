@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   get "/contact", to: "pages#contact", as: "contact"
   get "/about", to: "pages#about", as: "about"
   get "/dashboard", to: "pages#dash", as: "dash"
+
+  post "/favourite", to: "listings#set_favourite", as: "set_favourite"
 end
 
 
