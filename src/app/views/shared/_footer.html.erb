@@ -1,0 +1,44 @@
+
+<footer>
+  <div class="footer">
+    <div class="high_footer">
+      <div class="footer_logo">
+        <%= link_to pages_path do %> 
+          <%= image_tag "logo.png", class: "logo" %>
+        <% end %>
+      </div>
+      <div class="legal">
+        <h4>Legal</h4>
+        <%= link_to "Terms", pages_path %>
+        <%= link_to "Privacy", pages_path %>
+      </div>
+      <div class="help">
+        <h4>Help</h4>
+        <%= link_to "Contact", contact_path%>
+        <%= link_to "About", about_path %>
+      </div>
+    </div>
+    <div class="low_footer">
+      <div class="social_media">
+        <%= link_to pages_path do %> 
+          <%= image_tag "linkedin.png", class: "linkedin" %>
+        <% end %>
+        <%= link_to pages_path do %> 
+          <%= image_tag "twitter.png", class: "twitter" %>
+        <% end %>
+        <%= link_to pages_path do %> 
+          <%= image_tag "youtube.png", class: "youtube" %>
+        <% end %>
+        <%= link_to pages_path do %> 
+          <%= image_tag "facebook.png", class: "facebook" %>
+        <% end %>
+        <%= link_to pages_path do %> 
+          <%= image_tag "instagram.png", class: "instagram" %>
+        <% end %>
+      </div>
+      <div class="license">
+        <p>Copyright © 2019 Clementine Oldfield & Juan Manuel Sanchez-Ortiz All Rights Reserved.</p>                  
+      </div>
+    </div>
+  </div>
+</footer>
