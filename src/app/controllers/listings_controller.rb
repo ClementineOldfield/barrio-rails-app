@@ -5,7 +5,23 @@ class ListingsController < ApplicationController
     @listings = Listing.all
   end
 
-  def show; end
+  def show
+    
+    session = Stripe::Checkout::Session.create(
+      payment_method_types: ['card'],
+      line_items: [{
+        name: @listing.title,
+        description: @listing.body,
+        # image: ['https://example.com/t-shirt.png'],
+        amount: @listing.price,
+        currency: 'aud',
+        quantity: 1,
+      }],
+      success_url: 'https://localhost:3000/success',
+      cancel_url: 'https://localhost:3000/cancel',
+    )
+
+  end
   
   def create; end
   def new; end
