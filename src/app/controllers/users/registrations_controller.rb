@@ -19,6 +19,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     )
     
     @user.image.attach(io: File.open('app/assets/images/default_profile.png'), filename: 'default_profile.png', content_type: 'image/png')
+  
+    #address = Address.new(params being params what they filled as their address)
   end
 
   # GET /resource/edit
