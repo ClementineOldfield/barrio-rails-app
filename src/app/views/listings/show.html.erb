@@ -1,4 +1,4 @@
-<button><%= link_to "Edit Listing", edit_listing_path%></button>
+<%= button_to 'Edit Listing', edit_listing_path if @listing.user.id == current_user.id%>
 
 <div class="flex-container">
   <div class="col">
@@ -17,7 +17,7 @@
       <%= @listing.body %>
     </p>
 
-    
+    <button id="stripe_payment">Purchase <%= @listing.title %> for $<%= number_with_precision(@listing.price / 100.0, precision: 2) %></button>
 
     <% if current_user.favourite_listings.include? @listing %>
       <%= button_to 'Remove from Favourites', unset_favourite_path, method: :delete, params: { listing: @listing } %>
@@ -26,4 +26,18 @@
     <% end %> 
   </div>
 </div>
+
+<script>
+document.getElementById("stripe_payment").addEventListener("click", function() {
+  var stripe = Stripe('<%= Rails.application.credentials.dig(:stripe, :public) %>');
+
+  stripe.redirectToCheckout({
+    sessionId: '<%= @stripe_session_id %>',
+  }).then(function (result) {
+    // If `redirectToCheckout` fails due to a browser or network
+    // error, display the localized error message to your customer
+    // using `result.error.message`.
+  });
+});
+</script>
 

@@ -7,23 +7,34 @@ class ListingsController < ApplicationController
   end
 
   def show
+
+    @cart = current_user.carts.create(
+      listing_id: @listing.id
+    )
     
-    session = Stripe::Checkout::Session.create(
+    stripe_session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],
+      client_reference_id: @cart.id,
+      customer_email: current_user.email,
       line_items: [{
         name: @listing.title,
         description: @listing.body,
-        # image: ['https://example.com/t-shirt.png'],
         amount: @listing.price,
         currency: 'aud',
         quantity: 1,
       }],
-      success_url: 'https://localhost:3000/success',
-      cancel_url: 'https://localhost:3000/cancel',
-    )
+      
+      success_url: "http://localhost:3000/purchases/success?listing=#{@listing.id}",
+      cancel_url: 'http://localhost:3000/purchases/cancel'
+    ) 
 
+    @stripe_session_id = stripe_session.id
+
+    @cart.update(
+      stripe_session_id: stripe_session.id
+    )
   end
-  
+
   def create; end
   def new; end
 
@@ -69,3 +80,4 @@ class ListingsController < ApplicationController
     end
   end
 end
+
