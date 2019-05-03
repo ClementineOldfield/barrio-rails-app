@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+      var map;
+      function initMap() {
+        var location = {lat: -25.344, lng: 131.036};
+      // The map, centered at location
+        var map = new google.maps.Map(
+        document.getElementById('map'), {zoom: 15, center: location});
+        // The marker, positioned at location
+        // var marker = new google.maps.Marker({position: location, map: map});
+        // More than one marker, being as many markers as offers around the location
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUo6oFVbDNBUdJ6IKJpVfo5cRbFRsCmAY&callback=initMap"
+    async defer></script>
+  </body>
+</html>
+
+<%# before, create an array of near offers. if location is near, we will include it in the array %>
+ <%# in that array, we will apply the following for statement %>
+ <%# window.eqfeed_callback = function(results) {
+        for (var i = 0; i < results.features.length; i++) {
+          var coords = results.features[i].geometry.coordinates;
+          var latLng = new google.maps.LatLng(coords[1],coords[0]);
+          var marker = new google.maps.Marker({
+            position: latLng,
+            map: map %>
+
+
+<%# <%= User.find_by_first_name("Bryce").address.latitude %>, lng: <%= User.find_by_first_name("Bryce").address.longitude %>} %>

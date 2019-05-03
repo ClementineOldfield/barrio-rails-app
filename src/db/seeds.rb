@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 require 'faker'
+require 'geocoder'
 
 if User.count == 0
   (1..10).each do |i|
@@ -55,7 +56,28 @@ end
 if Address.count == 0
   users.each do |user|
     user.address = Address.new(
-
-    )
+      street_1: Faker::Address.street_name,
+      street_2: Faker::Address.secondary_address,
+      suburb: Faker::Address.city,
+      state: Faker::Address.state,
+      postcode: Faker::Address.postcode,
+      # latitude: ((Geocoder.search(
+      #   user.address[:street1], 
+      #   user.address[:street2], 
+      #   user.address[:suburb], 
+      #   user.address[:state], 
+      #   user.address[:postcode]
+      # ).compact.join(', ')).first.coordinates)[0],
+      # longitude: ((Geocoder.search(
+      #   user.address[:street1], 
+      #   user.address[:street2], 
+      #   user.address[:suburb], 
+      #   user.address[:state], 
+      #   user.address[:postcode]
+      # ).compact.join(', ')).first.coordinates)[1]
+      )
   end
+
 end
+
+# new_address = Address.new( street_1: Faker::Address.street_name, street_2: Faker::Address.secondary_address, suburb: Faker::Address.city, state: Faker::Address.state, postcode: Faker::Address.postcode, latitude: (Geocoder.search("#{[:street1, :street2, :suburb, :state, :postcode].compact.join(', ')}").first.coordinates)[0], longitude: (Geocoder.search("#{[:street1, :street2, :suburb, :state, :postcode].compact.join(', ')}").first.coordinates)[1])

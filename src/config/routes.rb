@@ -18,6 +18,9 @@ Rails.application.routes.draw do
 
   post "/favourite", to: "listings#set_favourite", as: "set_favourite"
   delete "/favourite", to: "listings#unset_favourite", as: "unset_favourite"
+
+  get "/map", to: "addresses#index", as: "map"
+
 end
 
 

@@ -18,12 +18,13 @@
     </p>
 
     
+    <%= button_to ‘Edit Listing’, edit_listing_path if @listing.user.id == current_user.id%>
 
-    <% if current_user.favourite_listings.include? @listing %>
-      <%= button_to 'Remove from Favourites', unset_favourite_path, method: :delete, params: { listing: @listing } %>
-    <% else %>
-      <%= button_to 'Add to Favourites', set_favourite_path, method: :post, params: { listing: @listing } %>
-    <% end %> 
+  <% if current_user.favourite_listings.include? @listing %>
+     <%= button_to ‘Remove from Favourites’, unset_favourite_path, method: :delete, params: { listing: @listing } %>
+  <% else %>
+     <%= button_to ‘Add to Favourites’, set_favourite_path, method: :post, params: { listing: @listing } %>
+  <% end %>
   </div>
 </div>
 

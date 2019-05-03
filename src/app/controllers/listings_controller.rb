@@ -8,19 +8,19 @@ class ListingsController < ApplicationController
 
   def show
     
-    session = Stripe::Checkout::Session.create(
-      payment_method_types: ['card'],
-      line_items: [{
-        name: @listing.title,
-        description: @listing.body,
-        # image: ['https://example.com/t-shirt.png'],
-        amount: @listing.price,
-        currency: 'aud',
-        quantity: 1,
-      }],
-      success_url: 'https://localhost:3000/success',
-      cancel_url: 'https://localhost:3000/cancel',
-    )
+    # session = Stripe::Checkout::Session.create(
+    #   payment_method_types: ['card'],
+    #   line_items: [{
+    #     name: @listing.title,
+    #     description: @listing.body,
+    #     # image: ['https://example.com/t-shirt.png'],
+    #     amount: @listing.price,
+    #     currency: 'aud',
+    #     quantity: 1,
+    #   }],
+    #   success_url: 'https://localhost:3000/success',
+    #   cancel_url: 'https://localhost:3000/cancel',
+    # )
 
   end
   
