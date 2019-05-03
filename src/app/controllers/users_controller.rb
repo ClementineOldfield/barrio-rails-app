@@ -10,10 +10,10 @@ class UsersController < ApplicationController
   def update 
     #updating Bio and Image only
 
-    @user.update(
-      bio: params[:user][:bio],
-      image: params[:user][:profile_image]
-    )
+    newImage = params[:user][:profile_image]
+
+    @user.update( bio: params[:user][:bio])
+    @user.update( image: newImage ) if newImage != nil
     redirect_to user_path
   end
 

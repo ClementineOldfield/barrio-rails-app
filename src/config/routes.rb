@@ -21,6 +21,10 @@ Rails.application.routes.draw do
 
   get "/map", to: "addresses#index", as: "map"
 
+  post "/purchases/stripe", to: "purchases#stripe"
+  get "/purchases/success", to: "purchases#success"
+
+  get "/purchases/:id", to: "purchases#index", as: "purchase_history"
 end
 
 
