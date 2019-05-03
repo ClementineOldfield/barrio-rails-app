@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :about, :contact]
+  before_action :clear_carts, only: [:dash]
 
   def index; end
   def about; end
@@ -12,4 +13,11 @@ class PagesController < ApplicationController
     
   end
 
+  private
+  
+  def clear_carts
+    current_user.carts.each do |cart|
+      cart.delete
+    end
+  end
 end
