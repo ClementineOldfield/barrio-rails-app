@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :favourites
   has_many :favourite_listings, through: :favourites, source: :listing
   has_one_attached :image
+
+  has_many :carts
 end
 
 
