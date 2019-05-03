@@ -1,6 +1,10 @@
 class PurchasesController < ApplicationController
   skip_before_action :verify_authenticity_token
 
+  def index
+    @purchases = current_user.purchases
+  end
+
   def create
     @item = Listing.find(params[:id])
     @purchase = current_user.purchases.new()
@@ -16,6 +20,7 @@ class PurchasesController < ApplicationController
       total_amount: @item[:amount],
       quantity: @item[:quantity]
     )
+    puts "\n\n\n\n\n\n\n -----------------------\nCREATED PURCHASE\n----------------------- \n\n\n\n\n\n\n\n"
 
     render plain: ""
   end

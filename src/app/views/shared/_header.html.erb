@@ -9,8 +9,6 @@
         <%= image_tag "logo.png", class: "logo" %>
       <% end %>
     <% end %>
-    <%# <%= user_signed_in? (link_to dash_path do) : (link_to root_path do) %> 
-    
   </div>
   <%= link_to "logout", destroy_user_session_path, method: :delete if user_signed_in? %>
   <%= link_to "login", new_user_session_path if !user_signed_in? %>
