@@ -5,8 +5,10 @@
         <%= image_tag "logo.png", class: "logo" %>
       </div>
     <% end %>
-    <div class="current-user">
-      <p><%= current_user.first_name %></p>
+    <div class="dropdown">
+      <div class="current-user">
+        <p><%= current_user.first_name %></p>
+      </div>
     </div>
 
   <% else %>
@@ -20,4 +22,5 @@
   <%= link_to "logout", destroy_user_session_path, method: :delete if user_signed_in? %>
   <%= link_to "login", new_user_session_path if !user_signed_in? %>
 </header>
+
 <div class="spacer"></div>
