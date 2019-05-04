@@ -1,3 +1,17 @@
+header {
+  position: fixed;
+  top: 0;
+  background-color: #fff;
+  width: 100%;
+  display: flex;
+  padding: 25px;
+  box-sizing: border-box;
+}
+
+header, .spacer {
+  height: 150px;
+}
+
 .current-user {
   margin-left: auto;
 }

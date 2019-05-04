@@ -11,6 +11,8 @@ class PurchasesController < ApplicationController
   end
 
   def stripe
+    p params
+    
     @params = params[:data][:object]
     @item = @params[:display_items][0]
     @user = User.find_by_email(@params[:customer_email])
