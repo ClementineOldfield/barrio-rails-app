@@ -17,7 +17,16 @@
       <%= @listing.body %>
     </p>
 
-    <button id="stripe_payment">Purchase <%= @listing.title %> for $<%= number_with_precision(@listing.price / 100.0, precision: 2) %></button>
+    <div class="flex-container">
+      <div class="price">
+        <p class="price" >$<%= number_with_precision(@listing.price / 100.0, precision: 2) %></p>
+      </div>
+      <div class="buttons-container">
+        <input type="number" name="quantity" min="1" max="<%= @listing.quantity %>">
+        <button id="stripe_payment">Purchase <%= @listing.title %> for $<%= number_with_precision(@listing.price / 100.0, precision: 2) %></button>
+      </div>
+
+    </div>
 
   <% if current_user.favourite_listings.include? @listing %>
      <%= button_to "Remove from Favourites", unset_favourite_path, method: :delete, params: { listing: @listing } %>
