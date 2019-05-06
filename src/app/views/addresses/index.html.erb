@@ -15,12 +15,12 @@
       console.log("test")
       console.log(lat)
       function geocode(){
-      var location = "108 Kingsway Woolooware NSW";
+      var location = "27 Arthur st Surry Hills Sydney NSW";
       console.log(location)
       axios.get("https://maps.googleapis.com/maps/api/geocode/json", {
         params:{
            address:location,
-           key:"<%= Rails.application.credentials.google_maps%>" 
+           key:"<%= Rails.application.credentials.google_maps %>" 
         }
       })
       .then(function(response){
@@ -93,7 +93,7 @@
         }; %>
       }
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=<%=Rails.application.credentials.google_maps%>&callback=initMap"
+    <script src="https://maps.googleapis.com/maps/api/js?key=<%= Rails.application.credentials.google_maps %>&callback=initMap"
     async defer></script>
   </body>
 </html>
