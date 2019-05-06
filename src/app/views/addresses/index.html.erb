@@ -4,22 +4,96 @@
     <title>Simple Map</title>
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script> 
   </head>
   <body>
     <div id="map"></div>
     <script>
-      var map;
+      // Call Geocode
+      var lng = 0;
+      var lat = 0;
+      console.log("test")
+      console.log(lat)
+      function geocode(){
+      var location = "108 Kingsway Woolooware NSW";
+      console.log(location)
+      axios.get("https://maps.googleapis.com/maps/api/geocode/json", {
+        params:{
+           address:location,
+           key:"<%= Rails.application.credentials.google_maps%>" 
+        }
+      })
+      .then(function(response){
+        //  Log full response  
+        console.log(response);
+         
+        // Formatted Address
+        // var formattedAddress =  response.data.results[0].formatted_address;
+        
+        // Address Components 
+        // var addressComponents = response.data.results[0].address_components; 
+        
+        // Geometry 
+        lat  =  response.data.results[0].geometry.location.lat;
+        console.log(lat);
+        lng  =  response.data.results[0].geometry.location.lng; 
+        console.log(lng);       
+      })
+      .catch(function(error){
+        console.log(error); 
+      });
+    }
+    geocode();
+    // Map 
+    // 42.37268230000001,-71.062115
+      var map; 
       function initMap() {
-        var location = {lat: -25.344, lng: 131.036};
+        var maplocation = {lat: lat, lng: lng};
       // The map, centered at location
-        var map = new google.maps.Map(
-        document.getElementById('map'), {zoom: 15, center: location});
+        map = new google.maps.Map(
+        document.getElementById('map'), {zoom: 15, center: maplocation});
         // The marker, positioned at location
-        // var marker = new google.maps.Marker({position: location, map: map});
+        var marker = new google.maps.Marker({position: maplocation, map: map});
         // More than one marker, being as many markers as offers around the location
+
+        // Customize the markers
+        <%# var iconBase =
+            'https://developers.google.com/maps/documentation/javascript/examples/full/images/';
+            // Two different kinds of markers
+        var icons = {
+          own_location: {
+            icon: iconBase + 'parking_lot_maps.png'
+          },
+          others_location: {
+            icon: iconBase + 'library_maps.png'
+          },
+        };
+            // Identification of each location with either the current user´s one or the others´. 
+        var features = [
+          {
+            position: new google.maps.LatLng(-33.91721, 151.22630),
+            type: 'own_location'
+          }, {
+            position: new google.maps.LatLng(-33.91539, 151.22820),
+            type: 'others_location'
+          }, {
+            position: new google.maps.LatLng(-33.91747, 151.22912),
+            type: 'info'
+          },
+        ]; %>
+        
+        // We miss an array of all the other users´locations.
+
+        <%# for (var i = 0; i < features.length; i++) {
+          var marker = new google.maps.Marker({
+            position: features[i].position,
+            icon: icons[features[i].type].icon,
+            map: map
+          });
+        }; %>
       }
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=MYAPI&callback=initMap"
+    <script src="https://maps.googleapis.com/maps/api/js?key=<%=Rails.application.credentials.google_maps%>&callback=initMap"
     async defer></script>
   </body>
 </html>
@@ -35,4 +109,5 @@
             map: map %>
 
 
-<%# <%= User.find_by_first_name("Bryce").address.latitude %>, lng: <%= User.find_by_first_name("Bryce").address.longitude %>} %>
+<%# <%= User.find_by_first_name("Bryce").address.latitude %>
+<%# , lng: <%= User.find_by_first_name("Bryce").address.longitude}  %>
