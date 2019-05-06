@@ -106,11 +106,23 @@ The application had to be deployed to Heroku or AWS.
 
 *2. Identify the problem you’re trying to solve by building this particular marketplace App? Why is it a problem that needs solving?*
 
+Barrio buddes to satisfy the very specific need of locally stablish entrepreneurs to have a **close set of customers**. It aims to **increase their success opportunities**, therefore **encouraging entrepreneurship within the regular population** and **supporting local wealth**.
 
-
-Barrio buddes to satisfy the very specific need of locally stablish entrepreneurs to have a **first set of customers** in order to **increase their success opportunities**, therefore **supporting local wealth** and **encouraging entrepreneurship within the **.
+Because *what is given to the citizens, returns to society*.
 
 *3. Describe the project you will be conducting and how your App will address the needs.*
+
+We are developing a two-sided market which will put in contact both entrepreneurs and potential customers, and we want it to **ensure an in person relationship** between them. That is the reason why a fundamental part of out application has to do with location, as the user is shown the closest offers of other users.
+
+For this solution to be successful and useful, we plan to implement both the Google Maps Javascript API and the Geocoding API from Google. A map will output the nearest to the user offers, and the dashboard will display a list of them, also taking into account the launch date. Rails structure will be crucial for both objectives as well.
+
+That way, the interested buyer will **easily meet the seller** in the address the latter has set up for that purpose.
+
+Furthermore, each user will have their own profile page where they can **share some information about themselves** and the products they offer to the public. In addition, there will be an in-app messaging system, so that **buyer and seller can agree on the time and the manner** of completing the **exchange of value**. 
+
+We are glad to assure that everything will be carried out under the hepful knowledge that **payments will be done safely** and inside the app thanks to Stripe.
+
+To allow the user to **keep track of the products** (listings) they are interested in and willing to access in the near future, we have implemented a favourite option for each offer. The favourite listings will be displayed in the dashboard too.
 
 *4. Describe the network infrastructure the App may be based on.*
 
