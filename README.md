@@ -156,6 +156,12 @@ Postgresql also has recently added support for JSON, allowing it to integrate wi
 
 *10. Detail any third party services that your App will use.*
 
+- AWS
+- Google
+- Heroku
+- Gems 
+- axios
+
 *11. Describe (in general terms) the data structure of marketplace apps that are similar to your own (e.g. eBay, Airbnb). Discuss the database relations to be implemented.*
 
 *12. Describe your project’s models in terms of the relationships (active record associations) they have with each other.*
