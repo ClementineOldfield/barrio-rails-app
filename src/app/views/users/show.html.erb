@@ -17,7 +17,12 @@
 
 
 <h2>What you offer</h2>
-
+ <% if @user.id == current_user.id%>
+ <%= fa_icon "plus-circle", class: "plus-circle"%> 
+ <%end%>
+ <% if @user.id == current_user.id%>
+ <button><%= link_to "Add a listing", new_listing_path%></button>
+ <%end%>
 <ul>
   <% @user.listings.each do |listing| %>
     <%= link_to listing_path(listing.id) do %>

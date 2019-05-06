@@ -1,0 +1,40 @@
+<h2>Create Listing</h2>
+
+<%= form_with model: Listing.new, local: true do |f| %>
+  <div class="field">
+    <%= f.label :featured_image %>
+    <%= f.file_field :featured_image, accept: "image/png,image/gif,image/jpeg,image/jpg" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title, autofocus: true%>
+  </div>
+
+  <div class="field">
+    <%= f.label :body %>
+    <%= f.text_area :body, autofocus: true%>
+  </div>
+
+  <div class="field">
+    <%= f.label :price %>
+    <%= f.number_field :price, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :quantity %>
+    <%= f.number_field :quantity, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :category_id %>
+    <%= f.number_field :quantity, autofocus: true %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Create"  %>
+  </div>
+
+<% end %>
+
+<%= link_to "Back", :back %>

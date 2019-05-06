@@ -28,11 +28,14 @@
       </div>
 
       <div class="buttons-container"> 
+        <%= button_to ‘Edit Listing’, edit_listing_path if @listing.user.id == current_user.id%>
         <button id="stripe_payment">Buy Now</button>
-        <% if current_user.favourite_listings.include? @listing %>
-          <%= button_to "Remove from Favourites", unset_favourite_path, method: :delete, params: { listing: @listing } %>
-        <% else %>
-          <%= button_to "Add to Favourites", set_favourite_path, method: :post, params: { listing: @listing } %>
+        <% if @listing.user.id != current_user.id %>
+          <% if current_user.favourite_listings.include? @listing && @listing.user.id != current_user.id %>
+            <%= button_to "Remove from Favourites", unset_favourite_path, method: :delete, params: { listing: @listing } %>
+          <% else %>
+            <%= button_to "Add to Favourites", set_favourite_path, method: :post, params: { listing: @listing } %>
+          <% end %>
         <% end %>
       </div>
 

@@ -1,0 +1,28 @@
+<%= form_with model: @address, local: true do |f| %>
+  <fieldset class="field">
+    <legend>Hand out address:</legend>
+    <%= f.label :street1 %><br />
+    <%= f.text_field :street1, autofocus: true, autocomplete: "Address Line 1" %>
+
+    <%= f.label :street2 %><br />
+    <%= f.text_field :street2, autofocus: true, autocomplete: "Address Line 2" %>
+
+    <%= f.label :suburb %><br />
+    <%= f.text_field :suburb, autofocus: true, autocomplete: "Suburb" %>
+
+    <%= f.label :state %><br />
+    <%= f.text_field :state, autofocus: true, autocomplete: "State" %>
+
+    <%= f.label :postcode %><br />
+    <%= f.text_field :postcode, autofocus: true, autocomplete: "Postcode" %>
+<%# 
+    Address Line 1: <input type="text">
+    Address Line 2: <input type="text">
+    Suburb: <input type="text">
+    State: <input type="text">
+    Postcode: <input type="text"> %>
+    <%= f.submit "Go for it!" %>
+  </fieldset>
+<% end %>
+
+
