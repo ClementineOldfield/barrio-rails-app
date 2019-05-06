@@ -2,7 +2,9 @@ class PagesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :about, :contact]
   before_action :clear_carts, only: [:dash]
 
-  def index; end
+  def index
+    redirect_to dash_path if user_signed_in?
+  end
   def about; end
   def contact; end
 

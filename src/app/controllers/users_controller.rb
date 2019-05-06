@@ -35,7 +35,7 @@ class UsersController < ApplicationController
 
   def given_address
     # [street, city, state, country].compact.join(', ')
-    given_address = @user.address.latitude,
+    # given_address = @user.address.latitude,
   end
   private
 

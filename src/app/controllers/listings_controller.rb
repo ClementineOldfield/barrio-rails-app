@@ -27,6 +27,7 @@ class ListingsController < ApplicationController
       success_url: "http://localhost:3000/purchases/success?listing=#{@listing.id}",
       cancel_url: 'http://localhost:3000/purchases/cancel'
     ) 
+    
 
     @stripe_session_id = stripe_session.id
 
