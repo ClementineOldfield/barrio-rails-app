@@ -57,7 +57,9 @@ lorem ipsum
 
 ## Wireframes
 
-lorem ipsum
+### First iteration of wireframes on paper
+
+![First iteration of wireframes](docs/wireframes-paper.png)
 
 ## Database Entity Relationship Diagrams
 
@@ -65,8 +67,11 @@ lorem ipsum
 
 # The Planning Process
 
+<<<<<<< Updated upstream
 ## Database Design
 
+=======
+>>>>>>> Stashed changes
 ### Initial ER Diagram
 
 ![Initial ER Diagram](docs/barrio-er-diagram.png)
@@ -104,19 +109,27 @@ Screenshots of Trello board(s)
 
 *4. Describe the network infrastructure the App may be based on.*
 
-
+Upon deployment, the app will be based on a Wide Area Network (WAN), or more specifically, the internet. 
 
 *5. Identify and describe the software to be used in your App.*
 
 Barrio is built in [Ruby on Rails](https://rubyonrails.org/) as the framework. Rails is a web-application framework for Ruby that uses an MVC (Model, View, Controller) architectural structure to handle the communication between the data, logic and browser-rendered content.
 
-The database is Postgresql. An open-source SQL database. Rails integrates nicely with the database, allowing us to query it with Ruby, instead of writing SQL.
+Image upload will be handled by Rails' inbuilt ActiveStorage and stored on an AWS bucket. 
 
-On completion, the app will be deployed on Heroku, which is a platform that allows developers to deploy, run and manage applications entirely on the cloud
+We use a Google Maps API to display the user's address based on longitude and latitude.
+
+On completion, the app will be deployed on Heroku, which is a platform that allows developers to deploy, run and manage applications entirely on the cloud.
 
 *6. Identify the database to be used in your App and provide a justification for your choice.*
 
+The database is Postgresql. An open-source SQL database. Rails integrates nicely with the database, allowing us to query it with Ruby, instead of writing SQL.
+
+Postgresql also has recently added support for JSON, allowing it to integrate with NoSQL. This is something that we would be interested in looking into in future versions of the app.
+
 *7. Identify and describe the production database setup (i.e. postgres instance).* 
+
+
 
 *8. Describe the architecture of your App.*
 
