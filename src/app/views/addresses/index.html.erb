@@ -1,49 +1,44 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Simple Map</title>
-    <meta name="viewport" content="initial-scale=1.0">
-    <meta charset="utf-8">
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script> 
-  </head>
-  <body>
+     
     <div id="map"></div>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script> 
+
     <script>
       // Call Geocode
       var lng = 0;
       var lat = 0;
-      console.log("test")
-      console.log(lat)
       function geocode(){
-      var location = "27 Arthur st Surry Hills Sydney NSW";
-      console.log(location)
-      axios.get("https://maps.googleapis.com/maps/api/geocode/json", {
-        params:{
-           address:location,
-           key:"<%= Rails.application.credentials.google_maps %>" 
-        }
-      })
-      .then(function(response){
-        //  Log full response  
-        console.log(response);
-         
-        // Formatted Address
-        // var formattedAddress =  response.data.results[0].formatted_address;
-        
-        // Address Components 
-        // var addressComponents = response.data.results[0].address_components; 
-        
-        // Geometry 
-        lat  =  response.data.results[0].geometry.location.lat;
-        console.log(lat);
-        lng  =  response.data.results[0].geometry.location.lng; 
-        console.log(lng);       
-      })
-      .catch(function(error){
-        console.log(error); 
-      });
-    }
-    geocode();
+        var location = "15 Fletcher street Marrickville NSW";
+        console.log(location)
+        axios.get("https://maps.googleapis.com/maps/api/geocode/json", {
+          params:{
+            address:location,
+            key:"<%= Rails.application.credentials.google_maps %>" 
+          }
+        })
+        .then(function(response){
+          //  Log full response  
+          console.log(response);
+          
+          // Formatted Address
+          // var formattedAddress =  response.data.results[0].formatted_address;
+          
+          // Address Components 
+          // var addressComponents = response.data.results[0].address_components; 
+          
+          // Geometry 
+          lat  =  response.data.results[0].geometry.location.lat;
+          console.log(lat);
+          lng  =  response.data.results[0].geometry.location.lng; 
+          console.log(lng);       
+        })
+        .catch(function(error){
+          console.log(error); 
+        });
+      }
+      console.log(lat);
+      console.log(lng)
+      geocode();
     // Map 
     // 42.37268230000001,-71.062115
       var map; 
@@ -92,11 +87,12 @@
           });
         }; %>
       }
+      
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=<%= Rails.application.credentials.google_maps %>&callback=initMap"
-    async defer></script>
-  </body>
-</html>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=<%= Rails.application.credentials.google_maps %>&callback=initMap"></script>
+
+
+
 
 <%# before, create an array of near offers. if location is near, we will include it in the array %>
  <%# in that array, we will apply the following for statement %>
