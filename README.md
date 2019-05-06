@@ -71,15 +71,15 @@ lorem ipsum
 
 26th: Project idea approval
 
-26th - 28th April: Wireframing & Design
+26th - 28th April: Wireframing & Design,  
 Monday 29th April: Database planning and ERD
 
 ERD approval
 
-30th - 4th: Functionality 
+30th - 4th: Functionality,  
 5th - 10th: Styling & Stretch Goals
 
-Friday 10th May: App finished & Styled
+Friday 10th May: App finished & Styled,  
 11th & 12th: Bug fixing and finish documentation
 
 ### **Sunday, 12th of May: DUE @ 10pm**
@@ -100,7 +100,15 @@ Screenshots of Trello board(s)
 
 *4. Describe the network infrastructure the App may be based on.*
 
+
+
 *5. Identify and describe the software to be used in your App.*
+
+Barrio is built in [Ruby on Rails](https://rubyonrails.org/) as the framework. Rails is a web-application framework for Ruby that uses an MVC (Model, View, Controller) architectural structure to handle the communication between the data, logic and browser-rendered content.
+
+The database is Postgresql. An open-source SQL database. Rails integrates nicely with the database, allowing us to query it with Ruby, instead of writing SQL.
+
+On completion, the app will be deployed on Heroku, which is a platform that allows developers to deploy, run and manage applications entirely on the cloud
 
 *6. Identify the database to be used in your App and provide a justification for your choice.*
 
@@ -141,21 +149,25 @@ The information lifecycle
 If you handle personal information, you should consider how you will protect personal information during the stages of its lifecycle.
 
 Personal information security throughout the lifecycle involves:
-
+```
 1. considering whether it is actually necessary to collect and hold personal information in order to carry out your functions or activities
-    We believe the email is the least intrusive way of logging in, rather than the mobile phone number. Furthermore, we want to ensure a minimun security, so it wouldn´t be enough
-    to ask only for name and last name.
-    
-    Finally, address is needed so that nearby offers can be shown to the user.
-    
+```
+We believe the email is the least intrusive way of logging in, rather than the mobile phone number. Furthermore, we want to ensure a minimun security, so it wouldn´t be enough
+to ask only for name and last name.
+
+Finally, address is needed so that nearby offers can be shown to the user.
+```
 2. planning how personal information will be handled by embedding privacy protections into the design of information handling practices
-
+```
+```
 3. assessing the risks associated with the collection of the personal information due to a new act, practice, change to an existing project or as part of business as usual
-    
+```
+```
 4. taking appropriate steps and putting into place strategies to protect personal information that you hold
-
+```
+```
 5. destruction or de-identification of the personal information when it is no longer needed.
-
+```
 To effectively protect personal information throughout its lifecycle, you will need to be aware of when and how you are collecting it and when and how you hold it. As noted above, your personal information holdings can be dynamic and change without any necessarily conscious or deliberate action.
 
 Additionally, the lifecycle may include the passing of personal information to a third party for storage, processing or destruction.
