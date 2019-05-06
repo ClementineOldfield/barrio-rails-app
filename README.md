@@ -67,11 +67,8 @@ lorem ipsum
 
 # The Planning Process
 
-<<<<<<< Updated upstream
 ## Database Design
 
-=======
->>>>>>> Stashed changes
 ### Initial ER Diagram
 
 ![Initial ER Diagram](docs/barrio-er-diagram.png)
