@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :listings
   resources :users
   resources :pages
+  resources :addresses
   
   get "/", to: "pages#index", as: "root"
   get "/contact", to: "pages#contact", as: "contact"

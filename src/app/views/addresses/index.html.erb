@@ -1,4 +1,4 @@
-     
+
     <div id="map"></div>
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script> 
@@ -8,6 +8,7 @@
       var lng = 0;
       var lat = 0;
       function geocode(){
+
         var location = "15 Fletcher street Marrickville NSW";
         console.log(location)
         axios.get("https://maps.googleapis.com/maps/api/geocode/json", {
@@ -89,10 +90,8 @@
       }
       
     </script>
+
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=<%= Rails.application.credentials.google_maps %>&callback=initMap"></script>
-
-
-
 
 <%# before, create an array of near offers. if location is near, we will include it in the array %>
  <%# in that array, we will apply the following for statement %>

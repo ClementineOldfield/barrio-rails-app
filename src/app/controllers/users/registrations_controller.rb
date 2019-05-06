@@ -19,7 +19,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     )
     
     @user.image.attach(io: File.open('app/assets/images/default_profile.png'), filename: 'default_profile.png', content_type: 'image/png')
-  
     #address = Address.new(params being params what they filled as their address)
   end
 
@@ -63,9 +62,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   end
   # The path used after sign up.
-  # def after_sign_up_path_for(resource)
-  #   super(resource)
-  # end
+
+  def after_sign_up_path_for(resource)
+    super(resource)
+    new_address_path
+  end
 
   # The path used after sign up for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)

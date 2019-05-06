@@ -18,6 +18,7 @@
     </p>
 
     <div class="flex-container">
+
       <%= form_with url: confirmation_path(quantity: :quantity), method: :get, local: true do |form| %>
         <div class="price-container">
           <p class="price" >$<%= number_with_precision(@listing.price / 100.0, precision: 2) %></p>

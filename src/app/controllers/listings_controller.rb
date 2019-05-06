@@ -39,10 +39,27 @@ class ListingsController < ApplicationController
     )
   end
 
-  def create; end
-  def new; end
+  def create
+    @listing = current_user.listings.create(
+      image: params[:featured_image],
+      title: params[:title],
+      body: params[:body],
+      price: params[:price],
+      quantity: params[:quantity],
+      category: params[:category_id],
+    )
+    @listing.save!
+    redirect_to listing_path
+  end
 
-  def edit; end
+  def new
+    # redirect_to listing_path
+  end
+
+  def edit 
+    
+  end
+
   def update
     new_params = params[:listing]
     @listing.update(

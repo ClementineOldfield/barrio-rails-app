@@ -1,4 +1,5 @@
 class AddressesController < ApplicationController
+  skip_before_action :verify_authenticity_token
   def index
     # @address = Address.order('created_at DESC')
   end
@@ -8,7 +9,7 @@ class AddressesController < ApplicationController
   end
 
   def create
-    @address = Place.new(place_params)
+    @address = current_user.address.create(address_params)
     # if @address.save
     #   flash[:success] = "Place added!"
     #   redirect_to map_path
