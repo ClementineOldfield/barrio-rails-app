@@ -3,7 +3,7 @@
 @import "header";
 @import "footer";
 
-h1, h2, h3, h4, p, a {
+h1, h2, h3, h4, p, a, label {
   font-family: Hevetica, sans-serif;
   color: $text-color;
 }
@@ -128,4 +128,18 @@ footer {
 
 .license {
  font-size: 15px;
+}
+
+form input {
+  padding: 5px;
+  border-radius: 3px;
+  border: 1px solid rgb(220, 220, 220);
+  color: rgb(150, 150, 150);
+  transition: .7s;
+  width: 30%;
+
+  &:focus {
+    outline: none;
+    color: #000;
+  }
 }
