@@ -25,3 +25,8 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+# Ignore credentials.yml file for pair programming
+/config/credentials.yml.enc
+
+# Ignore KEY for Google Maps Javascript API

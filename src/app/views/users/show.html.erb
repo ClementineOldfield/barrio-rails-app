@@ -1,0 +1,27 @@
+<head>
+<link rel="stylesheet" href="users.scss">
+</head>
+<div class="left_profile">
+  <div>
+    <%= image_tag @user.image if @user.image.attached? %>
+    <p><%= @user.first_name %></p>
+    <button><%= link_to "Edit profile", edit_user_path%></button>
+  </div>
+</div>
+<div class="right_profile">
+  <div>
+    <h1>About You</h1>
+    <p><%= @user.bio %></p>
+  <div>
+</div>
+
+
+<h2>What you offer</h2>
+
+<ul>
+  <% @user.listings.each do |listing| %>
+    <%= link_to listing_path(listing.id) do %>
+      <li><%= listing.title %></li>
+    <% end %>
+  <% end %>
+</ul>

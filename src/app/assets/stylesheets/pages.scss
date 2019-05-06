@@ -1,3 +1,30 @@
 // Place all the styles related to the Pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+nav {
+  margin-left: 300px;
+}
+
+nav ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+li {
+  list-style: none;
+}
+
+.container {
+  // display: flex;
+  // overflow-x: auto;
+  // margin-right: 15px;
+
+}
+
+// .container::-webkit-scrollbar {
+//   display: none;
+// }

@@ -1,0 +1,24 @@
+
+<h2>Edit your profile</h2>
+
+<%= form_with model: @user, local: true do |f| %>
+  <div class="field">
+    <%= image_tag @user.image if @user.image.attached? %>
+    <%= f.label :profile_image %>
+    <%= f.file_field :profile_image, accept: "image/png,image/gif,image/jpeg,image/jpg" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :bio %>
+    <%= f.text_area :bio, autofocus: true, autocomplete: "Bio" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Update"  %>
+  </div>
+
+<% end %>
+
+<p><%= link_to "Edit my account settings", edit_user_registration_path %></p>
+
+<%= link_to "Back", :back %>
