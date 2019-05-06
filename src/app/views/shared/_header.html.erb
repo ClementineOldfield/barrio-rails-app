@@ -6,8 +6,15 @@
       </div>
     <% end %>
     <div class="dropdown">
-      <div class="current-user">
-        <p><%= current_user.first_name %></p>
+      <div class="dropdown-link">
+        <p class="current-user"><%= current_user.first_name %></p>
+      </div>
+      <div class="dropdown-content">
+        <ul>
+          <li><%= link_to "My Profile", user_path(current_user[:id]) %></li>
+          <li><%= link_to "Settings", edit_user_registration_path %></li>
+          <li><%= link_to "Log out", destroy_user_session_path, method: :delete if user_signed_in? %></li>
+        </ul>
       </div>
     </div>
 
@@ -18,8 +25,7 @@
       </div>
     <% end %>
   <% end %>
-  
-  <%= link_to "logout", destroy_user_session_path, method: :delete if user_signed_in? %>
+
   <%= link_to "login", new_user_session_path if !user_signed_in? %>
 </header>
 
