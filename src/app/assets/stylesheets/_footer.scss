@@ -1,0 +1,52 @@
+@import "colors";
+
+footer {
+  background-color: $feature-color;
+  width: 100%;
+  color: #fff;
+  padding: 40px 40px 40px 60px;
+  box-sizing: border-box;
+
+  a, p, h4 {
+    color: #fff;
+  }
+
+  a, p {
+    font-weight: 100;
+  }
+
+  a {
+    opacity: 0.8;
+    transition: .7s;
+    text-decoration: none;
+
+    &:hover {
+      opacity: 1;
+    }
+  } 
+
+  p {
+    font-size: 10pt;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .logo {
+    filter: invert(100);  
+  }
+
+  .high-footer {
+    display: flex;
+  }
+
+  .footer-logo {
+    flex: 2;
+  }
+
+  .help, .legal {
+    flex: 1;
+  }
+}

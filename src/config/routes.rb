@@ -26,6 +26,8 @@ Rails.application.routes.draw do
   get "/purchases/success", to: "purchases#success"
 
   get "/purchases/:id", to: "purchases#index", as: "purchase_history"
+
+  get "/listing/:id/confirmation", to: "listings#confirmation", as: "confirmation"
 end
 
 

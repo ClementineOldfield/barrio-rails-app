@@ -14,20 +14,31 @@ class PurchasesController < ApplicationController
     p params
     
     @params = params[:data][:object]
-    @item = @params[:display_items][0]
+    @cart = Cart.find(@params[:client_reference_id])
+    @listing = Listing.find(@cart.listing.id)
     @user = User.find_by_email(@params[:customer_email])
 
+    @item_params = @params[:display_items][0]
+
     @user.purchases.create(
-      listing: Listing.find(@params[:client_reference_id]),
-      total_amount: @item[:amount],
-      quantity: @item[:quantity]
+      listing: @listing,
+      total_amount: @item_params[:amount] * @item_params[:quantity],
+      quantity: @item_params[:quantity]
     )
-    puts "\n\n\n\n\n\n\n -----------------------\nCREATED PURCHASE\n----------------------- \n\n\n\n\n\n\n\n"
+
+    remaining_stock = @listing.quantity - @cart.quantity
+    
+    @listing.update(
+      quantity: remaining_stock
+    )
+    puts "Removing #{@cart.quantity} items from #{@listing} stock"
+
+    puts "\n\n\n\n\n\n\n -----------------------\nCREATED PURCHASE\n----------------------- \n\n\n\n\n\n\n\n Listing = #{Listing.find(@listing_id)}"
 
     render plain: ""
   end
 
   def success
-    @purchase = current_user.purchases.last
+    @cart = Cart.find(params[:cart])
   end
 end

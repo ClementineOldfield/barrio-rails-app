@@ -1,0 +1,23 @@
+<div class="confirmation">
+  <h2>Purchase Confirmation</h2>
+  <div class="item">
+    <h3><%= @listing.title %></h3>
+    <p>Quantity: <%= @quantity %> </p>
+    <p>Total price: $<%= number_with_precision(@total_amount / 100, precision: 2) %> </p>
+  </div>
+  <button id="stripe_payment">Buy Now</button>
+</div>
+
+<script>
+document.getElementById("stripe_payment").addEventListener("click", function() {
+  var stripe = Stripe('<%= Rails.application.credentials.dig(:stripe, :public) %>');
+
+  stripe.redirectToCheckout({
+    sessionId: '<%= @stripe_session_id %>',
+  }).then(function (result) {
+    // If `redirectToCheckout` fails due to a browser or network
+    // error, display the localized error message to your customer
+    // using `result.error.message`.
+  });
+});
+</script>

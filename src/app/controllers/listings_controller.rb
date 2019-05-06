@@ -1,17 +1,21 @@
 class ListingsController < ApplicationController
-  before_action :set_listing, only: [:show, :edit, :update, :destroy]
+  before_action :set_listing, only: [:show, :confirmation, :edit, :update, :destroy]
   before_action :authorize_user, only: [:edit, :update, :destroy]
 
   def index
     @listings = Listing.all
   end
 
-  def show
+  def show; end
+
+  def confirmation
+    @quantity = params[:quantity].to_i
+    @total_amount = @quantity * @listing.price
 
     @cart = current_user.carts.create(
-      listing_id: @listing.id
+      listing_id: @listing.id,
+      quantity: @quantity
     )
-    
     stripe_session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],
       client_reference_id: @cart.id,
@@ -21,13 +25,12 @@ class ListingsController < ApplicationController
         description: @listing.body,
         amount: @listing.price,
         currency: 'aud',
-        quantity: 1,
+        quantity: @quantity,
       }],
       
-      success_url: "http://localhost:3000/purchases/success?listing=#{@listing.id}",
+      success_url: "http://localhost:3000/purchases/success?cart=#{@cart.id}",
       cancel_url: 'http://localhost:3000/purchases/cancel'
     ) 
-    
 
     @stripe_session_id = stripe_session.id
 
