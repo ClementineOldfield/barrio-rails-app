@@ -2,10 +2,55 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import "colors";
+
+.featured-image {
+  width: 100%;
+  height: 280px;
+  overflow: hidden;
+}
+
 .listing-image {
-  width: 50%;
+  width: 100%;
 }
 
 .listing-owner-container .avatar {
   width: 200px;
+}
+
+.card {
+  h4 {
+    font-size: 18pt;
+    margin-bottom: 10px;
+  }
+}
+
+a.listing-link {
+  text-decoration: none;
+}
+
+hr {
+  border: .5px solid rgb(200, 200, 200);
+  margin: 40px 0;
+}
+
+p.category-tag {
+  opacity: .6;
+  display: inline-block;
+  border-radius: 3px;
+  font-size: 12pt;
+}
+
+p.note {
+  font-size: 11pt;
+  color: $pale-text;
+  font-weight: 100;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+i.material-icons {
+  position: relative;
+  font-size: 18pt;
+  top: 6px;
 }

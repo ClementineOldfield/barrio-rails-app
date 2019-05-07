@@ -1,19 +1,30 @@
 <%# Only the three latest listings %>
 <h1><%= header %></h1>
 
+<hr>
+
 <% if listings.count > 0 %>
   <% listings.each do |listing| %>
-    <div class="card">
-      <%= link_to listing_path(listing.id) do %>
-        <%= image_tag(listing.image, class: "listing-image") if listing.image.attached? %>
+
+    <%= link_to listing_path(listing.id), class: "listing-link" do %>
+      <div class="card">   
+        <h4><%= listing.title %></h4>
+        <% unless request.path.start_with?('/users') %>
+          <div class="user-location">
+            <%= material_icon.location_on %>
+            <p class="note"><%= listing.user.first_name %> - <%= listing.user.address.suburb %> </p>
+          </div>
+        <% end %>
+        <div class='featured-image'>
+          <%= image_tag(listing.image, class: "listing-image") if listing.image.attached? %>
+        </div>
         <p>
-          <%= listing.title %>
+          <%= listing.body[0..100] + "..." %>
         </p>
-      <% end %>
-      <p>
-        <%= listing.body[0..100] + "..." %>
-      </p>
-    </div>
+      </div>
+    <% end %>
+    <p class="category-tag"> <%= listing.category.name %> </p>
+    <hr>
   <% end %>
 <% else %>
   <p class="note">Nothing here.</p>

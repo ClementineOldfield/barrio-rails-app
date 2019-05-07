@@ -45,8 +45,7 @@
     }
 
     &.links {
-      padding: 15px;
-      font-size: 16pt;
+      font-size: 14pt;
     }
   }
   
@@ -58,7 +57,7 @@
       flex: 2;
     }
     .categories {
-      width: 25%;
+      width: 20%;
       .panel {
         width: 100%;
       } 
@@ -67,4 +66,22 @@
   .float {
     position: fixed;
   }
+
+  .map {
+    min-width: 200px;
+    max-width: 285px;
+    overflow: hidden;
+    height: 400px;
+  }
+}
+
+.container {
+  position: relative;
+  margin-top: 15px;
+  max-width: 285px;
+  height: 200px;
+}
+
+.sticky-map {
+  position: fixed;
 }
