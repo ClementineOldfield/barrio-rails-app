@@ -1,3 +1,4 @@
+@import "breakpoints";
 
 .mobile-nav {
   display: block;
@@ -75,7 +76,7 @@
   }
 }
 
-@media(min-width: 700px){
+@media(min-width: $med){
   .mobile-nav {
     display: none;
   }
