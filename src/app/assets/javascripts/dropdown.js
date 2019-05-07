@@ -1,7 +1,8 @@
 window.onload = function() {
-  let button = document.getElementById('dropdown-button')
-  let dropdown = document.getElementById('dropdown-content');
-  button.addEventListener('click', function(e) {
-    dropdown.classList.toggle('on');
+  console.log("test dropdown")
+  let dropdownButton = document.getElementById('dropdown-button')
+  let dropdownContent = document.getElementById('dropdown-content');
+  dropdownButton.addEventListener('click', function(e) {
+    dropdownContent.classList.toggle('on');
   });
 };
