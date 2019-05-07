@@ -26,7 +26,24 @@ Problem definition / purpose
 -->
 ## Problem definition / Purpose
 
-lorem ipsum
+
+#### 1. What is the need (i.e. challenge) that you will be addressing in your project?
+
+We were tasked to create a two-sided marketplace as an assessment for Coder Academy´s second term.
+
+The product was to incorporate authentication and authorisation systems, file uploading capability (images),a payment system, and the appropriate gems. 
+
+Working within the specifications provided, we decided to 
+
+
+The application had to be deployed to Heroku or AWS.
+
+
+#### 2. Identify the problem you’re trying to solve by building this particular marketplace App? Why is it a problem that needs solving?
+
+Barrio buddes to satisfy the very specific need of locally stablish entrepreneurs to have a **close set of customers**. It aims to **increase their success opportunities**, therefore **encouraging entrepreneurship within the regular population** and **supporting local wealth**.
+
+Because *what is given to the citizens, returns to society*.
 
 ## Functionality / features
 
@@ -98,19 +115,6 @@ Screenshots of Trello board(s)
 
 # Section 2.2 (Short Responses)
 
-*1. What is the need (i.e. challenge) that you will be addressing in your project?*
-
-We were tasked to create a two-sided marketplace as an assessment for Coder Academy´s second term, being it mostly a ruby on rails, and postgresql technologies project. Web technologies had to be used as well. 
-
-Moreover, the product should contain an authentication (for which we finally chose Devise) and authorisation systems, some type of file uploading capability (images), a payment system (Stripe), and the corresponding appropriate gems. 
-
-The application had to be deployed to Heroku or AWS.
-
-*2. Identify the problem you’re trying to solve by building this particular marketplace App? Why is it a problem that needs solving?*
-
-Barrio buddes to satisfy the very specific need of locally stablish entrepreneurs to have a **close set of customers**. It aims to **increase their success opportunities**, therefore **encouraging entrepreneurship within the regular population** and **supporting local wealth**.
-
-Because *what is given to the citizens, returns to society*.
 
 *3. Describe the project you will be conducting and how your App will address the needs.*
 
