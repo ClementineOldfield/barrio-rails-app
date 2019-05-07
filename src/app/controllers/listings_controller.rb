@@ -6,7 +6,11 @@ class ListingsController < ApplicationController
     @listings = Listing.all
   end
 
-  def show; end
+  def show
+  
+  end
+
+
 
   def confirmation
     @quantity = params[:quantity].to_i
@@ -47,6 +51,7 @@ class ListingsController < ApplicationController
       price: params[:listing][:price],
       quantity: params[:listing][:quantity],
       category_id: params[:listing][:category_id],
+      # excerpt: params[:listing][:body][0..100]
     )
     @listing.save!
     redirect_to listing_path(@listing.id)

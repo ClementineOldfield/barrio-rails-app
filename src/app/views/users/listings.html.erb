@@ -1,8 +1,5 @@
-<%# Only the three latest listings %>
-<h1><%= header %></h1>
-
-<% if listings.count > 0 %>
-  <% listings.each do |listing| %>
+<% if @all_listings.count > 0 %>
+  <% @all_listings.each do |listing| %>
     <div class="card">
       <%= link_to listing_path(listing.id) do %>
         <%= image_tag(listing.image, class: "listing-image") if listing.image.attached? %>
@@ -18,3 +15,5 @@
 <% else %>
   <p class="note">Nothing here.</p>
 <% end %>
+
+<%= link_to "Back", :back %>

@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import "colors";
 
 nav {
   margin-left: 300px;
@@ -18,13 +19,48 @@ li {
   list-style: none;
 }
 
-.container {
-  // display: flex;
-  // overflow-x: auto;
-  // margin-right: 15px;
+// .container {
+//   // display: flex;
+//   // overflow-x: auto;
+//   // margin-right: 15px;
 
-}
+// }
 
 // .container::-webkit-scrollbar {
 //   display: none;
 // }
+
+.contact-form{
+  display: flex;
+  justify-content: center;
+  color: $text-color;
+  .contact-name, .contact-email, .contact-message{
+    align-items: left;
+    width: 100%;
+  }
+  .contact-message{
+    height: 70px;
+  }
+  &p {
+
+  }
+}
+
+.about-page{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60vh;
+  .horizontal-scroll{
+    display: flex;
+    overflow-x: auto;
+    justify-content: center;
+    align-items:center; 
+    &img{
+      margin: 30px;
+    }
+  }
+}
+.horizontal-scroll::-webkit-scrollbar {
+  display: none;
+}
