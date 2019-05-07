@@ -80,4 +80,9 @@
   .mobile-nav {
     display: none;
   }
+
+  .dropdown .dropdown-content {
+    margin-left: -110px;
+    box-shadow: 6px 2px 6px 6px rgba(0, 0, 0, 0.1);
+  }
 }

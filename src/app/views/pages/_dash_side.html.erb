@@ -1,0 +1,16 @@
+<div class="float">
+  <%# <%= render "shared/listings", header: "Favourites", listings: @favourites %> 
+  <ul>
+    <li>
+      <%= link_to favourites_path do %>
+        <%= fa_icon "heart" %> Favourites
+      <% end %>
+    </li>
+    <li class="category-header">Categories</li>
+    <ul>
+    <% categories.each do |category| %>
+      <li> <%= category.name %> </li>
+    <% end %>
+    </ul>
+  </ul>
+</div>
