@@ -100,7 +100,7 @@ Screenshots of Trello board(s)
 
 *1. What is the need (i.e. challenge) that you will be addressing in your project?*
 
-We were tasked to do a two-sided marketplace as an assessment for Coder Academy´s second term, being it mostly a ruby on rails, and postgresql technologies project. Web technologies had to be used as well. 
+We were tasked to create a two-sided marketplace as an assessment for Coder Academy´s second term, being it mostly a ruby on rails, and postgresql technologies project. Web technologies had to be used as well. 
 
 Moreover, the product should contain an authentication (for which we finally chose Devise) and authorisation systems, some type of file uploading capability (images), a payment system (Stripe), and the corresponding appropriate gems. 
 
