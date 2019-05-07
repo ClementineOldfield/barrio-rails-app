@@ -1,19 +1,36 @@
 @import "breakpoints";
 
 .dashboard {
+  
   &.flex-container {
     flex-wrap: wrap;
+  }
+
+  .panel {
+    background-color: #fff;
+    padding: 20px 35px;
+    margin: 15px;
   }
 
   .recent-listings {
     width: 100%;
   }
-}
 
-.panel {
-  background-color: #fff;
-  padding: 20px;
-  margin: 15px;
+  ul.links {
+    li {
+      margin: 10px 0;
+    }
+    a {
+      text-decoration: none;
+      font-size: 16pt;
+      font-weight: 100;
+      transition: .7s;
+
+      &:hover {
+        opacity: .8;
+      }
+    }
+  }
 }
 
 @media(min-width: $med){
