@@ -2,14 +2,21 @@
 @import "font-awesome";
 @import "header";
 @import "footer";
+@import "breakpoints";
 
-h1, h2, h3, h4, p, a, label {
+h1, h2, h3, h4, p, a, label, li {
   font-family: Hevetica, sans-serif;
   color: $text-color;
 }
 
 .content {
   min-height: 100vh;
+  box-sizing: border-box;
+  background-color: rgb(242, 242, 242);
+}
+
+main {
+  padding: 20px;
 }
 
 .flex-container {

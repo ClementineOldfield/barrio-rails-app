@@ -4,7 +4,7 @@
   </div>
   <div class="recent-listings">
     <div class="panel section">
-      <%= render "shared/listings", header: "Recent Posts", listings: @listings %>
+      <%= render "shared/listings", header: "Favourites", listings: current_user.favourite_listings %>
     </div>
   </div>
   <div class="col">
