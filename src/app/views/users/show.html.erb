@@ -1,34 +1,32 @@
-<head>
-<link rel="stylesheet" href="users.scss">
-</head>
-<div class="left_profile">
-  <div>
-    <%= image_tag @user.image if @user.image.attached? %>
-    <p><%= @user.first_name %></p>
-    <% if @user.id == current_user.id %>
-      <button><%= link_to "Edit profile", edit_user_path %></button>
-    <% end %>
+<div class="profile">
+  <div class="up-profile">
+    <div class="image-and-name">
+      <div>
+        <%= image_tag @user.image if @user.image.attached? %>
+        <p><%= @user.first_name %></p>
+        <% if @user.id == current_user.id %>
+          <%= link_to "Edit profile", edit_user_path %>
+        <% end %>
+      </div>
+    </div>
+    <div class="bio">
+      <div>
+        <h1>About <%= @user.first_name %></h1>
+        <p><%= @user.bio %></p>
+      </div>
+    </div>
+  </div>
+  <div class="col-2">
+    <% if @user.id == current_user.id%>
+      <% if @user.id == current_user.id%>
+        <%= link_to new_listing_path do%>
+          <%= fa_icon "plus-circle", class: "plus-circle"%>
+          <p>Create a new listing</p>
+        <%end%>
+      <%end%>
+    <%end%>
+  </div>
+  <div class="list">
+  <%= render "shared/listings", header: "#{@user.first_name}", listings: @user.listings %>
   </div>
 </div>
-<div class="right_profile">
-  <div>
-    <h1>About You</h1>
-    <p><%= @user.bio %></p>
-  <div>
-</div>
-
-
-<h2>What you offer</h2>
- <% if @user.id == current_user.id%>
- <%= fa_icon "plus-circle", class: "plus-circle"%> 
- <%end%>
- <% if @user.id == current_user.id%>
- <button><%= link_to "Add a listing", new_listing_path%></button>
- <%end%>
-<ul>
-  <% @user.listings.each do |listing| %>
-    <%= link_to listing_path(listing.id) do %>
-      <li><%= listing.title %></li>
-    <% end %>
-  <% end %>
-</ul>
