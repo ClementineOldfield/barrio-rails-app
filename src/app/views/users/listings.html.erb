@@ -1,0 +1,19 @@
+<% if @all_listings.count > 0 %>
+  <% @all_listings.each do |listing| %>
+    <div class="card">
+      <%= link_to listing_path(listing.id) do %>
+        <%= image_tag(listing.image, class: "listing-image") if listing.image.attached? %>
+        <p>
+          <%= listing.title %>
+        </p>
+      <% end %>
+      <p>
+        <%= listing.body[0..100] + "..." %>
+      </p>
+    </div>
+  <% end %>
+<% else %>
+  <p class="note">Nothing here.</p>
+<% end %>
+
+<%= link_to "Back", :back %>

@@ -3,6 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 @import "breakpoints";
+@import "colors";
 
 @media(min-width: $med){
  
@@ -17,15 +18,18 @@
     text-align: center;
     margin-left: 10%;
     margin-right: 10%;
+    color: $text-color;
   }
   a {
     text-align: center;
+    color: $pale-text;
   }
   
   .col-2 a {
-    text-align: center;
+    text-align: justify;
     & p {
       text-align: center;
+      color: $text-color;
     }
     & img {
       width: 300px;
@@ -48,5 +52,29 @@
   .bio {
     text-align: center;
   }
+
+  .card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    &img {
+      text-align: left;
+    }
+    &p {
+      text-align: justify;
+    }
+  }
 }
 
+
+.card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  &img {
+    text-align: left;
+  }
+  &p {
+    text-align: justify;
+  }
+}

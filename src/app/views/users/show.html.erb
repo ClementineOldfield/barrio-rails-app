@@ -27,6 +27,7 @@
     <%end%>
   </div>
   <div class="list">
-  <%= render "shared/listings", header: "#{@user.first_name}", listings: @user.listings %>
+  <%= render "shared/listings", header: "#{@user.first_name}´s Listings", listings: @last_three %>
   </div>
+   <%= link_to "See all", user_listings_path(@user) %>
 </div>

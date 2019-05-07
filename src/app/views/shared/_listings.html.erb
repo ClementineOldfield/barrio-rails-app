@@ -1,9 +1,11 @@
+<%# Only the three latest listings %>
 <h1><%= header %></h1>
 
 <hr>
 
 <% if listings.count > 0 %>
   <% listings.each do |listing| %>
+
     <%= link_to listing_path(listing.id), class: "listing-link" do %>
       <div class="card">   
         <h4><%= listing.title %></h4>
@@ -16,7 +18,9 @@
         <div class='featured-image'>
           <%= image_tag(listing.image, class: "listing-image") if listing.image.attached? %>
         </div>
-        <p><%= listing.body %></p>
+        <p>
+          <%= listing.body[0..100] + "..." %>
+        </p>
       </div>
     <% end %>
     <p class="category-tag"> <%= listing.category.name %> </p>
@@ -24,5 +28,4 @@
   <% end %>
 <% else %>
   <p class="note">Nothing here.</p>
-
 <% end %>
