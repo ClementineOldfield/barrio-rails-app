@@ -28,7 +28,7 @@
 
   <div class="field">
     <%= f.label :category_id %>
-    <%= f.number_field :quantity, autofocus: true %>
+    <%= f.collection_select :category_id, Category.all, :id, :name %>
   </div>
 
   <div class="actions">
