@@ -12,5 +12,11 @@
       <li> <%= category.name %> </li>
     <% end %>
     </ul>
+    <hr>
+    <ul class="links">
+      <li><%= link_to "My Profile", user_path(current_user[:id]) %></li>
+      <li><%= link_to "Settings", edit_user_registration_path %></li>
+      <li><%= link_to "My Purchase History", purchase_history_path(current_user[:id]) %></li>
+    </ul>
   </ul>
 </div>
