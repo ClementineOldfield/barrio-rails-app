@@ -55,12 +55,13 @@ end
 
 if Address.count == 0
   users.each do |user|
-    user.address = Address.new(
+    address = Address.create(
       street_1: Faker::Address.street_name,
       street_2: Faker::Address.secondary_address,
       suburb: Faker::Address.city,
       state: Faker::Address.state,
       postcode: Faker::Address.postcode,
+      user: user
       # latitude: ((Geocoder.search(
       #   user.address[:street1], 
       #   user.address[:street2], 
@@ -76,6 +77,8 @@ if Address.count == 0
       #   user.address[:postcode]
       # ).compact.join(', ')).first.coordinates)[1]
       )
+ 
+     p "Created Address"
   end
 
 end

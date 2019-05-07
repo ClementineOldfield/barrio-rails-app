@@ -70,6 +70,8 @@ gem "aws-sdk-s3", "~> 1.36"
 
 gem "font-awesome-rails"
 
+gem 'material_icons'
+
 gem "stripe", "~> 4.16"
 
 gem 'geocoder', '~> 1.5', '>= 1.5.1'
