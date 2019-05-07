@@ -2,6 +2,7 @@
 @import "font-awesome";
 @import "header";
 @import "footer";
+@import "breakpoints";
 
 h1, h2, h3, h4, p, a, label {
   font-family: Hevetica, sans-serif;
@@ -45,3 +46,4 @@ form input {
     color: #000;
   }
 }
+

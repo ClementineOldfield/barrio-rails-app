@@ -9,7 +9,7 @@ class AddressesController < ApplicationController
   end
 
   def create
-    @address = current_user.address.create(address_params)
+    @address = Address.new(address_params)
     # if @address.save
     #   flash[:success] = "Place added!"
     #   redirect_to map_path
