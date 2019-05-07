@@ -65,3 +65,15 @@
     }
   }
 }
+
+.all-listings-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  &img {
+    text-align: left;
+  }
+  &p {
+    text-align: justify;
+  }
+}
