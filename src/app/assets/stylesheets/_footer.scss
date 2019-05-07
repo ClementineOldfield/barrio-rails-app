@@ -61,4 +61,21 @@ footer {
   .help, .legal {
     flex: 1;
   }
+
+  i.fa {
+    font-size: 22pt;
+    margin: 0 17px;
+    position: relative;
+    top: 21px;
+
+    &.fa-linkedin {
+      margin-left: 0;
+    }
+  }
+
+  .license {
+    position: relative;
+    opacity: .6;
+    top: 23px; 
+  }
 }
