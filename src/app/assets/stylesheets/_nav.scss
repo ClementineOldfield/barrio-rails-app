@@ -1,0 +1,82 @@
+
+.mobile-nav {
+  display: block;
+
+  button {
+    border: none;
+    background: transparent;
+    outline: none;
+    cursor: pointer;
+    padding: 0;
+  }
+  
+  button:hover .line {
+    stroke: rgb(40, 40, 40);
+  }
+  
+  svg {
+    display: block;
+    width: 40px;
+    height: 40px;
+  }
+  
+  .line {
+    fill: none;
+    stroke: #000;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-miterlimit: 10;
+  }
+  
+  /* Hamburger */
+  .line {
+    transition: 0.25s stroke-dasharray ease 0s,
+      0.25s stroke-dashoffset ease 0s,
+      0.25s transform ease 0.25s,
+      0.25s stroke ease 0s;
+  }
+  
+  .line.top,
+  .line.bottom {
+    stroke-dasharray: 5.92 17;
+    stroke-dashoffset: -10.4;
+  }
+  
+  .line.top {
+    transform: translateY(1.5px);
+  }
+  
+  .line.bottom {
+    transform: translateY(-1.5px);
+  }
+  
+  .line.cross {
+    stroke-dashoffset: 0;
+    stroke-dasharray: 5.9 6.1;
+  }
+  
+  /* Cross */
+  .on .line {
+    transition: 0.25s stroke-dasharray ease 0.25s,
+      0.25s stroke-dashoffset ease 0.25s,
+      0.25s transform ease 0s,
+      0.25s stroke ease 0s;
+  }
+  
+  .on .line.top,
+  .on .line.bottom {
+    stroke-dasharray: 8.3;
+    stroke-dashoffset: 0;
+    transform: translateY(0px);
+  }
+  
+  .on .line.cross {
+    stroke-dashoffset: 6;
+  }
+}
+
+@media(min-width: 700px){
+  .mobile-nav {
+    display: none;
+  }
+}
