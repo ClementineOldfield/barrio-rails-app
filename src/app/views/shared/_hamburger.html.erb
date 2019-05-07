@@ -1,0 +1,15 @@
+<button id="hamburger">
+  <svg x="0px" y="0px" viewBox="0 0 10 10">
+    <defs>
+      <filter id="goo" height="300%" y="-100%">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="0.1"  result="blur" />
+        <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 17 -7"/>
+      </filter>
+    </defs>
+    <g>
+      <path class="line top" d="M7.9,8L1.6,1.6C1.2,1.2,1.4,0.5,2,0.5h5.9"/>
+      <path class="line bottom" d="M7.9,2L1.6,8.4C1.2,8.8,1.4,9.5,2,9.5h5.9"/>
+      <line class="line cross" x1="7.9" y1="5" x2="2" y2="5"/>
+    </g>
+  </svg>
+</button>
