@@ -31,6 +31,8 @@
       }
     }
   }
+  
+  
 }
 
 @media(min-width: $med){
@@ -38,5 +40,8 @@
     .recent-listings {
       flex: 2;
     }
+  }
+  .float {
+    position: fixed;
   }
 }
