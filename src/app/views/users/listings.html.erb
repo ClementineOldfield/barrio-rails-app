@@ -1,6 +1,6 @@
 <% if @all_listings.count > 0 %>
   <% @all_listings.each do |listing| %>
-    <div class="card">
+    <div class="all-listings-card">
       <%= link_to listing_path(listing.id) do %>
         <%= image_tag(listing.image, class: "listing-image") if listing.image.attached? %>
         <p>
