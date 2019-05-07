@@ -1,15 +1,20 @@
-<h1><%= header %> Listings</h1>
+<h1><%= header %></h1>
 
-<% listings.each do |listing| %>
-  <div class="card">
-    <%= link_to listing_path(listing.id) do %>
-      <%= image_tag(listing.image, class: "listing-image") if listing.image.attached? %>
-      <p>
-        <%= listing.title %>
-      </p>
-    <% end %>
-    <p>
-      <%= listing.body %>
-    </p>
-  </div>
+<% if listings.count > 0 %>
+  <% listings.each do |listing| %>
+    <div class="card">
+      <%= link_to listing_path(listing.id) do %>
+        <%= image_tag(listing.image, class: "listing-image") if listing.image.attached? %>
+        <p>
+          <%= listing.title %>
+        </p>
+        <p>
+          <%= listing.body %>
+        </p>
+      <% end %>
+    </div>
+  <% end %>
+<% else %>
+  <p class="note">Nothing here.</p>
+
 <% end %>

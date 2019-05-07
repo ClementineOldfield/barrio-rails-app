@@ -1,0 +1,70 @@
+@import "breakpoints";
+
+.dashboard {
+  
+  &.flex-container {
+    flex-wrap: wrap;
+  }
+
+  .panel {
+    background-color: #fff;
+  }
+
+  .section {
+    padding: 20px 35px;
+    margin: 15px;
+    box-sizing: border-box;
+  }
+
+  .recent-listings {
+    width: 100%;
+  }
+
+  ul {
+    padding: 0;
+    
+    .category-header {
+      font-weight: 500;
+    }
+
+    li {
+      margin: 10px 0;
+    }
+  
+    li, a {
+      font-weight: 100;
+    }
+
+    a {
+      text-decoration: none;
+      transition: .7s;
+
+      &:hover {
+        opacity: .8;
+      }
+    }
+
+    &.links {
+      padding: 15px;
+      font-size: 16pt;
+    }
+  }
+  
+}
+
+@media(min-width: $med){
+  .dashboard {
+    .recent-listings {
+      flex: 2;
+    }
+    .categories {
+      width: 25%;
+      .panel {
+        width: 100%;
+      } 
+    }
+  }
+  .float {
+    position: fixed;
+  }
+}

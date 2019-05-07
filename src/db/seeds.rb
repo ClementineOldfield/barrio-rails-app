@@ -30,9 +30,9 @@ end
 users = User.all
 
 if Category.count == 0
-  Category.create( name: "Fruit, Vegetables & Produce" )
-  Category.create( name: "Music & Entertainment" )
-  Category.create( name: "Clothing" )
+  Category.create( name: "Fruit, Vegetables & Produce", icon: "carrot" )
+  Category.create( name: "Music & Entertainment", icon: "theatre-masks" )
+  Category.create( name: "Clothing", icon: "tshirt" )
   p "Created Categories"
 end
 
