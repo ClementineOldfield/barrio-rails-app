@@ -41,15 +41,15 @@ class ListingsController < ApplicationController
 
   def create
     @listing = current_user.listings.create(
-      image: params[:featured_image],
-      title: params[:title],
-      body: params[:body],
-      price: params[:price],
-      quantity: params[:quantity],
-      category: params[:category_id],
+      image: params[:listing][:featured_image],
+      title: params[:listing][:title],
+      body: params[:listing][:body],
+      price: params[:listing][:price],
+      quantity: params[:listing][:quantity],
+      category_id: params[:listing][:category_id],
     )
     @listing.save!
-    redirect_to listing_path
+    redirect_to listing_path(@listing.id)
   end
 
   def new
