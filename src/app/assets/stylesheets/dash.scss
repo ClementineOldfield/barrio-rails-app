@@ -1,5 +1,25 @@
+@import "breakpoints";
+
+.dashboard {
+  &.flex-container {
+    flex-wrap: wrap;
+  }
+
+  .recent-listings {
+    width: 100%;
+  }
+}
+
 .panel {
   background-color: #fff;
   padding: 20px;
   margin: 15px;
+}
+
+@media(min-width: $med){
+  .dashboard {
+    .recent-listings {
+      flex: 2;
+    }
+  }
 }
