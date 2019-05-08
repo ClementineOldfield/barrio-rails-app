@@ -164,14 +164,69 @@ Screenshots of Trello board(s)
 *9. Explain the different high-level components (abstractions) in your App.*
 
 *10. Detail any third party services that your App will use.*
-
-- AWS
-- Google
-- Heroku
-- Gems 
-- axios
+- Amazon Simple Storage Service (Amazon S3): this service makes web-scale computing easier thanks to its simple interface. Apparently, it gives access to the storage infrastructure Amazon benefits from.
+- Google Maps Javascript API and Geocoding API from Google: the latter is a service which core function is turning addresses to coordinates (in latitude, longitude format). The former generates a dynamic map with one or more markers if necessary and depending on the developer´s requirements. Put along together an address can be taken from the user as an input, being this address turned into coordinates with Geocoding API and then marked in the map with Google Maps.
+- Heroku: this cloud platform enables businesses to develop, configure, analyze, tune, manage and scale their projects. It is a polyglot platform because it supports Ruby (the obly one Heroky supported at its beginning), Node, Java, Scala, PHP and more.
+- RubyGems: the gem is a self-contained format for Ruby programs and libraries to be distributed in, that can be installed and used in every project on a server. The package manager for Ruby is called RubyGems.
+  Each gem is composed of code (test included), 
+documentation, and gemspec.
+  The gems we have used for Barrio are:
+  1. [Stripe](https://github.com/stripe/stripe-ruby): allows individuals and businesses to make and receive payments over the Internet.
+  2. [AWS S3](https://github.com/aws/aws-sdk-ruby): 
+  3. [Devise](https://github.com/plataformatec/devise): an authentication service, presented as a MVC solution and on Rails.
+  4. [Font Awesome](https://github.com/bokmann/font-awesome-rails): makes it easier to include [Font Awesome](https://fontawesome.com) icons.
+  5. [Material Icons](https://github.com/Angelmmiguel/material_icons): helps add [Material Design Icons](https://google.github.io/material-design-icons/)´ set to a Rails project.
+  6. [Faker](https://github.com/stympy/faker): provides coders with loans of data with which populate a database. It is helpful for testing, and that is what we used it for.
+  7. [Simple Form](https://github.com/plataformatec/simple_form): Its main goal is to make it easier for coders to build forms. We used it for the search functionality.
+  8. [Font Awesome](https://fontawesome.com): a website dedicated to sharing stock iconography.
+- axios: Although it is also a [gem](https://github.com/axios/axios), we implemented it using cdn. It is necessary to get the coordinates information within the Geocode API of Google.
 
 *11. Describe (in general terms) the data structure of marketplace apps that are similar to your own (e.g. eBay, Airbnb). Discuss the database relations to be implemented.*
+
+We realize data is a key point within any ecommerce while reading McKinsey Digital insights: “*Digital marketplaces are platforms that connect providers and consumers of data sets and data streams, ensuring high quality, consistency, and security*”. 
+
+On the other hand, a good criteria of differentiating among marketplaces can be whether they hold a centralized structure or a decentralized one. 
+
+According to Simon Rothman, of Greylock Partners: “*the more fundamental question is centralization vs decentralization*”. “*[D]oes the user do the work or does the platform do the work?*”, the author asks.
+
+An ecommerce is decentralized if the user is entitled to and responsible for carrying the majority of the steps in the usage of the site. Eg: uploading pictures, writing reviews, etc.
+
+As in Barrio most of the features depend on the user´s input, we can state that is a mainly decentralized site. The only features being centralized are payments and customer service. This “gives you speed, but the cost is an inconsistent and possibly poor user experience” (Rothman).
+
+Another criterion to split marketplaces is given by Jonathan Golden, for whom Barrio would be a “search marketplace, where the guest selects where they will stay, choosing what to “purchase” in the marketplace”. It is different from a matching Marketplace in that the latter would connect buyer and seller through an algorithm.
+
+Taking into account those two criteria, two similar marketplaces are eBay and Gumtree.
+
+They both have users which can either buy or sell products no matter who the manufacturer is. In the case of eBay, from [February 2017](https://pages.ebay.com/sellerinformation/news/fallupdate16/structured-data.html), almost every new listing “*of new or manufacturer refurbished items in most categories […] require[s] at least one of the product identifiers*”. Therefore, the options “Does not Apply” and “NA” disappeared.
+
+That way, eBay makes it easier for users to find what they want to buy as well as delivers a more relevant information so that they make the best purchase decision. From the perspective of a developer, the database structure might include a many-to-many relationship between a listings table and a categories(/identifier) table, as each listing may have some (zero or more) categories, and within each category there might be more than one (one or more) listings.
+
+Regarding eBay´s data structure, it contains 6 ways to find an ítem: product pages, left navigation, category pages, eBay deal, search on eBay, and product reviews. To know more about eBay, visit [their webpage](https://pages.ebay.com/seller-center/seller-updates/2019-spring/marketplace-updates.html).
+
+
+Although eBay has "only" 9 categories, it has a lot of subcategories so the search by that parameter might be more precise. eBay allows user to search by brand and interest as well. 
+
+Gumtree, on the other side, takes into account the location of the user, in addition to a maximum distance, to display near offers. Also, it has 12 categories to tag its listings so far.
+
+Barrio, in a more developed state, will allow their users to see the closest offers to their address. Thus it seems to be more similar to Gumtree. 
+
+Both eBay and Gumtree (and so does Barrio) have a favorite or “add to watch list” option, and, as almost every other site, Contact and About pages.
+
+To sum up, decentralized, searching digital marketplaces´ core functionalities are:
+-	Sign in/up, authentication and authorisation.
+-	A list creation and edition options.
+-	Search engine.
+-	Categories to tag products and filter searches.
+-	A list of the products that are of interest to the user (watch list).
+-	Payment system.
+-	Contact options: for customer support.
+-	About page.
+
+Another one-step-further feature we didn´t speak about would be mail alerts and notifications: very important for marketing and sales purposes.
+
+To finish with, Barrio ideally would have a reviews system, more often present in centralized sites like Amazon.
+
+
 
 *12. Describe your project’s models in terms of the relationships (active record associations) they have with each other.*
 
