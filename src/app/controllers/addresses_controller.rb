@@ -6,6 +6,7 @@ class AddressesController < ApplicationController
 
   def index
     # @address = Address.order('created_at DESC')
+    concat_address
   end
 
   def new
@@ -13,8 +14,10 @@ class AddressesController < ApplicationController
     @states = Address.states.keys
   end
 
-  def address
-    [:street1, :street2, :suburb, :state, :postcode].compact.join(', ')
+  def concat_address
+    byebug
+    @concat_address = [current_user.address.street_1, current_user.address.street_2, current_user.address.suburb, current_user.address.state, current_user.address.postcode].compact.join(' ')
+    puts "concat address"
   end
 
   def create

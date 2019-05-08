@@ -8,7 +8,7 @@
   var lat = 0;
   function geocode(){
 
-    var location = "15 Fletcher street Marrickville NSW";
+    var location = "<%= concat_address %>";
     console.log(location)
     axios.get("https://maps.googleapis.com/maps/api/geocode/json", {
       params:{
