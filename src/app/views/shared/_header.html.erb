@@ -6,7 +6,7 @@
       </div>
     <% end %>
     <div class="searchbar">
-  <%=render "shared/searchbar" if user_signed_in? %>
+  <%= render "shared/searchbar" if user_signed_in? and current_user.address != nil %>
   </div>
     <div class="dropdown">
       <div id="dropdown-button" class="dropdown-link">

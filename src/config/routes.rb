@@ -14,8 +14,6 @@ Rails.application.routes.draw do
 
   get "/privacy", to: "pages#privacy", as: "privacy"
 
-  get "/:id/profile_upload", to: "users#add_profile", as: "profile_image_upload"
-  
   get "/users/:id/listings", to: "users#listings", as: "user_listings"
   get "/", to: "pages#index", as: "root"
   get "/contact", to: "pages#contact", as: "contact"
@@ -26,10 +24,10 @@ Rails.application.routes.draw do
   delete "/favourite", to: "listings#unset_favourite", as: "unset_favourite"
 
   get "/map", to: "addresses#index", as: "map"
+  get "/address/new", to: "addresses#new", as: "new_user_address"
 
   post "/purchases/stripe", to: "purchases#stripe"
   get "/purchases/success", to: "purchases#success"
-
   get "/purchases/:id", to: "purchases#index", as: "purchase_history"
 
   get "/listing/:id/confirmation", to: "listings#confirmation", as: "confirmation"

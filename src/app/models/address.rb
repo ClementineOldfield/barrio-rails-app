@@ -1,5 +1,6 @@
 class Address < ApplicationRecord
   belongs_to :user
+  validates :street_1, :suburb, :state, :postcode, presence:true
 
   enum state: { 
     QLD: 0, 

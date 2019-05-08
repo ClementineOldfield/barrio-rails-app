@@ -25,6 +25,7 @@ class PagesController < ApplicationController
       @listings = Listing.where("title ILIKE ?", "%#{@keyword}%").or(Listing.where(category_id: @cats)).or(Listing.where("body ILIKE ?", "%#{@keyword}%"))
       # @listings = Listing.where("category ILIKE ?", "%#{@category}%")
     end
+    @listings = @favourites if params[:listings].present?
   end
 
   def favourites; end
