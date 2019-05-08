@@ -21,7 +21,7 @@ if User.count == 0
     )
     user.save!(validate: false)
 
-    user.image.attach(io: File.open('app/assets/images/default_profile.png'), filename: 'default_profile.png', content_type: 'image/png')
+    user.image.attach(io: File.open('app/assets/images/profiles/profile'+i.to_s+'.png'), filename: 'profile'+i.to_s+'.png', content_type: 'image/png')
     p "Created user #{i}"
     p user
   end

@@ -2,10 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_user, only: [:show, :edit, :update, :destroy, :listings]
   before_action :authorize_user, only: [:edit, :update, :destroy]
-
-  def create
-
-  end
+  before_action :set_listings, only: [:show]
 
   def update 
     #updating Bio and Image only
@@ -29,11 +26,7 @@ class UsersController < ApplicationController
 
   def show
   #show user profile 
-    @last_three = [@user.listings[-1],@user.listings[-2],@user.listings[-3]]
-    # @excerpt = @user.listings.body.split(" ")[0..50].join(" ")
-    # if @user.listings.body.length > @excerpt
-    #   @excerpt
-    # end
+    @last_three = @listings.last(3)
   end
 
   def listings
@@ -52,6 +45,10 @@ class UsersController < ApplicationController
     @excerpt = @user.listings[0..100] + "..."
   end
 
+  def add_profile
+    
+  end
+
   private
 
   def set_user
@@ -64,4 +61,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def set_listings
+    if @user.listings.length > 0
+      @listings = @user.listings
+    else
+      @listings = []
+    end   
+  end
 end
