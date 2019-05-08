@@ -11,6 +11,10 @@ Rails.application.routes.draw do
   resources :users
   resources :pages
   resources :addresses
+
+  get "/privacy", to: "pages#privacy", as: "privacy"
+
+  get "/:id/profile_upload", to: "users#add_profile", as: "profile_image_upload"
   
   get "/users/:id/listings", to: "users#listings", as: "user_listings"
   get "/", to: "pages#index", as: "root"

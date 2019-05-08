@@ -3,12 +3,15 @@ class PagesController < ApplicationController
   before_action :clear_carts, only: [:dash]
   before_action :set_listings, only: [:dash, :favourites]
   before_action :set_categories, only: [:dash, :favourites]
+  before_action :check_address, only: [:dash, :favourites]
 
   def index
     redirect_to dash_path if user_signed_in?
   end
   def about; end
   def contact; end
+
+  def privacy; end
 
   def dash
     @favourites = current_user.favourite_listings
@@ -34,5 +37,9 @@ class PagesController < ApplicationController
 
   def set_categories
     @categories = Category.all
+  end
+
+  def check_address
+    redirect_to new_address_path if current_user.address == nil
   end
 end

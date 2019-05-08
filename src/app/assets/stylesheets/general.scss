@@ -39,17 +39,57 @@ main {
   width: 200px;
 }
 
-form input {
-  padding: 5px;
-  border-radius: 3px;
-  border: 1px solid rgb(220, 220, 220);
-  color: rgb(150, 150, 150);
-  transition: .7s;
-  width: 30%;
+form {
+  input {
+    display: block;
+    padding: 5px;
+    border-radius: 3px;
+    border: 1px solid rgb(220, 220, 220);
+    color: rgb(150, 150, 150);
+    transition: .7s;
+    width: 97%;
 
-  &:focus {
-    outline: none;
-    color: #000;
+    &:focus {
+      outline: none;
+      color: #000;
+    }
+
+    &[type='submit']{
+      color: #fff;
+      background-color: $secondary-feature-color;
+      border-radius: 4px;
+      font-size: 12pt;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 12px;
+      font-weight: 500;
+      opacity: .8;
+      transition: .7s;
+      cursor: pointer;
+      margin: 15px auto;
+      width: 100%;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+  fieldset {
+    border: 0;
+    width: 90%;
+    margin: auto;
+  }
+
+  select {
+    width: 100%;
+  }
+}
+
+@media(min-width: $med){
+  form {
+    fieldset {
+      width: 30%;
+    }
   }
 }
 
@@ -59,3 +99,12 @@ form input {
   height: 18px;
 }
 
+.instruction {
+  text-align: center;
+}
+
+.disclaimer {
+  display: block;
+  font-size: 10pt;
+  text-align: center;
+}
