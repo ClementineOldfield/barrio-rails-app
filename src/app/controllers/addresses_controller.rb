@@ -15,9 +15,12 @@ class AddressesController < ApplicationController
   end
 
   def concat_address
-    byebug
     @concat_address = [current_user.address.street_1, current_user.address.street_2, current_user.address.suburb, current_user.address.state, current_user.address.postcode].compact.join(' ')
     puts "concat address"
+  end
+
+  def offers
+    @offers = [User.all.address.street_1, User.all.address.street_2, User.all.address.suburb, User.all.address.state, User.all.address.postcode].compact.join(' ')
   end
 
   def create
