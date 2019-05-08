@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :listings
   resources :users
   resources :pages
+  resources :addresses
 
   get "/privacy", to: "pages#privacy", as: "privacy"
 
@@ -23,7 +24,7 @@ Rails.application.routes.draw do
   delete "/favourite", to: "listings#unset_favourite", as: "unset_favourite"
 
   get "/map", to: "addresses#index", as: "map"
-  get "/address/new", to: "addresses#new", as: "new_address"
+  get "/address/new", to: "addresses#new", as: "new_user_address"
 
   post "/purchases/stripe", to: "purchases#stripe"
   get "/purchases/success", to: "purchases#success"

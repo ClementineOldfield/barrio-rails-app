@@ -2,7 +2,7 @@
   <%# <%= render "shared/listings", header: "Favourites", listings: @favourites %> 
   <ul>
     <li>
-      <%= link_to favourites_path do %>
+      <%= link_to dash_path(listings: "favourites") do %>
         <%= fa_icon "heart" %> Favourites
       <% end %>
     </li>

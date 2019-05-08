@@ -25,6 +25,7 @@ class PagesController < ApplicationController
       @listings = Listing.where("title ILIKE ?", "%#{@keyword}%").or(Listing.where(category_id: @cats)).or(Listing.where("body ILIKE ?", "%#{@keyword}%"))
       # @listings = Listing.where("category ILIKE ?", "%#{@category}%")
     end
+    @listings = @favourites if params[:listings].present?
   end
 
   def favourites; end
@@ -52,6 +53,6 @@ class PagesController < ApplicationController
   end
 
   def check_address
-    redirect_to new_address_path if current_user.address.street_1 == nil
+    redirect_to new_address_path if current_user.address == nil
   end
 end
