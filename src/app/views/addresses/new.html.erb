@@ -2,9 +2,9 @@
 
 <%= link_to "Why do we need this?", privacy_path, class: "disclaimer" %>
 
-<% if @address.errors.any? %>
+<% if @address.errors.any? and @show_errors %>
   <% @address.errors.full_messages.each do |error| %>
-    <p><%= error %></p>
+    <p class="address-error"><%= error %></p>
   <% end %>
 <% end %>
 

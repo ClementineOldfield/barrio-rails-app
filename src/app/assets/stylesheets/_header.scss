@@ -1,15 +1,48 @@
 @import "colors";
+@import "breakpoints";
 
 header {
   position: fixed;
   top: 0;
   background-color: #fff;
   width: 100%;
-  display: flex;
   padding: 25px;
   box-sizing: border-box;
-  justify-content: space-between;
   z-index: 1;
+
+  .flex-container {
+    justify-content: space-between;
+  }
+
+  .notice, .alert {
+    height: 0;
+    width: 100%;
+    top: 0;
+    left: 0;
+    padding: 0;
+    margin: 0;
+    background-color: $feature-color;
+    color: #fff;
+    transition: 1s;
+  
+    &:not(:empty) {
+      height: 18px;
+      padding: 10px;
+    }
+
+    &:not(:empty) + div.notice-spacer {
+      height: 18px;
+    }
+  }
+
+  .notice-spacer {
+    height: 0px;
+    transition: 1s;
+
+    &.active {
+      height: 18px;
+    }
+  }
 
   .current-user {
     margin-left: auto;
@@ -17,15 +50,25 @@ header {
     padding: 0 30px;
 
     .header-avatar {
-      width: 40px;
-      border-radius: 20px;
+      width: 50px;
+      height: 50px;
+      border-radius: 25px;
       position: relative;
       top: 13px;
       margin: 0 15px;
+      overflow: hidden;
+      position: relative;
+      img {
+        height: 100%;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        -webkit-transform: translateY(-50%) translateX(-50%);
+      }
     }
     
-    .header-avatar, p {
-      display: inline-block;
+    .header-avatar {
+      display: none;
     }
   }
     
@@ -59,41 +102,36 @@ header {
     }
   }
   .searchbar {
+    display: none;
+    position: relative;
+    top: -20px;
+
     form {
-      input {
-        display: block;
-        padding: 3px;
-        border-radius: 3px;
-        border: 1px solid rgb(220, 220, 220);
-        color: rgb(150, 150, 150);
-        transition: .7s;
+      input, .input {
+        display: inline-block;
+        padding: 12px;
         width: 94%;
-    
-        &:focus {
-          outline: none;
-          color: #000;
-        }
-    
+
         &[type='submit']{
-          color: #fff;
-          background-color: $secondary-feature-color;
-          border-radius: 4px;
-          font-size: 10pt;
-          text-transform: uppercase;
-          letter-spacing: 1px;
-          padding: 5px;
-          font-weight: 500;
-          opacity: .8;
-          transition: .7s;
-          cursor: pointer;
+          display: inline-block;
+          padding: 9px;
+          font-size: 9pt;
           margin: 3px auto;
-          width: 100%;
+          width: 50px;
     
           &:hover {
             opacity: 1;
           }
         }
+        label {
+          visibility: hidden;
+        }
       }
+
+      .input {
+        width: 320px;
+      }
+      
       fieldset {
         border: 0;
         width: 90%;
@@ -102,6 +140,22 @@ header {
     
       select {
         width: 100%;
+      }
+
+      .search-button {
+        background-color: $secondary-feature-color;
+        border-radius: 3px;
+        color: #fff;
+        padding: 0px 8px 12px;
+        border: 0;
+        border-radius: 3px;
+        opacity: .8;
+        cursor: pointer;
+        transition: 1s;
+
+        &:hover {
+          opacity: 1;
+        }
       }
     }
   }
@@ -112,6 +166,18 @@ header {
 }
 
 header, .spacer {
-  height: 100px;
+  height: 110px;
+  transition: 1s;
+
+  &.notification {
+    height: 128px;
+  }
 }
 
+@media(min-width: $med){
+  header {
+    .searchbar, .current-user {
+      display: inline-block;
+    }
+  } 
+}

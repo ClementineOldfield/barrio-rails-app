@@ -33,6 +33,10 @@ Rails.application.routes.draw do
   get "/listing/:id/confirmation", to: "listings#confirmation", as: "confirmation"
 
   get "/dashboard/favourites", to: "pages#favourites", as: "favourites"
+
+  # TEST ROUTES
+
+  post "/test/seed/user", to: "tests#seed_user"
 end
 
 

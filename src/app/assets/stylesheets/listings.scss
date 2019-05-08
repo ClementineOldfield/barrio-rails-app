@@ -3,6 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 @import "colors";
+@import "breakpoints";
 
 .featured-image {
   width: 100%;
@@ -34,23 +35,52 @@ hr {
   margin: 40px 0;
 }
 
-p.category-tag {
-  opacity: .6;
+p {
+  &.category-tag {
+    opacity: .6;
   display: inline-block;
   border-radius: 3px;
   font-size: 12pt;
-}
-
-p.note {
-  font-size: 11pt;
-  color: $pale-text;
-  font-weight: 100;
-  display: inline-block;
-  padding-bottom: 5px;
+  }
+  &.note {
+    font-size: 11pt;
+    color: $pale-text;
+    font-weight: 100;
+    display: inline-block;
+    padding-bottom: 5px;
+  }
 }
 
 i.material-icons {
   position: relative;
   font-size: 18pt;
   top: 6px;
+}
+
+.listing {
+  .featured-image {
+    width: 80%;
+    height: 280px;
+    margin: auto;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+  .section {
+    min-width: 90%;
+    margin: auto;
+  }
+}
+
+@media(min-width: $med){
+  .listing {
+    .section {
+      flex: 1;
+      min-width: 50%;
+      margin: 0 auto;
+    }
+  }
 }
