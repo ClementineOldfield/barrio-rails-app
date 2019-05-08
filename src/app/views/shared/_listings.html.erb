@@ -5,7 +5,6 @@
 
 <% if listings.length > 0 %>
   <% listings.each do |listing| %>
-
     <%= link_to listing_path(listing.id), class: "listing-link" do %>
       <div class="card">   
         <h4><%= listing.title %></h4>

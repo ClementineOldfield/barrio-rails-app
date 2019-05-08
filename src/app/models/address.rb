@@ -11,5 +11,4 @@ class Address < ApplicationRecord
     ACT: 6, 
     NT: 7 
   }
-  
 end

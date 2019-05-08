@@ -11,6 +11,10 @@ class AddressesController < ApplicationController
     @states = Address.states.keys
   end
 
+  def address
+    [:street1, :street2, :suburb, :state, :postcode].compact.join(', ')
+  end
+
   def create; end
 
   def update

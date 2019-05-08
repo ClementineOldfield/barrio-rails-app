@@ -77,3 +77,6 @@ gem "stripe", "~> 4.16"
 
 gem 'geocoder', '~> 1.5', '>= 1.5.1'
 
+gem 'simple_form'
+
+
