@@ -3,7 +3,7 @@ en:
     "yes": 'Yes'
     "no": 'No'
     required:
-      text: 'Search what you are looking for'
+      text: 'Search for something'
       mark: ''
       # You can uncomment the line below if you need to overwrite the whole required html.
       # When using html, text and mark won't be used.
