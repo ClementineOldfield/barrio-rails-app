@@ -18,9 +18,11 @@ class PagesController < ApplicationController
     @categories = Category.all
     @search = params["search"]
     if @search.present?
-      @title = @search["title"]
+      @keyword = @search["keyword"]
       # @category = @search["category"]
-      @listings = Listing.where("title ILIKE ?", "%#{@title}%")
+      @body = @search["keyword"]
+      @cats = Category.where("name ILIKE ?", "%#{@keyword}%").pluck(:id)
+      @listings = Listing.where("title ILIKE ?", "%#{@keyword}%").or(Listing.where(category_id: @cats)).or(Listing.where("body ILIKE ?", "%#{@keyword}%"))
       # @listings = Listing.where("category ILIKE ?", "%#{@category}%")
     end
   end
