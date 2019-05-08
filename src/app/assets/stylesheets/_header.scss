@@ -59,7 +59,51 @@ header {
     }
   }
   .searchbar {
-    text-align: center;
+    form {
+      input {
+        display: block;
+        padding: 3px;
+        border-radius: 3px;
+        border: 1px solid rgb(220, 220, 220);
+        color: rgb(150, 150, 150);
+        transition: .7s;
+        width: 100%;
+    
+        &:focus {
+          outline: none;
+          color: #000;
+        }
+    
+        &[type='submit']{
+          color: #fff;
+          background-color: $secondary-feature-color;
+          border-radius: 4px;
+          font-size: 10pt;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          padding: 5px;
+          font-weight: 500;
+          opacity: .8;
+          transition: .7s;
+          cursor: pointer;
+          margin: 3px auto;
+          width: 100%;
+    
+          &:hover {
+            opacity: 1;
+          }
+        }
+      }
+      fieldset {
+        border: 0;
+        width: 90%;
+        margin: auto;
+      }
+    
+      select {
+        width: 100%;
+      }
+    }
   }
 }
 
