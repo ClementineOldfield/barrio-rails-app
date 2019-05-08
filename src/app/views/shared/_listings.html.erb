@@ -11,7 +11,7 @@
         <% unless request.path.start_with?('/users') %>
           <div class="user-location">
             <%= material_icon.location_on %>
-            <p class="note"><%= listing.user.first_name %> - <%= listing.user.address.suburb %> </p>
+            <p class="note"><%= listing.user.first_name.capitalize %> - <%= listing.user.address.suburb %> </p>
           </div>
         <% end %>
         <div class='featured-image'>

@@ -1,16 +1,18 @@
 <%= button_to 'Edit Listing', edit_listing_path if @listing.user.id == current_user.id%>
 
-<div class="flex-container">
-  <div class="col">
-    <%= image_tag(@listing.image, class: "featured-image") if @listing.image.attached? %>
+<div class="listing flex-container">
+  <div class="section">
+    <div class="featured-image">
+      <%= image_tag(@listing.image, class: "featured-image") if @listing.image.attached? %>
+    </div>
     <%= link_to user_path(@listing.user.id) do %>
       <div class="listing-owner-container">
         <%= image_tag(@listing.user.image, class: "avatar") if @listing.user.image.attached? %>
-        <h4><%= @listing.user.first_name %></h4>
+        <h4><%= @listing.user.first_name.capitalize %></h4>
       </div>
     <% end %>
   </div>
-  <div class="col">
+  <div class="section">
 
     <h1><%= @listing.title %></h1>
     <p>

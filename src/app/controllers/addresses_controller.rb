@@ -10,8 +10,11 @@ class AddressesController < ApplicationController
   end
 
   def new
+    @show_errors = true
     @address = current_user.create_address
     @states = Address.states.keys
+    @show_errors = false if params[:show_errors] == nil
+
   end
 
   def concat_address
@@ -20,8 +23,12 @@ class AddressesController < ApplicationController
   end
 
   def create
-    current_user.create_address(address_params)
-    redirect_to edit_user_path(current_user.id)
+    @address = current_user.create_address(address_params)
+    if @address.errors.any?
+      redirect_to new_address_path(show_errors: true)
+    else
+      redirect_to edit_user_path(current_user.id)
+    end
   end
 
   def update

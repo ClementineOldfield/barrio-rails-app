@@ -1,42 +1,49 @@
 <header>
-  <% if user_signed_in? %>
-    <%= link_to dash_path do %> 
-      <div class="logo">
-        <%= image_tag "logo-green", class: "logo" %>
-      </div>
-    <% end %>
-    <div class="searchbar">
-  <%= render "shared/searchbar" if user_signed_in? and current_user.address != nil %>
-  </div>
-    <div class="dropdown">
-      <div id="dropdown-button" class="dropdown-link">
-        <div class="current-user">
-          <%= image_tag current_user.image, class: "header-avatar" %>
-          <p>
-            <%= current_user.first_name %>
-          </p>
+  <p class="notice"><%= notice %></p>
+  <div class="notice-spacer"></div>
+  <p class="alert"><%= alert %></p>
+  <div class="flex-container">
+    <% if user_signed_in? %>
+      <%= link_to dash_path do %> 
+        <div class="logo">
+          <%= image_tag "logo-green", class: "logo" %>
+        </div>
+      <% end %>
+      <div class="searchbar">
+    <%= render "shared/searchbar" if user_signed_in? and current_user.address != nil %>
+    </div>
+      <div class="dropdown">
+        <div id="dropdown-button" class="dropdown-link">
+          <div class="current-user">
+            <div class="header-avatar">
+              <%= image_tag current_user.image %>
+            </div>
+            <p>
+              <%= current_user.first_name.capitalize %>
+            </p>
+          </div>
+        </div>
+        <div id="dropdown-content" class="dropdown-content">
+          <ul>
+            <li><%= link_to "My Profile", user_path(current_user[:id]) %></li>
+            <li><%= link_to "Settings", edit_user_registration_path %></li>
+            <li><%= link_to "Log out", destroy_user_session_path, method: :delete if user_signed_in? %></li>
+          </ul>
         </div>
       </div>
-      <div id="dropdown-content" class="dropdown-content">
-        <ul>
-          <li><%= link_to "My Profile", user_path(current_user[:id]) %></li>
-          <li><%= link_to "Settings", edit_user_registration_path %></li>
-          <li><%= link_to "Log out", destroy_user_session_path, method: :delete if user_signed_in? %></li>
-        </ul>
+      <div class="mobile-nav">
+        <%= render "shared/hamburger" %>
       </div>
-    </div>
-    <div class="mobile-nav">
-      <%= render "shared/hamburger" %>
-    </div>
 
-  <% else %>
-    <%= link_to root_path do %> 
-      <div class="logo">
-        <%= image_tag "logo.png", class: "logo" %>
-      </div>
+    <% else %>
+      <%= link_to root_path do %> 
+        <div class="logo">
+          <%= image_tag "logo.png", class: "logo" %>
+        </div>
+      <% end %>
     <% end %>
-  <% end %>
-  <%= link_to "login", new_user_session_path if !user_signed_in? %>
+    <%= link_to "login", new_user_session_path if !user_signed_in? %>
+  </div>
 </header>
 
 <div class="spacer"></div>

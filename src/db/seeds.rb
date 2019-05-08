@@ -27,6 +27,20 @@ if User.count == 0
   end
 end
 
+test_user = User.new(
+  first_name: "Jane",
+  last_name: "Lane",
+  bio: Faker::Lorem.paragraphs(rand(1..3)),
+  email: "test@email.com",
+  password: "123456",
+  password_confirmation: "123456"
+)
+test_user.save!(validate: false)
+
+test_user.image.attach(io: File.open('app/assets/images/profiles/profile1.png'), filename: 'profile1.png', content_type: 'image/png')
+p "Created test user"
+p test_user
+
 users = User.all
 
 if Category.count == 0
