@@ -31,23 +31,31 @@ Problem definition / purpose
 
 We were tasked to create a two-sided marketplace as an assessment for Coder Academy´s second term.
 
-The product was to incorporate authentication and authorisation systems, file uploading capability (images),a payment system, and the appropriate gems. 
+The product was to incorporate authentication and authorisation systems, file uploading capability (images),a payment system, and the appropriate gems. It was then to be deployed to Heroku or AWS.
 
-Working within the specifications provided, we decided to 
-
-
-The application had to be deployed to Heroku or AWS.
+Working within the specifications provided, we decided to build a community focused, "Trading Post"-like application. 
 
 
 #### 2. Identify the problem you’re trying to solve by building this particular marketplace App? Why is it a problem that needs solving?
 
-Barrio buddes to satisfy the very specific need of locally stablish entrepreneurs to have a **close set of customers**. It aims to **increase their success opportunities**, therefore **encouraging entrepreneurship within the regular population** and **supporting local wealth**.
+
+Barrio (the Spanish word for Neighbourhood) aims to satisfy the very specific needs of locally established businesses & entrepreneurs that have a close set of customers whose needs are location-dependent. It aims to **increase their success opportunities**, therefore **encouraging entrepreneurship within the regular population** and **supporting local economy**.
 
 Because *what is given to the citizens, returns to society*.
 
-## Functionality / features
+#### 3. Describe the project you will be conducting and how your App will address the needs.
 
-lorem ipsum
+We are developing a two-sided marketplace which will connect local businesses and potential customers, and we want it to **ensure an in person relationship** between them. That is the reason why a fundamental part of out application has to do with location, as the user is only shown the offers within a certain radius from their home address.
+
+For this solution to be successful and useful, we plan to implement both the Google Maps Javascript API and the Geocoding API from Google. A map will output the nearest to the user offers, and the dashboard will display a list of them, also taking into account the launch date. Rails structure will be crucial for both objectives as well.
+
+That way, the interested buyer will **easily meet the seller** in the address the latter has set up for that purpose.
+
+Furthermore, each user will have their own profile page where they can share some information about themselves and the products they offer to the public. In addition, there will be an in-app messaging system, so that **buyer and seller can agree on the time and the manner** of completing the exchange. 
+
+Everything will be carried out under the helpful knowledge that **payments will be done safely** with a third party service thanks to Stripe.
+
+To allow the user to keep track of the products (listings) they are interested in and would like to access in the near future, we will implement a favourite option for each offer. The favourite listings will be accessible from the user's dashboard.
 
 ## Tech stack
 
@@ -56,6 +64,37 @@ lorem ipsum
 - SCSS
 - Ruby on Rails
 - Puma
+
+#### 4. Describe the network infrastructure the App may be based on.
+
+Rails has a built in HTTP 1.1 server called Puma, which can be used to deploy locally or on the cloud. It is build for simplicity and speed, and is highly concurrent, so can handle a large amount of client requests at the same time in parallel.
+
+After development, we will deploy the app on Heroku on the internet's Wide Area Network (WAN). Heroku is a cloud-based platform which provides a highly scalable infrastructure for developers to deploy applications built in Ruby, Java, Node.js, Scala, Clojure, Python, PHP, and Go. 
+
+It uses Dynos (compartmentalized, completely independent, Linux "containers") for each application and also provides a database system. It supports Postgresql, which we will be using for our app, and integrates with a Github repository for each project which allows for version control provides automated application builds. 
+
+#### 5. Identify and describe the software to be used in your App.
+
+Barrio is built in [Ruby on Rails](https://rubyonrails.org/) as the framework. Rails is a web-application framework for Ruby that uses an MVC (Model, View, Controller) architectural structure to handle the communication between the data, logic and browser-rendered content.
+
+Image upload will be handled by Rails' inbuilt ActiveStorage and stored on an AWS (Amazon Web Services) bucket. 
+
+We use a Google Maps API to display the user's address based on longitude and latitude.
+
+On completion, the app will be deployed on Heroku, which is a platform that allows developers to deploy, run and manage applications entirely on the cloud.
+
+#### 6. Identify the database to be used in your App and provide a justification for your choice.
+
+The database is Postgresql. An open-source SQL database. Rails integrates nicely with the database, allowing us to query it with Ruby, instead of writing SQL.
+
+Postgresql also has recently added support for JSON, allowing it to integrate with NoSQL. This is something that we would be interested in looking into in future versions of the app.
+
+
+## Functionality / features
+
+lorem ipsum
+
+
 
 # Design processes
 
@@ -115,40 +154,6 @@ Screenshots of Trello board(s)
 
 # Section 2.2 (Short Responses)
 
-
-*3. Describe the project you will be conducting and how your App will address the needs.*
-
-We are developing a two-sided market which will put in contact both entrepreneurs and potential customers, and we want it to **ensure an in person relationship** between them. That is the reason why a fundamental part of out application has to do with location, as the user is shown the closest offers of other users.
-
-For this solution to be successful and useful, we plan to implement both the Google Maps Javascript API and the Geocoding API from Google. A map will output the nearest to the user offers, and the dashboard will display a list of them, also taking into account the launch date. Rails structure will be crucial for both objectives as well.
-
-That way, the interested buyer will **easily meet the seller** in the address the latter has set up for that purpose.
-
-Furthermore, each user will have their own profile page where they can **share some information about themselves** and the products they offer to the public. In addition, there will be an in-app messaging system, so that **buyer and seller can agree on the time and the manner** of completing the **exchange of value**. 
-
-We are glad to assure that everything will be carried out under the hepful knowledge that **payments will be done safely** and inside the app thanks to Stripe.
-
-To allow the user to **keep track of the products** (listings) they are interested in and willing to access in the near future, we have implemented a favourite option for each offer. The favourite listings will be displayed in the dashboard too.
-
-*4. Describe the network infrastructure the App may be based on.*
-
-Upon deployment, the app will be based on a Wide Area Network (WAN), or more specifically, the internet. 
-
-*5. Identify and describe the software to be used in your App.*
-
-Barrio is built in [Ruby on Rails](https://rubyonrails.org/) as the framework. Rails is a web-application framework for Ruby that uses an MVC (Model, View, Controller) architectural structure to handle the communication between the data, logic and browser-rendered content.
-
-Image upload will be handled by Rails' inbuilt ActiveStorage and stored on an AWS bucket. 
-
-We use a Google Maps API to display the user's address based on longitude and latitude.
-
-On completion, the app will be deployed on Heroku, which is a platform that allows developers to deploy, run and manage applications entirely on the cloud.
-
-*6. Identify the database to be used in your App and provide a justification for your choice.*
-
-The database is Postgresql. An open-source SQL database. Rails integrates nicely with the database, allowing us to query it with Ruby, instead of writing SQL.
-
-Postgresql also has recently added support for JSON, allowing it to integrate with NoSQL. This is something that we would be interested in looking into in future versions of the app.
 
 *7. Identify and describe the production database setup (i.e. postgres instance).* 
 

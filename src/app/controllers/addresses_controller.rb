@@ -15,7 +15,9 @@ class AddressesController < ApplicationController
     [:street1, :street2, :suburb, :state, :postcode].compact.join(', ')
   end
 
-  def create; end
+  def create
+    current_user.create_address(address_params)
+  end
 
   def update
     @address = current_user.address
