@@ -52,6 +52,7 @@ if Listing.count == 0
   end
 end
 
+states = ["QLD", "NSW", "VIC", "ACT", "TAS", "SA", "WA", "NT"]
 
 if Address.count == 0
   users.each do |user|
@@ -59,7 +60,7 @@ if Address.count == 0
       street_1: Faker::Address.street_name,
       street_2: Faker::Address.secondary_address,
       suburb: Faker::Address.city,
-      state: Faker::Address.state,
+      state: states[rand(0...states.length)],
       postcode: Faker::Address.postcode,
       user: user
       # latitude: ((Geocoder.search(

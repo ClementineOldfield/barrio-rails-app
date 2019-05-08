@@ -1,5 +1,6 @@
 class AddressesController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_defaults, only: [:new]
   # skip_before_action :verify_authenticity_token
 
   def index
@@ -7,8 +8,9 @@ class AddressesController < ApplicationController
   end
 
   def new
-    @address = current_user.address
+    @address = current_user.create_address
     @states = Address.states.keys
+    
   end
 
   def address
@@ -29,5 +31,13 @@ class AddressesController < ApplicationController
 
   def address_params
     params.require(:address).permit(:street_1, :suburb, :state, :postcode)
+  end
+
+  def set_defaults
+
+    current_user.update(
+      bio: "lorem ipsum" 
+    )
+    current_user.image.attach(io: File.open('app/assets/images/default_profile.png'), filename: 'default_profile.png', content_type: 'image/png')
   end
 end

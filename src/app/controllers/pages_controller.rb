@@ -50,6 +50,6 @@ class PagesController < ApplicationController
   end
 
   def check_address
-    redirect_to new_address_path if current_user.address.street_1 == ""
+    redirect_to new_address_path if current_user.address == nil
   end
 end

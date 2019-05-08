@@ -10,24 +10,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  def create
-    super
+  # def create
+  #   super
 
-    @user = User.find_by_email(params[:user][:email])
-
-    @user.update(
-      bio: "lorem ipsum" 
-    )
-    @user.image.attach(io: File.open('app/assets/images/default_profile.png'), filename: 'default_profile.png', content_type: 'image/png')
-    @user.create_address(
-      street_1: "",
-      street_2: "",
-      suburb: "",
-      state: "",
-      postcode: ""
-    )
-    #address = Address.new(params being params what they filled as their address)
-  end
+  #   #address = Address.new(params being params what they filled as their address)
+  # end
 
   # GET /resource/edit
   # def edit
