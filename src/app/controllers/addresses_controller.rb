@@ -10,12 +10,10 @@ class AddressesController < ApplicationController
 
   def create
     @address = Address.new(address_params)
-    # if @address.save
-    #   flash[:success] = "Place added!"
-    #   redirect_to map_path
-    # else
-    #   render 'new'
-    # end
+  end
+  
+  def address
+    [:street1, :street2, :suburb, :state, :postcode].compact.join(', ')
   end
 
   private

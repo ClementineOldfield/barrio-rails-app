@@ -13,10 +13,20 @@ class PagesController < ApplicationController
   def dash
     @favourites = current_user.favourite_listings
     @categories = Category.all
-
+    @search = params["search"]
+    if @search.present?
+      @title = @search["title"]
+      # @category = @search["category"]
+      @listings = Listing.where("title ILIKE ?", "%#{@title}%")
+      # @listings = Listing.where("category ILIKE ?", "%#{@category}%")
+    end
   end
 
   def favourites; end
+
+  def search
+   
+  end
 
   private
   

@@ -5,6 +5,9 @@
         <%= image_tag "logo-green", class: "logo" %>
       </div>
     <% end %>
+    <div class="searchbar">
+  <%=render "shared/searchbar" if user_signed_in? %>
+  </div>
     <div class="dropdown">
       <div id="dropdown-button" class="dropdown-link">
         <div class="current-user">
@@ -33,7 +36,6 @@
       </div>
     <% end %>
   <% end %>
-
   <%= link_to "login", new_user_session_path if !user_signed_in? %>
 </header>
 
