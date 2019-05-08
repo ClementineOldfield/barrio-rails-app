@@ -1,12 +1,15 @@
 class Address < ApplicationRecord
   belongs_to :user
-  # geocoded_by :address
-  # ,:latitude, :longitude
-  # after_validation :geocode, if: -> (obj){ obj.address.present? and obj.address_changed? }
-  # :if => :address_changed?
 
-  def address
-    [:street1, :street2, :suburb, :state, :postcode].compact.join(', ')
-  end
+  enum state: { 
+    QLD: 0, 
+    NSW: 1, 
+    VIC: 2, 
+    TAS: 3, 
+    SA: 4, 
+    WA: 5, 
+    ACT: 6, 
+    NT: 7 
+  }
   
 end
