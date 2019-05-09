@@ -7,6 +7,7 @@ class AddressesController < ApplicationController
   def index
     # @address = Address.order('created_at DESC')
     concat_address
+    offers
   end
 
   def new
@@ -16,11 +17,20 @@ class AddressesController < ApplicationController
 
   def concat_address
     @concat_address = [current_user.address.street_1, current_user.address.street_2, current_user.address.suburb, current_user.address.state, current_user.address.postcode].compact.join(' ')
-    puts "concat address"
   end
 
   def offers
-    @offers = [User.all.address.street_1, User.all.address.street_2, User.all.address.suburb, User.all.address.state, User.all.address.postcode].compact.join(' ')
+    # @offers = [User.all.address.street_1, User.all.address.street_2, User.all.address.suburb, User.all.address.state, User.all.address.postcode].compact.join(' ')
+    @offers = []
+    users = User.all
+    users.each do |user|
+      if (user !== current_user) && (user.listings.count > 0)
+        # listings.where(active: true)
+        user_address = [user.address.street_1, user.address.street_2, user.address.suburb, user.address.state, user.address.postcode].compact.join(" ")
+        @offers << user_address
+      end
+    end
+
   end
 
   def create
