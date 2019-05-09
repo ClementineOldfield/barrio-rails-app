@@ -42,7 +42,8 @@ describe("Listing CRUD resource for user", function() {
     cy.visit("users/11")
     cy.get(".listing-link").first().click()
     cy.get(".edit-listing-link").click()
-
+    cy.get(".archive-link").click()
+    
   });
 
 });

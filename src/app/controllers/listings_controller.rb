@@ -80,6 +80,7 @@ class ListingsController < ApplicationController
     @listing.update(
       active: false
     )
+    flash[:notice] = "You have succesfully deactivated your listing."
     redirect_to user_path(current_user.id)
   end
 
