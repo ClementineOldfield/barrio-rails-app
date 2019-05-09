@@ -115,7 +115,7 @@ lorem ipsum
 
 ### First iteration of wireframes on paper
 
-![First iteration of wireframes](docs/wireframes-paper.png)
+![First iteration of wireframes](docs/wireframes-paper-01.png)
 
 ## Database Entity Relationship Diagrams
 
@@ -158,10 +158,28 @@ Screenshots of Trello board(s)
 *7. Identify and describe the production database setup (i.e. postgres instance).* 
 
 
-
 *8. Describe the architecture of your App.*
 
 *9. Explain the different high-level components (abstractions) in your App.*
+
+To answer this question we must know what a level of abstraction is in software. PC Magazine Encyclopedia defines it as "*[t]he amount of complexity by which a system is viewed or programmed. The higher the level, the less detail. The lower the level, the more detail. The highest level of abstraction is the entire system. The next level would be a handful of components, and so on, while the lowest level could be millions of objects*". 
+
+To know more about abstractions, consult this [Stack Exchange post](https://softwareengineering.stackexchange.com/questions/110933/how-to-determine-the-levels-of-abstraction).
+
+Taking all that into account, this question can be answered by speaking about MVC. We applied the MVC pattern as it is good practice in Ruby. Rails made it very easy to divide the code into models, controllers and views. If we have a look at [IBM documentation](https://www.ibm.com/support/knowledgecenter/en/SSZLC2_9.0.0/com.ibm.commerce.developer.doc/concepts/csdmvcdespat.htm):
+..* Model: "*contains only the pure application data*" and "*no logic*".
+..* View: "*knows how to access the model's data, but it does not know what this data means or what the user can do to manipulate it*".
+..* Controller: "*listens to events triggered by the view (or another external source) and executes the appropriate reaction to these events*", mostly calling "*a method on the model*".
+
+This pattern is possible due to the [relational mapping](https://docs.oracle.com/cd/E21764_01/web.1111/b32441/relmapun.htm#JITDG75011), which allows developers to work with Object Oriented Programmes while the program itself will convert the user inputs to SQL information. 
+
+The technique of "*query and manipulate data from a database using an object-oriented paradigm*" is called [Object-Relational Mapping](https://stackoverflow.com/questions/1279613/what-is-an-orm-and-where-can-i-learn-more-about-it).
+
+Herein something very important takes place: [persistency](https://hibernate.org/orm/what-is-an-orm/), which simply means that "*we would like our application’s data to outlive the applications process*". 
+
+To achieve that persistency in Ruby on Rails, we are using [ActiveRecord](https://api.rubyonrails.org/classes/ActiveRecord/Base.html),which "*objects don't specify their attributes directly, but rather infer them from the table definition with which they're linked. Adding, removing, and changing attributes and their type is done directly in the database. Any change is instantly reflected in the Active Record objects. The mapping that binds a given Active Record class to a certain database table will happen automatically in most common cases, but can be overwritten for the uncommon ones*".
+
+In addition, we use several Ruby Gems: Stripe, AWS, Devise, Font Awesome, Material Icons, Faker and Simple Form. All of them are detailed in question 10. More complex logic was abstracted out of the controller: AWS, Heroku, Stripe, Devise. They all are explained in question 10.
 
 *10. Detail any third party services that your App will use.*
 - Amazon Simple Storage Service (Amazon S3): this service makes web-scale computing easier thanks to its simple interface. Apparently, it gives access to the storage infrastructure Amazon benefits from.
@@ -178,16 +196,16 @@ documentation, and gemspec.
   5. [Material Icons](https://github.com/Angelmmiguel/material_icons): helps add [Material Design Icons](https://google.github.io/material-design-icons/)´ set to a Rails project.
   6. [Faker](https://github.com/stympy/faker): provides coders with loans of data with which populate a database. It is helpful for testing, and that is what we used it for.
   7. [Simple Form](https://github.com/plataformatec/simple_form): Its main goal is to make it easier for coders to build forms. We used it for the search functionality.
-  8. [Font Awesome](https://fontawesome.com): a website dedicated to sharing stock iconography.
+- [Font Awesome](https://fontawesome.com): a website dedicated to sharing stock iconography.
 - axios: Although it is also a [gem](https://github.com/axios/axios), we implemented it using cdn. It is necessary to get the coordinates information within the Geocode API of Google.
 
 *11. Describe (in general terms) the data structure of marketplace apps that are similar to your own (e.g. eBay, Airbnb). Discuss the database relations to be implemented.*
 
-We realize data is a key point within any ecommerce while reading McKinsey Digital insights: “*Digital marketplaces are platforms that connect providers and consumers of data sets and data streams, ensuring high quality, consistency, and security*”. 
+We realize data is a key point within any ecommerce while reading [McKinsey Digital insights](https://www.mckinsey.com/business-functions/digital-mckinsey/our-insights/creating-a-successful-internet-of-things-data-marketplace): “*Digital marketplaces are platforms that connect providers and consumers of data sets and data streams, ensuring high quality, consistency, and security*”. 
 
 On the other hand, a good criteria of differentiating among marketplaces can be whether they hold a centralized structure or a decentralized one. 
 
-According to Simon Rothman, of Greylock Partners: “*the more fundamental question is centralization vs decentralization*”. “*[D]oes the user do the work or does the platform do the work?*”, the author asks.
+According to [Simon Rothman](https://techcrunch.com/2012/08/19/how-to-structure-a-marketplace/), of Greylock Partners: “*the more fundamental question is centralization vs decentralization*”. “*[D]oes the user do the work or does the platform do the work?*”, the author asks.
 
 An ecommerce is decentralized if the user is entitled to and responsible for carrying the majority of the steps in the usage of the site. Eg: uploading pictures, writing reviews, etc.
 
@@ -227,7 +245,6 @@ Another one-step-further feature we didn´t speak about would be mail alerts and
 To finish with, Barrio ideally would have a reviews system, more often present in centralized sites like Amazon.
 
 
-
 *12. Describe your project’s models in terms of the relationships (active record associations) they have with each other.*
 
 For the user to address relationship, we had to decide between a 'one-to-one' relationship or a 'one-to-many' to allow for multiple users to live at the same address. We decided to go with a one-to-one, possibly creating duplicate addresses, to avoid any issues if/when the user decided to change their address.
@@ -236,11 +253,113 @@ For the user to address relationship, we had to decide between a 'one-to-one' re
 
 *14. Provide User stories for your App.*
 
+While declaring our User stories, we beared in mind that they are end-goals expressed in plain language and followed [Atlassian´s template](https://www.atlassian.com/agile/project-management/user-stories): "*As a [persona], I [want to], [so that].*".
+
+1. "As a user I want to be able to upload profile images and featured images for my listings so that I can make my profile and listings more personal and attractive".
+
+2. "As a user I want to be able to edit my profile so that I can keep it updated".
+
+3. "As a user I would like to be able to navigate the app in a user friendly way so that I take the most of the app".
+
+4. "As a user I would like to filter listings by category so that my offers can be easily found".
+
+5. "As a user I need to be able to pay for items and accept payments so that I can buy and sell things online".
+
+6. "As a user I would like to stay up to date with my local community so that I can feel I am part of it".
+
+7. "As a User I need to be able to create and manage my own listings so that I can sell what I produce.".
+
+8. "As a user, I would like to be notified when something important happens so that I am up to date regarding whatever affects me".
+
+9. "As a user I would like to be able to message and receive messages from other users so that I can deal with potential customers".
+
 *15. Provide Wireframes for your App.*
+
+We did a pen and paper first version and a more accurate one with [Balsamiq](https://balsamiq.com).
+
+![First iteration of wireframes](docs/wireframes/wireframes-paper-01.png)
+
+![Profile page for mobile](docs/wireframes/profile-mobile.png)
+
+![Profile page for desktop](docs/wireframes/profile-desktop.png)
+
+![Other user´s profile for mobile](docs/wireframes/other-user-profile-mobile.png)
+
+![Other user´s profile for desktop](docs/wireframes/other-user-profile-desktop.png)
+
+![Footer](docs/wireframes/footer.png)
+
+![Dashboard for mobile](docs/wireframes/dashboard-mobile.png)
+
+![Dashboard for desktop](docs/wireframes/dashboard-desktop.png)
+
+![Log-In for mobile](docs/wireframes/login-mobile.png)
+
+![Log-In for desktop](docs/wireframes/login-desktop.png)
+
+![First iteration of wireframes](docs/wireframes/profile-desktop.png)
+
+![Sign-Up form](docs/wireframes/signup.png)
+
+![About for mobile](docs/wireframes/about-mobile.png)
+
+![About for desktop](docs/wireframes/about-desktop.png)
+
+![Contact for mobile](docs/wireframes/contact-mobile.png)
+
+![Contact for desktop](docs/wireframes/contact-desktop.png)
+
+![Messages for mobile](docs/wireframes/messages-mobile.png)
+
+![Messages for desktop](docs/wireframes/messages-desktop.png)
+
+![Map for mobile](docs/wireframes/map-mobile.png)
+
+![Map for desktop](docs/wireframes/map-desktop.png)
 
 *16. Describe the way tasks are allocated and tracked in your project.*
 
+As we followed an Agile methodology, our main needs were teamwork and frequent inspection. Therefore, communication was a key part of the project. That is why we consantly talked through [Slack](https://slack.com/intl/es-es/) when wwe were outside the workplace.
+
+Brainstorming and ERDs design were done by the two of us. As a digression, when we designed the ERD diagram, we used [draw.io](https://www.draw.io), which enabled us to work on the same file at a time and upload it to Google Drive.
+
+For both to know what we had to do, we used several [Trello](https://trello.com) Boards. The first one we created was the Tasks one, so we could have a "to-do list" for general requirements affecting all the project, like "Propose different ideas" or "Wireframing in Balsamiq".
+
+![Tasks](docs/trello/trello-tasks.png)
+
+From the first cards of that board, we generated a Brainstorming one, so we could store all our ideas and check them at any time.
+
+![Brainstorming](docs/trello/trello-brainstorm.png)
+
+However, the part we have been working on the most are the Sprints, a clear application of the Agile methodology (and Scrum submethodology).
+
+![Sprints](docs/trello/trello-sprints.png)
+
+First, we decided which features had to be implemented first. Then, each day we allocated them depending on what each of us was more comfortable with and the relevance of each task regarding the project as a whole.
+
 *17. Discuss how Agile methodology is being implemented in your project.*
+To approach a project through an Agile methodology we must take into account the [Agile Manifesto](http://agilemanifesto.org), whose main statements are: 
+
+- "**Individuals and interactions** over processes and tools".
+- "**Working software** over comprehensive documentation".
+- "**Customer collaboration** over contract negotiation".
+- "**Responding to change** over following a plan".
+
+Therefore, the [fundamental features](https://www.cprime.com/resources/what-is-agile-what-is-scrum/) of a methodology based on an iterative development such as Agile are: "frequent inspection and adaptation, a leadership philosophy that encourages teamwork, self-organization and accountability, a set of engineering best practices intended to allow for rapid delivery of high-quality software, and a business approach that aligns development with customer needs and company goals".
+
+According to [Atlassian](https://www.atlassian.com/agile/project-management/user-stories), **user stories** are "*one of the core components of an agile program*" and "*provide a user-focused framework for daily work*". As it was shown in answer to question 14, we have used this non-technical tool to make ourselves aware of why we are developing Barrio. Thus, user stories were not only the first step, but also the guide-line, for us to approach our Rails assessment.
+
+User stories behaved as the header of a specific Sprint Trello card, within which the needed tasks were enumerated and allocated. **The ERD was designed by the whole group**, so everyone knew how the app database was going to behave. However, this was **not a problem** for us **to change** the tables relationships if we needed to, having discussed it previosly.
+
+The division in Sprints is another clear application of Agile methodology. A "*‘[sprint](https://www.sinnaps.com/en/project-management-blog agile-project-management-sprint-methodology#sprint-methodology)’ refers to a set period of time during which a certain task or activity is completed and then reviewed*". It is an essential tool in [Scrum submethodology](https://www.atlassian.com/agile/scrum/sprints).
+
+Each day, we would **ask each other how we felt and what were our individual and collective goals for the day**. In addition, **every time one of us started or finished** a task would tell the other, **and each moment an issue showed up** we would have a **team talk** in order to fix it and solve any doubts, even sometimes new approaches were suggested and discussed. Thus, duplicities were avoided and obstacles were overcame.
+
+Another way of being aware of what the other part of the team was doing would be **constantly pushing to GitHub with meaningful commitment messages**, merging and pulling. We also **sat together** al the time so we could **support** each other and **ask** anything easily. 
+
+Furtermore, we also did **stand-up sessions** to say out loud our feelings and daily goals and, when working out of the workplace, and during weekends, we would use **Slack to keep in contact**.
+
+To finish with, we did a quick, efficient google search for every function we didn´t know how to approach at first. After that, a new discussion would take place and what the group decided would be done. That way, we included some gems and APIs to the project.
 
 *18. Provide an overview and description of your Source control process.*
 
