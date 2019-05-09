@@ -66,6 +66,20 @@ if Listing.count == 0
   end
 end
 
+test_listing = test_user.listings.new(
+  title: "My Test Listing",
+  body: "Lorem ipsum",
+  user_id: 11,
+  price: 2000,
+  category_id: 2,
+  quantity: 3,
+  active: true
+)
+test_listing.save!
+p "Created test listing"
+test_listing.image.attach(io: File.open('app/assets/images/bread.jpeg'), filename: 'bread.jpeg', content_type: 'image/jpeg')
+p test_listing
+
 states = ["QLD", "NSW", "VIC", "ACT", "TAS", "SA", "WA", "NT"]
 
 if Address.count == 0

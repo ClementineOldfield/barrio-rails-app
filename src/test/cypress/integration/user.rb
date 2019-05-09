@@ -1,4 +1,3 @@
-
 describe("User edit & delete", function () {
   beforeEach(function(){
     cy.app('clean')
@@ -13,7 +12,7 @@ describe("User edit & delete", function () {
   
   it("Edit user bio", function() {
     cy.visit("/users/11/edit")
-    cy.get("textarea[name='user[bio]']").type("Lorem Ipsum dolor sit amet. Test, this is a test. I repeat. This is a test. Pizza.")
+    cy.get("textarea[name='user[bio]']").type("{selectall}Lorem Ipsum dolor sit amet. Test, this is a test. I repeat. This is a test. Pizza.")
     cy.get("input[type='submit'").click()
     cy.contains('This is a test. Pizza.').should('exist')
   });
@@ -30,7 +29,7 @@ describe("User edit & delete", function () {
     cy.get("input[value='new@email.com']").should("exist")
   });
 
-  it.only("Delete user", function() {
+  it("Delete user", function() {
     cy.visit("/edit")
     cy.get("input[value='Cancel my account']").click()
     cy.location("pathname").should("eq", "/")

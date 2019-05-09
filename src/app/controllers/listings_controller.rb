@@ -1,16 +1,14 @@
 class ListingsController < ApplicationController
-  before_action :set_listing, only: [:show, :confirmation, :edit, :update, :destroy]
+  before_action :set_listing, only: [:show, :confirmation, :edit, :update, :archive]
   before_action :authorize_user, only: [:edit, :update, :destroy]
+  before_action :is_owner?, only: [:show]
+  before_action :set_categories, only: [:edit, :new]
 
   def index
     @listings = Listing.all
   end
 
-  def show
-  
-  end
-
-
+  def show; end
 
   def confirmation
     @quantity = params[:quantity].to_i
@@ -57,27 +55,27 @@ class ListingsController < ApplicationController
     redirect_to listing_path(@listing.id)
   end
 
-  def new
-    # redirect_to listing_path
-  end
+  def new; end
 
-  def edit 
-    
-  end
+  def edit; end
 
   def update
-    new_params = params[:listing]
-    @listing.update(
-      image: new_params[:featured_image],
-      title: new_params[:title],
-      body: new_params[:body],
-      price: new_params[:price],
-      quantity: new_params[:quantity]
-    )
+    # new_params = params[:listing]
+    @listing.update(listing_params)
+    #   image: new_params[:featured_image],
+    #   title: new_params[:title],
+    #   body: new_params[:body],
+    #   price: new_params[:price],
+    #   quantity: new_params[:quantity]
+    # )
     redirect_to listing_path
   end
   
-  def destroy; end
+  def archive
+    @listing.update(
+      active: false
+    )
+  end
 
   def set_favourite
     favourite = Favourite.new(
@@ -98,6 +96,18 @@ class ListingsController < ApplicationController
   def set_listing
     @id = params[:id]
     @listing = Listing.find(@id)
+  end
+
+  def set_categories
+    @categories = Category.all
+  end
+
+  def is_owner?
+    @is_owner = (@listing.user.id == current_user.id)
+  end
+
+  def listing_params
+    new_params = params.require(:listing).permit(:image, :title, :body, :price, :quantity, :category_id)
   end
 
   def authorize_user
