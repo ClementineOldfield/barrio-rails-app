@@ -45,7 +45,7 @@
     }
 
     &.links {
-      font-size: 14pt;
+      font-size: 12pt;
     }
   }
   
@@ -58,6 +58,9 @@
     }
     .categories {
       width: 20%;
+      padding-left: 10px;
+      padding-top: 0;
+      margin-top: 5px;
       .panel {
         width: 100%;
       } 
