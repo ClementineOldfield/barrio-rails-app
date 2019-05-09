@@ -159,6 +159,27 @@ Screenshots of Trello board(s)
 
 
 *8. Describe the architecture of your App.*
+Application Architecture or Information Systems Architecture is, according to [Orbus Software](https://www.orbussoftware.com/us/application-architecture/what-is-application-architecture/), concerned about "*ensuring the applications and systems in an organziation are fit for purpose*". In other words, it must provide coherence between the business strategy and the technical strategy.
+
+If we were talking about a mobile app, we can find another, still very similar, definition in [peerbits](https://www.peerbits.com/blog/all-about-app-architecture-for-efficient-mobile-app-development.html) webpage: "*set of patterns and techniques which are required to be followed in order to build a fully structured mobile application. The techniques and patterns are formulated **keeping the vendor requirement** and industry standards in mind*"
+
+Before studying different sources from the Internet, we believe the main things we should take into account while deciding the app architecure are:
+..* Device: we have designed **mobile first** using CSS min-width property to be responsive.
+..* Bandwidths: "*There are times when connectivity is either intermittent or not available. Your app architecture needs to be build keeping in mind the worst network scenarios*" (peerbits). It is important to consider those regions where your target audience lives, as they can determine internet speed. Developers should think about power consumption and speed when choosing software and hardware protocols. We consider this part a stretch goal for the future.
+..* UI: we have implemented **minimalistic styling** . Regarding navigation methods, we have included a search bar, a nav bar, and some links which sends the users to about and contact pages, and to our legal information (Terms and Privacy). We tried our **styling and navigation within the app to be as simple and intuitive as possible**, as we are aiming Barrio to the masses. For it, we are using HTML and CSS.
+
+The following chart can help understand everything:
+
+![The various elements of an app’s architecture](docs/architecture/peerbits.png)
+
+The app architecture must be designed following three layers:
+
+..1. Presentation Layer: básically UI or the location of the app features, and color palette and themes. Is the way the app is presented to the end consumer.
+..2. Business Layer: how the app proposes the value exchange to the user. Barrio displays the different listings and gives the buy and favourite options to the users. If the purchase decision is positive, then Stripe will be used to manage the payment. 
+..3. Data Layer: according to [magora](https://magora-systems.com/mobile-app-development-architecture/), "*[t]his layer complies with the app requirements to facilitate secure data transactions. You must design this dimension so that it can be rescaled over time as business needs change*".
+
+As we were asked to do a Rails project, there was no space for native apps but to use a **multi-platform framework** as ROR. Rails´ benefits include: many **ready made and efficient modules**; it’s **open source**; it’s **cost effective**; it’s **scaleable**, and it applies the **MVC** (Model View Controller) method. At the moment we are using Puma (Rails in-built server) to run the app and Heroku to host and run it. Finally, our database is Postgresql (a SQL database). 
+
 
 *9. Explain the different high-level components (abstractions) in your App.*
 
@@ -366,6 +387,23 @@ To finish with, we did a quick, efficient google search for every function we di
 *19. Provide an overview and description of your Testing process.*
 
 *20. Discuss and analyse requirements related to information system security.*
+
+There are several common threats for web applications:
+
+..* Phishing Attack: threats designed to look like legitimate emails, with the goal of acquiring sensitive information.
+..* Cross-Site Scripting (XSS): alterations of "*the function of an app by injecting new “script” and forcing the application to execute it, in turn giving them control of a website or application and all content seen by users*" ([Palac](https://bigdata-madesimple.com/7-common-security-threats-to-web-cloud-based-apps-and-how-to-counter-them/), 2018). It doesn´t target the web but the users. A way of solving XSS attacks is having a **content security policy** to determine which scripts can’t be loaded by the app.
+..* Injection Attacks: A good example is SQL Injection (SQLI), SQL code to manipulate database back-ends in what is called hijacking. Specially vulnerable are forms and sessions if data is stored in them. It helps to apply the **principle of least privilege** (POLP), which consists in granting users only the permissions they strictly need.
+..* Malicious Software (Malware): "*any piece of software that was written with the intent of doing harm to data, devices or to people*" [(Lemonnier, 2016)](https://www.avg.com/en/signal/what-is-malware). Spyware, Viruses, Ransomware, Worms, and Trojans are malware. **Firewalls** shoud be installed and ketp updated to combat malware.
+....*Backdoor Attack: a kind of malware in which "*a backdoor circumvents login authentication to enter a system*" ([Svartman](https://www.imperva.com/blog/top-9-web-app-threats/), 2018).
+..* Cross-Site Request Forgery (CSRF): "*can transfer funds in an authorized manner and change passwords, in addition to stealing session cookies and business data*" (Svartman, 2018).
+..* Web Scraping: seems to be a special threat for ecommerce sites. It is not bad itself, but may affect data analytics, and some scraping programmes deploy bots to steal database information. A way to avoid the former is providing an **API** which gives non sensible data about your site.
+
+
+To prevent from injection attacks, we **encrypt every password**, **never store credit card** information, and apply **POLP** (our users can only edit their own profiles and listings, and can only access the app main functions after logging in). In addition, **Devise** is in charge of authentication. Moreover, **payment details is handled by the Stripe service**. 
+
+Furthermore, **Rails** has helper methods which prevent SQL injections. Another common attack vectors of web sites are forms. For Rails 5.2 encrypted cookies and sessions are protected using AES GCM encryption. 
+
+Some powerful tools for Malware Scanning are listed [here](https://geekflare.com/website-malware-scanning/).
 
 *21. Discuss methods you will use to protect information and data.*
 

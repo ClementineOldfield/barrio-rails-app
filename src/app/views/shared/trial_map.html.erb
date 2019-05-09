@@ -1,0 +1,32 @@
+<script>
+    function geocode(){
+    var offers = "<%= others_offers %>";
+    console.log(offers)
+    for (var i = 0; i < offers.length; i++){
+      axios.get("https://maps.googleapis.com/maps/api/geocode/json", {
+        params:{
+          address: offers,
+          key:"<%= Rails.application.credentials.google_maps %>" 
+      }
+    })
+    .then(function(response){
+      //  Log full response  
+      console.log(response);      
+      // Geometry 
+      offer_lat  =  response.data.results[0].geometry.offers[i].lat;
+      console.log(lat);
+      offer_lng  =  response.data.results[0].geometry.offers[i].lng; 
+      console.log(lng);       
+      var offer_location = {lat: offer_lat, lng: offer_lng};
+      var marker = new google.maps.Marker({position: offer_location, icon: iconBase + 'library_maps.png', map: map});
+    })
+    .catch(function(error){
+      console.log(error); 
+    });
+    
+  }
+  console.log(lat);
+  console.log(lng)
+  geocode();
+  }
+  </script>
