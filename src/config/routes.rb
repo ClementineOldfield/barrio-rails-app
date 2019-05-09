@@ -34,8 +34,8 @@ Rails.application.routes.draw do
   get "/purchases/:id", to: "purchases#index", as: "purchase_history"
 
   get "/listing/:id/confirmation", to: "listings#confirmation", as: "confirmation"
-  post "/listing/:id/archive", to: "listings#deactivate", as: "deactivate_listing"
-  post "/listing/:id/unarchive", to: "listings#reactivate", as: "reactivate_listing"
+  patch "/listing/:id/archive", to: "listings#deactivate", as: "deactivate_listing"
+  patch "/listing/:id/unarchive", to: "listings#reactivate", as: "reactivate_listing"
 
   get "/dashboard/favourites", to: "pages#favourites", as: "favourites"
 

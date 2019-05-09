@@ -39,11 +39,10 @@ describe("Listing CRUD resource for user", function() {
   });
 
   it("Archive a listing", function() {
-    cy.visit("users/11")
-    cy.get(".listing-link").first().click()
-    cy.get(".edit-listing-link").click()
-    cy.get(".archive-link").click()
     
+    cy.visit("/listings/21/edit")
+    cy.get(".archive-link").click()
+    cy.contains("You have successfully deactivated your listing").should("exist")
   });
 
 });

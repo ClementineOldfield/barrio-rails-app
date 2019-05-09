@@ -3,7 +3,7 @@
 <ul>
   <% @purchases.each do |purchase| %>
     <ul>
-      <li><%= purchase.listing.title %></li>
+      <li><%= sanitize purchase.listing.title %></li>
       <li><%= purchase.created_at %></li>
       <li><%= purchase.total_amount %></li>
     </ul>

@@ -39,9 +39,9 @@
 <% end %>
 
 <% if @listing.active %>
-  <%= link_to "Archive this listing", deactivate_listing_path, class: "archive-link", method: :deactivate %>
+  <%= link_to "Archive this listing", deactivate_listing_path, class: "archive-link", method: :patch %>
 <% else %>
-  <%= link_to "Reactivate this listing", reactivate_listing_path, class: "reactivate-link", method: :reactivate %>
+  <%= link_to "Reactivate this listing", reactivate_listing_path, class: "reactivate-link", method: :patch %>
 <% end %>
 
 <%= link_to "Back", :back %>
