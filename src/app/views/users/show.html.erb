@@ -1,35 +1,40 @@
 <div class="profile">
-  <div class="section">
-    <div class="image-and-name">
-      <div class="profile-image">
-        <%= image_tag @user.image if @user.image.attached? %>
-      </div>
-      <h3><%= @user.first_name.capitalize %></h3>
-      <% if @user.id == current_user.id %>
-        <%= link_to "Edit profile", edit_user_path %>
-      <% end %>
-    </div>
-  </div>
-  <div class="section">
-    <div class="bio">
-      <div>
-        <h1>About <%= @user.first_name.capitalize %></h1>
-        <p><%= @user.bio %></p>
+  <div class="flex-container">
+    <div class="section">
+      <div class="image-and-name">
+        <div class="profile-image">
+          <%= image_tag @user.image if @user.image.attached? %>
+        </div>
+        <h3><%= @user.first_name.capitalize %></h3>
+        <% if @user.id == current_user.id %>
+          <%= link_to "Edit profile", edit_user_path %>
+        <% end %>
       </div>
     </div>
-  </div>
-  <div class="section">
-    <% if @user.id == current_user.id%>
+    <div class="section">
+      <div class="bio">
+        <div>
+          <h1>About <%= @user.first_name.capitalize %></h1>
+          <p><%= @user.bio %></p>
+        </div>
+      </div>
+    </div>
+    <div class="section">
       <% if @user.id == current_user.id%>
-        <%= link_to new_listing_path do%>
-          <%= fa_icon "plus-circle", class: "plus-circle"%>
-          <p>Create a new listing</p>
+        <% if @user.id == current_user.id%>
+          <%= link_to new_listing_path do%>
+            <%= fa_icon "plus-circle", class: "plus-circle"%>
+            <p>Create a new listing</p>
+          <%end%>
         <%end%>
       <%end%>
-    <%end%>
-    <div class="list">
-    <%= render "shared/listings", header: "#{@user.first_name.capitalize}'s Listings", listings: @last_three %>
+      <div class="list active-list">
+        <%= render "shared/listings", header: "#{@user.first_name.capitalize}'s Listings", listings: @last_three %>
+        <%= link_to "See all", user_listings_path(@user) %>
+      </div>
+    </div>
   </div>
+  <div class="archived-listings">
+    <%= link_to "See your Past listings", inactive_listings_path(current_user) %>
   </div>
-   <%= link_to "See all", user_listings_path(@user) %>
 </div>

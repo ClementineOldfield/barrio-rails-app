@@ -88,6 +88,7 @@ class ListingsController < ApplicationController
     @listing.update(
       active: true
     )
+    flash[:notice] = "You have succesfully reactivated your listing."
     redirect_to user_path(current_user.id)
   end
 

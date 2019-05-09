@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   get "/privacy", to: "pages#privacy", as: "privacy"
 
   get "/users/:id/listings", to: "users#listings", as: "user_listings"
+  get "/users/:id/listings/archive", to: "users#inactive_listings", as: "inactive_listings"
+
   get "/", to: "pages#index", as: "root"
   get "/contact", to: "pages#contact", as: "contact"
   get "/about", to: "pages#about", as: "about"
