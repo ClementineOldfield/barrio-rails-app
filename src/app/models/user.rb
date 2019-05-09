@@ -10,8 +10,27 @@ class User < ApplicationRecord
   has_many :favourites
   has_many :favourite_listings, through: :favourites, source: :listing
   has_one_attached :image
-
   has_many :carts
+
+  # instead of deleting, indicate the user requested a delete & timestamp it  
+  def soft_delete  
+    update_attribute(:deleted_at, Time.current)
+    listings.each do |listing|
+      listing.update(
+        active: false
+      )
+    end 
+  end  
+  
+  # ensure user account is active  
+  def active_for_authentication?  
+    super && !deleted_at  
+  end  
+  
+  # provide a custom message for a deleted account   
+  def inactive_message   
+  	!deleted_at ? super : :deleted_account  
+  end  
 end
 
 

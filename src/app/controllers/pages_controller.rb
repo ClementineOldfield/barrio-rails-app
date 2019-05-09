@@ -45,7 +45,7 @@ class PagesController < ApplicationController
   end
 
   def set_listings
-    @listings = Listing.all
+    @listings = Listing.all.where(active:true)
   end
 
   def set_categories

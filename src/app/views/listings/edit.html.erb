@@ -27,10 +27,17 @@
     <%= f.number_field :quantity, autofocus: true %>
   </div>
 
+  <div class="field">
+    <%= f.label :category_id %>
+    <%= f.collection_select :category_id, @categories, :id, :name %>
+  </div>
+
   <div class="actions">
     <%= f.submit "Update"  %>
   </div>
 
 <% end %>
+
+<%= link_to "Archive this listing", archive_listing_path, method: :archive %>
 
 <%= link_to "Back", :back %>

@@ -7,7 +7,7 @@ one:
   price: 1
   category: one
   quantity: 1
-  is_available: false
+  active: false
 
 two:
   user: two
@@ -16,4 +16,4 @@ two:
   price: 1
   category: two
   quantity: 1
-  is_available: false
+  active: false

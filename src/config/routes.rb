@@ -7,6 +7,7 @@ Rails.application.routes.draw do
         sessions: 'users/sessions',
         registrations: 'users/registrations'
       }
+
   resources :listings
   resources :users
   resources :pages
@@ -31,12 +32,10 @@ Rails.application.routes.draw do
   get "/purchases/:id", to: "purchases#index", as: "purchase_history"
 
   get "/listing/:id/confirmation", to: "listings#confirmation", as: "confirmation"
+  post "/listing/:id/archive", to: "listings#archive", as: "archive_listing"
 
   get "/dashboard/favourites", to: "pages#favourites", as: "favourites"
 
-  # TEST ROUTES
-
-  post "/test/seed/user", to: "tests#seed_user"
 end
 
 

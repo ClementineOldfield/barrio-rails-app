@@ -1,4 +1,4 @@
-<%= button_to 'Edit Listing', edit_listing_path if @listing.user.id == current_user.id%>
+<%= link_to 'Edit Listing', edit_listing_path, class: "edit-listing-link" if @is_owner %>
 
 <div class="listing flex-container">
   <div class="section">

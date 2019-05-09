@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_07_030724) do
+ActiveRecord::Schema.define(version: 2019_05_09_003449) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,15 +77,6 @@ ActiveRecord::Schema.define(version: 2019_05_07_030724) do
     t.index ["user_id"], name: "index_favourites_on_user_id"
   end
 
-  create_table "images", force: :cascade do |t|
-    t.string "url"
-    t.string "imageable_type"
-    t.bigint "imageable_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["imageable_type", "imageable_id"], name: "index_images_on_imageable_type_and_imageable_id"
-  end
-
   create_table "listings", force: :cascade do |t|
     t.bigint "user_id"
     t.string "title"
@@ -93,7 +84,7 @@ ActiveRecord::Schema.define(version: 2019_05_07_030724) do
     t.integer "price"
     t.bigint "category_id"
     t.integer "quantity"
-    t.boolean "is_available"
+    t.boolean "active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_listings_on_category_id"
@@ -122,6 +113,7 @@ ActiveRecord::Schema.define(version: 2019_05_07_030724) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.datetime "deleted_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
