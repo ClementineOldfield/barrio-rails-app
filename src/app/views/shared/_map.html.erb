@@ -34,9 +34,6 @@
     })
     .catch(function(error){
       console.log(error); 
-
-    var offers = <%= offers %>;
-    console.log(offers)
     });
   }
   console.log(lat);
@@ -52,9 +49,10 @@
     document.getElementById('map'), {zoom: 15, center: maplocation});
     // The marker, positioned at location
     var marker = new google.maps.Marker({position: maplocation, map: map});
+    // More than one marker, being as many markers as offers around the location
 
     // Customize the markers
-    var iconBase =
+    <%# var iconBase =
         'https://developers.google.com/maps/documentation/javascript/examples/full/images/';
         // Two different kinds of markers
     var icons = {
@@ -68,7 +66,7 @@
         // Identification of each location with either the current user´s one or the others´. 
     var features = [
       {
-        position: new google.maps.LatLng(lat, lng),
+        position: new google.maps.LatLng(-33.91721, 151.22630),
         type: 'own_location'
       }, {
         position: new google.maps.LatLng(-33.91539, 151.22820),
@@ -77,7 +75,7 @@
         position: new google.maps.LatLng(-33.91747, 151.22912),
         type: 'info'
       },
-    ];
+    ]; %>
     
     // We miss an array of all the other users´locations.
 

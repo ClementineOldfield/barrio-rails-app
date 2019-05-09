@@ -169,9 +169,9 @@ header, .spacer {
   height: 110px;
   transition: 1s;
 
-  &.notification {
-    height: 128px;
-  }
+  // &.notification {
+  //   height: 128px;
+  // }
 }
 
 @media(min-width: $med){
