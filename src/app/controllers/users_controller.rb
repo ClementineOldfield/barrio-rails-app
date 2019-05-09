@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_user, only: [:show, :edit, :update, :destroy, :listings]
-  before_action :authorize_user, only: [:edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :listings, :inactive_listings]
+  before_action :authorize_user, only: [:edit, :update, :destroy, :inactive_listings]
   before_action :set_listings, only: [:show]
 
   def update 
@@ -34,6 +34,10 @@ class UsersController < ApplicationController
     # if @user.listings.body > @excerpt 
     #   @excerpt
     # end
+  end
+
+  def inactive_listings
+    @archived_listings = current_user.listings.where(active: false)
   end
 
   def given_address

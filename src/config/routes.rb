@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   get "/privacy", to: "pages#privacy", as: "privacy"
 
   get "/users/:id/listings", to: "users#listings", as: "user_listings"
+  get "/users/:id/listings/archive", to: "users#inactive_listings", as: "inactive_listings"
+
   get "/", to: "pages#index", as: "root"
   get "/contact", to: "pages#contact", as: "contact"
   get "/about", to: "pages#about", as: "about"
@@ -32,7 +34,8 @@ Rails.application.routes.draw do
   get "/purchases/:id", to: "purchases#index", as: "purchase_history"
 
   get "/listing/:id/confirmation", to: "listings#confirmation", as: "confirmation"
-  post "/listing/:id/archive", to: "listings#archive", as: "archive_listing"
+  patch "/listing/:id/archive", to: "listings#deactivate", as: "deactivate_listing"
+  patch "/listing/:id/unarchive", to: "listings#reactivate", as: "reactivate_listing"
 
   get "/dashboard/favourites", to: "pages#favourites", as: "favourites"
 

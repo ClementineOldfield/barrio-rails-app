@@ -1,7 +1,7 @@
 class ListingsController < ApplicationController
-  before_action :set_listing, only: [:show, :confirmation, :edit, :update, :archive]
+  before_action :set_listing, only: [:show, :confirmation, :edit, :update, :deactivate, :reactivate]
   before_action :authorize_user, only: [:edit, :update, :destroy]
-  before_action :is_owner?, only: [:show]
+  before_action :is_owner?, only: [:show, :edit]
   before_action :set_categories, only: [:edit, :new]
 
   def index
@@ -57,7 +57,11 @@ class ListingsController < ApplicationController
 
   def new; end
 
-  def edit; end
+  def edit
+    unless @listing.active or @is_owner
+      redirect_to dash_path
+    end
+  end
 
   def update
     # new_params = params[:listing]
@@ -71,10 +75,21 @@ class ListingsController < ApplicationController
     redirect_to listing_path
   end
   
-  def archive
+  #Decided not to use .toggle here to be more explicitly RESTful 
+  def deactivate
     @listing.update(
       active: false
     )
+    flash[:notice] = "You have successfully deactivated your listing."
+    redirect_to user_path(current_user.id)
+  end
+
+  def reactivate
+    @listing.update(
+      active: true
+    )
+    flash[:notice] = "You have successfully reactivated your listing."
+    redirect_to user_path(current_user.id)
   end
 
   def set_favourite

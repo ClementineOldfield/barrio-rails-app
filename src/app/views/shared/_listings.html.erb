@@ -7,7 +7,7 @@
   <% listings.each do |listing| %>
     <%= link_to listing_path(listing.id), class: "listing-link" do %>
       <div class="card">   
-        <h4><%= listing.title %></h4>
+        <h4><%= sanitize listing.title %></h4>
         <% unless request.path.start_with?('/users') %>
           <div class="user-location">
             <%= material_icon.location_on %>
@@ -18,7 +18,7 @@
           <%= image_tag(listing.image, class: "listing-image") if listing.image.attached? %>
         </div>
         <p>
-          <%= listing.body[0..100] + "..." %>
+          <%= sanitize listing.body[0..100] + "..." %>
         </p>
       </div>
     <% end %>
