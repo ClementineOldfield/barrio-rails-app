@@ -59,7 +59,7 @@ if Listing.count == 0
       price: 1000,
       category_id: rand(1..3),
       quantity: rand(3..10),
-      is_available: true
+      active: true
     )
     Listing.find(i).image.attach(io: File.open('app/assets/images/bread.jpeg'), filename: 'bread.jpeg', content_type: 'image/jpeg')
     p "Created Listing #{i}"

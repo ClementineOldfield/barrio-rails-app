@@ -20,12 +20,21 @@ describe("User edit & delete", function () {
 
   it("Edit user account details", function() {
     cy.visit("/edit")
-    cy.get("input[name='user[first_name]'").type("Test")
-    cy.get("input[name='user[last_name]'").type("McTest")
-    cy.get("input[name='user[email]']").type("new@email.com")
+    cy.get("input[name='user[first_name]'").type("{selectall}Test")
+    cy.get("input[name='user[last_name]'").type("{selectall}McTest")
+    cy.get("input[name='user[email]']").type("{selectall}new@email.com")
     cy.get("input[name='user[current_password]'").type("123456")
-    cy.get("input[type='submit'").click()
-    
+    cy.get("input[value='Update']").click()
+    cy.get("input[value='Test']").should("exist")
+    cy.get("input[value='McTest']").should("exist")
+    cy.get("input[value='new@email.com']").should("exist")
+  });
+
+  it.only("Delete user", function() {
+    cy.visit("/edit")
+    cy.get("input[value='Cancel my account']").click()
+    cy.location("pathname").should("eq", "/")
+    cy.contains("Bye! Your account has been successfully cancelled.").should("exist")
   });
 
 });
