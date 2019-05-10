@@ -21,6 +21,6 @@ describe("Purchasing items", function() {
     cy.get("input[name='quantity']").type("{selectall}3")
     cy.contains("Buy Now").click()
     cy.location("pathname").should("eq", "/listing/4/confirmation")
-    cy.contains("Quantity: 3").should("exist")
+    cy.contains("Quantity: 3 ").should("exist")
   });
 });

@@ -6,7 +6,7 @@ class ConversationsController < ApplicationController
     sent = Conversation.where(sender_id: current_user.id)
     received = Conversation.where(recipient_id: current_user.id)
     @conversations = (sent + received).sort_by {|c| c.messages.map{|m| m.created_at} }.reverse
-    params[:conversation].present? ? @conversation = @conversations.find(params[:conversation]) : @conversation = @conversations.first
+    params[:conversation].present? ? @conversation = @conversations.find(params[:conversation]).first : @conversation = @conversations.first
   end
 
   def create
