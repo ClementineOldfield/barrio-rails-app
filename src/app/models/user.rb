@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :favourite_listings, through: :favourites, source: :listing
   has_one_attached :image
   has_many :carts
+  has_many :notifications
   has_many :conversations
   has_many :messages
 

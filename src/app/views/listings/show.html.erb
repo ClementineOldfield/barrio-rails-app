@@ -20,25 +20,26 @@
     </p>
 
     <div class="flex-container">
+      <% if @listing.user_id != current_user.id%>
+        <%= form_with url: confirmation_path(quantity: :quantity), method: :get, local: true do |form| %>
+          <div class="price-container">
+            <p class="price" >$<%= number_with_precision(@listing.price / 100.0, precision: 2) %></p>
+          </div>
 
-      <%= form_with url: confirmation_path(quantity: :quantity), method: :get, local: true do |form| %>
-        <div class="price-container">
-          <p class="price" >$<%= number_with_precision(@listing.price / 100.0, precision: 2) %></p>
-        </div>
+          <div class="quantity-container">
+            <%= form.number_field :quantity, value: 1,  in: 1..@listing.quantity %>
+          </div>
 
-        <div class="quantity-container">
-          <%= form.number_field :quantity, value: 1,  in: 1..@listing.quantity %>
-        </div>
+          <div class="buttons-container"> 
+            <%= form.submit "Buy Now" %>
+          </div>
+        <% end %>
 
-        <div class="buttons-container"> 
-          <%= form.submit "Buy Now" %>
-        </div>
-      <% end %>
-
-      <% if current_user.favourite_listings.include? @listing %>
-        <%= button_to "Remove from Favourites", unset_favourite_path, method: :delete, params: { listing: @listing } %>
-      <% else %>
-        <%= button_to "Add to Favourites", set_favourite_path, method: :post, params: { listing: @listing } %>
+        <% if current_user.favourite_listings.include? @listing %>
+          <%= button_to "Remove from Favourites", unset_favourite_path, method: :delete, params: { listing: @listing, id: @listing.id } %>
+        <% else %>
+          <%= button_to "Add to Favourites", set_favourite_path, method: :post, params: { listing: @listing, id: @listing.id } %>
+        <% end %>
       <% end %>
     </div>
   </div>

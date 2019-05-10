@@ -1,14 +1,17 @@
 class ListingsController < ApplicationController
-  before_action :set_listing, only: [:show, :confirmation, :edit, :update, :deactivate, :reactivate]
+  before_action :set_listing, only: [:show, :confirmation, :edit, :update, :deactivate, :reactivate, :set_favourite, :unset_favourite]
   before_action :authorize_user, only: [:edit, :update, :destroy]
   before_action :is_owner?, only: [:show, :edit]
   before_action :set_categories, only: [:edit, :new]
+ 
 
   def index
     @listings = Listing.all
   end
 
-  def show; end
+  def show
+    
+  end
 
   def confirmation
     @quantity = params[:quantity].to_i
@@ -39,6 +42,14 @@ class ListingsController < ApplicationController
     @cart.update(
       stripe_session_id: stripe_session.id
     )
+
+    user = User.find(@listing.user_id)
+    byebug
+    user.notifications.create(
+      title: "Your listing has been purchased",
+      body: "#{current_user.first_name} has bought your listing #{@listing.title}",
+      read: false,
+    )
   end
 
   def create
@@ -63,6 +74,7 @@ class ListingsController < ApplicationController
     unless @listing.active or @is_owner
       redirect_to dash_path
     end
+
   end
 
   def update
@@ -74,7 +86,18 @@ class ListingsController < ApplicationController
     #   price: new_params[:price],
     #   quantity: new_params[:quantity]
     # )
+    
+    favourited_users = @listing.favourited_users
+    favourited_users.each do |user| 
+      user.notifications.create(
+        title: "Someone edited your favourite",
+        body: "#{current_user.first_name} has edited your favourite #{listing.title}",
+        read: false,
+      )
+    end
+
     redirect_to listing_path
+
   end
   
   #Decided not to use .toggle here to be more explicitly RESTful 
@@ -84,6 +107,15 @@ class ListingsController < ApplicationController
     )
     flash[:notice] = "You have successfully deactivated your listing."
     redirect_to user_path(current_user.id)
+
+    favourited_users = @listing.favourited_users
+    favourited_users.each do |user|
+      user.notifications.create(
+        title: "Someone deactivated your favourite",
+        body: "#{current_user.first_name} has deactivated your favourite #{@listing.title}",
+        read: false,
+      )
+    end
   end
 
   def reactivate
@@ -91,6 +123,16 @@ class ListingsController < ApplicationController
       active: true
     )
     flash[:notice] = "You have successfully reactivated your listing."
+
+    favourited_users = @listing.favourited_users
+    favourited_users.each do |user|
+      user.notifications.create(
+        title: "Someone reactivated your favourite",
+        body: "#{current_user.first_name} has reactivated your favourite #{@listing.title}",
+        read: false,
+      )
+    end
+
     redirect_to user_path(current_user.id)
   end
 
@@ -100,11 +142,29 @@ class ListingsController < ApplicationController
       user_id: current_user[:id]
     )
     favourite.save!
+    user = User.find(@listing.user_id)
+    # notificationable = @listing.favourited_users.find(current_user.id)
+    @listing.notifications.create(
+      user_id: user.id,
+      title: "Someone FAV your listing",
+      body: "#{current_user.first_name} is interested in your listing #{@listing.title}",
+      read: false,
+    )
+    byebug
     redirect_to listing_path params[:listing]
   end
 
   def unset_favourite
     current_user.favourite_listings.delete params[:listing]
+   
+
+    user = User.find(@listing.user_id)
+    user.notifications.create(
+      title: "Your listing lost one FAV",
+      body: "#{current_user.first_name} is not interested in your listing #{@listing.title} any more",
+      read: false,
+    )
+
     redirect_to listing_path params[:listing]
   end
 
