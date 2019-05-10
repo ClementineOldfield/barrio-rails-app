@@ -1,47 +1,27 @@
 <%= render "navbar" %>
 
-<%# <a href="//www.123formbuilder.com/form-4787252/contact-form" class="blueLink13">Contact us</a> %>
+<h2>Contact Us</h2>
 
-<%# <?php
-$action=$_REQUEST['action'];
-if ($action=="")    /* display the contact form */
-    {
-    ?> %>
-    <div class="contact-form">
-      <form  action="" method="GET" enctype="multipart/form-data">
-        <input type="hidden" name="action" value="submit">
-        Your name:
-        <input class="contact-name" name="name" type="text" value=""/>
-        Your email:
-        <input class="contact-email" name="email" type="text" value=""/>
-        Your message:
-        <textarea class="contact-message" name="message" rows="7" cols="30"></textarea>
-        <input type="submit" value="Send email"/>
-      </form>
-    </div>
-    <%# <?php
-    } 
-else                /* send the submitted data */
-    {
-    $name=$_REQUEST['name'];
-    $email=$_REQUEST['email'];
-    $message=$_REQUEST['message'];
-    if (($name=="")||($email=="")||($message==""))
-        {
-        echo "All fields are required, please fill <a href=\"\">the form</a> again.";
-        }
-    else{        
-        $from="From: $name<$email>\r\nReturn-path: $email";
-        $subject="Message sent using your contact form";
-        mail("barriorailsapp.com", $subject, $message, $from);
-        echo "Email sent!";
-        }
-    }  
-?> %>
+<%= form_with url: contact_success_path, local: true do |f| %>
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name, autofocus: true %>
+  </div>
 
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </div>
 
+  <div class="field">
+    <%= f.label :message %>
+    <%= f.text_area :message %>
+  </div>
 
+  <div class="actions">
+    <%= f.submit "Send"  %>
+  </div>
 
-<%# <!-- www.123formbuilder.com script begins here -->
-<script type="text/javascript" defer src="//www.123formbuilder.com/embed/4788420.js" data-role="form" data-default-width="650px"></script>
-<!-- www.123formbuilder.com script ends here --> %>
+<% end %>
+
+<%= link_to "Back", :back %>

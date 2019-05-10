@@ -55,7 +55,9 @@ class ListingsController < ApplicationController
     redirect_to listing_path(@listing.id)
   end
 
-  def new; end
+  def new
+    @listing = Listing.new
+  end
 
   def edit
     unless @listing.active or @is_owner

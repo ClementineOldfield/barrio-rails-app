@@ -20,6 +20,7 @@ Rails.application.routes.draw do
 
   get "/", to: "pages#index", as: "root"
   get "/contact", to: "pages#contact", as: "contact"
+  get "/contact/success", to: "pages#contact_success", as: "contact_success"
   get "/about", to: "pages#about", as: "about"
   get "/dashboard", to: "pages#dash", as: "dash"
 
