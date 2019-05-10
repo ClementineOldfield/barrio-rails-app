@@ -1,0 +1,19 @@
+<div class="messages-page">
+  <h2>Messages</h2>
+
+  <div class="flex-container">
+    <div class="section">
+      <% @conversations.each do |conversation| %>
+        <%= link_to conversations_path(id: current_user.id, conversation: conversation ) do %>
+          <div class="conversation">
+            <%= conversation.sender.first_name %>
+            <p> <%= conversation.messages.last.created_at %> </p>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="section">
+      <%= render "messages", conversation: @conversation %>
+    </div>
+  </div>
+</div>

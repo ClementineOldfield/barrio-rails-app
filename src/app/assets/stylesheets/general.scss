@@ -36,12 +36,38 @@ main {
   width: 90%;
 }
 
+h2.home,
+h3.home {
+  position: absolute;
+  color: #fff;
+  z-index: 1;
+  left: 44px;
+  opacity: .9;
+}
+
+h3.home {
+  top: 220px;
+}
+
+.hero-container {
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+  position: relative;
+
+  .hero {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+  }
+}
+
 .logo {
   width: 200px;
 }
 
 form {
-  input {
+  input, textarea {
     display: block;
     padding: 5px;
     border-radius: 3px;

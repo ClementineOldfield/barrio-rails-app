@@ -12,6 +12,7 @@ class PagesController < ApplicationController
 
   def about; end
   def contact; end
+  def contact_success; end
 
   def privacy; end
 
