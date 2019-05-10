@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :favourite_listings, through: :favourites, source: :listing
   has_one_attached :image
   has_many :carts
+  has_many :notifications
 
   # instead of deleting, indicate the user requested a delete & timestamp it  
   def soft_delete  

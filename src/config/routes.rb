@@ -39,6 +39,7 @@ Rails.application.routes.draw do
 
   get "/dashboard/favourites", to: "pages#favourites", as: "favourites"
 
+
 end
 
 

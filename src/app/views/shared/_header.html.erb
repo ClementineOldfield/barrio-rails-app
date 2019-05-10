@@ -9,8 +9,11 @@
           <%= image_tag "logo-green.png", class: "logo" %>
         </div>
       <% end %>
-      <div class="searchbar">
+    <div class="searchbar">
     <%= render "shared/searchbar" if user_signed_in? and current_user.address != nil %>
+    </div>
+    <div class="notifications">
+    <%= render "shared/notifications" if user_signed_in? and current_user.address != nil %>
     </div>
       <div class="dropdown">
         <div id="dropdown-button" class="dropdown-link">

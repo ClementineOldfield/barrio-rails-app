@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_09_003449) do
+ActiveRecord::Schema.define(version: 2019_05_10_004448) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -91,6 +91,19 @@ ActiveRecord::Schema.define(version: 2019_05_09_003449) do
     t.index ["user_id"], name: "index_listings_on_user_id"
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.string "notificationable_type"
+    t.bigint "notificationable_id"
+    t.boolean "read"
+    t.bigint "user_id"
+    t.string "title"
+    t.string "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["notificationable_type", "notificationable_id"], name: "notification_short_name"
+    t.index ["user_id"], name: "index_notifications_on_user_id"
+  end
+
   create_table "purchases", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "listing_id"
@@ -126,6 +139,7 @@ ActiveRecord::Schema.define(version: 2019_05_09_003449) do
   add_foreign_key "favourites", "users"
   add_foreign_key "listings", "categories"
   add_foreign_key "listings", "users"
+  add_foreign_key "notifications", "users"
   add_foreign_key "purchases", "listings"
   add_foreign_key "purchases", "users"
 end
