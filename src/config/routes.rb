@@ -37,7 +37,8 @@ Rails.application.routes.draw do
   patch "/listing/:id/archive", to: "listings#deactivate", as: "deactivate_listing"
   patch "/listing/:id/unarchive", to: "listings#reactivate", as: "reactivate_listing"
 
-  get "/dashboard/favourites", to: "pages#favourites", as: "favourites"
+  get "/user/:id/messages", to: "conversations#index", as: "conversations"
+  get "/messages/new", to: "messages#new", as: "new_message"
 
 end
 
