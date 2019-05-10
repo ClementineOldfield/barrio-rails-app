@@ -2,7 +2,6 @@ class AddressesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_defaults, only: [:new]
   before_action :redirect_if_address_exists, only: [:new]
-  # skip_before_action :verify_authenticity_token
 
   def index
     concat_address
@@ -15,10 +14,6 @@ class AddressesController < ApplicationController
     @states = Address.states.keys
     @show_errors = false if params[:show_errors] == nil
 
-  end
-
-  def concat_address
-    @concat_address = [current_user.address.street_1, current_user.address.street_2, current_user.address.suburb, current_user.address.state, current_user.address.postcode].compact.join(' ')
   end
 
   def others_offers
@@ -52,6 +47,10 @@ class AddressesController < ApplicationController
   end
 
   private
+
+  def concat_address
+    @concat_address = [current_user.address.street_1, current_user.address.street_2, current_user.address.suburb, current_user.address.state, current_user.address.postcode].compact.join(' ')
+  end
 
   def address_params
     params.require(:address).permit(:street_1, :suburb, :state, :postcode)

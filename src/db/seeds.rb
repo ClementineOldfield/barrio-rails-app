@@ -91,25 +91,48 @@ if Address.count == 0
       state: states[rand(0...states.length)],
       postcode: Faker::Address.postcode,
       user: user
-      # latitude: ((Geocoder.search(
-      #   user.address[:street1], 
-      #   user.address[:street2], 
-      #   user.address[:suburb], 
-      #   user.address[:state], 
-      #   user.address[:postcode]
-      # ).compact.join(', ')).first.coordinates)[0],
-      # longitude: ((Geocoder.search(
-      #   user.address[:street1], 
-      #   user.address[:street2], 
-      #   user.address[:suburb], 
-      #   user.address[:state], 
-      #   user.address[:postcode]
-      # ).compact.join(', ')).first.coordinates)[1]
-      )
+    )
  
-     p "Created Address"
+    p "Created Address"
   end
-
 end
 
-# new_address = Address.new( street_1: Faker::Address.street_name, street_2: Faker::Address.secondary_address, suburb: Faker::Address.city, state: Faker::Address.state, postcode: Faker::Address.postcode, latitude: (Geocoder.search("#{[:street1, :street2, :suburb, :state, :postcode].compact.join(', ')}").first.coordinates)[0], longitude: (Geocoder.search("#{[:street1, :street2, :suburb, :state, :postcode].compact.join(', ')}").first.coordinates)[1])
+if Conversation.count == 0
+  users.each do |user|
+    (1..10).each do |i|
+      unless i == user.id 
+        conversation = Conversation.new(
+          sender_id: user.id,
+          recipient_id: i
+        ) 
+        conversation.save!
+        p "created conversation #{i}"
+      end
+    end
+  end
+end
+
+conversations = Conversation.all
+
+if Message.count == 0
+  conversations.each do |conversation|
+    (1..5).each do |i|
+      message = Message.new(
+        conversation_id: conversation.id,
+        body: "Hey, how's it going?",
+        read: false
+      )
+      if i % 2 == 0
+        message.update(
+          user_id: conversation.sender.id
+        )
+      else
+        message.update(
+          user_id: conversation.recipient.id
+        )
+      end
+      p "created message"
+      p message
+    end
+  end
+end

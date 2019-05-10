@@ -1,6 +1,6 @@
 <h2>Create Listing</h2>
 
-<%= form_with model: Listing.new, local: true do |f| %>
+<%= form_with model: @listing, local: true do |f| %>
   <div class="field">
     <%= f.label :featured_image %>
     <%= f.file_field :featured_image, accept: "image/png,image/gif,image/jpeg,image/jpg" %>
