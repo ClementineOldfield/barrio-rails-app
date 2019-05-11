@@ -41,6 +41,7 @@ Rails.application.routes.draw do
   get "/user/:id/messages", to: "conversations#index", as: "conversations"
   get "/messages/new", to: "messages#new", as: "new_message"
 
+
 end
 
 

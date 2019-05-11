@@ -115,7 +115,7 @@ lorem ipsum
 
 ### First iteration of wireframes on paper
 
-![First iteration of wireframes](docs/wireframes-paper-01.png)
+![First iteration of wireframes](docs/wireframes/wireframes-paper-01.png)
 
 ## Database Entity Relationship Diagrams
 
@@ -174,9 +174,9 @@ The following chart can help understand everything:
 
 The app architecture must be designed following three layers:
 
-..1. Presentation Layer: básically UI or the location of the app features, and color palette and themes. Is the way the app is presented to the end consumer.
-..2. Business Layer: how the app proposes the value exchange to the user. Barrio displays the different listings and gives the buy and favourite options to the users. If the purchase decision is positive, then Stripe will be used to manage the payment. 
-..3. Data Layer: according to [magora](https://magora-systems.com/mobile-app-development-architecture/), "*[t]his layer complies with the app requirements to facilitate secure data transactions. You must design this dimension so that it can be rescaled over time as business needs change*".
+..* Presentation Layer: básically UI or the location of the app features, and color palette and themes. Is the way the app is presented to the end consumer.
+..* Business Layer: how the app proposes the value exchange to the user. Barrio displays the different listings and gives the buy and favourite options to the users. If the purchase decision is positive, then Stripe will be used to manage the payment. 
+..* Data Layer: according to [magora](https://magora-systems.com/mobile-app-development-architecture/), "*[t]his layer complies with the app requirements to facilitate secure data transactions. You must design this dimension so that it can be rescaled over time as business needs change*".
 
 As we were asked to do a Rails project, there was no space for native apps but to use a **multi-platform framework** as ROR. Rails´ benefits include: many **ready made and efficient modules**; it’s **open source**; it’s **cost effective**; it’s **scaleable**, and it applies the **MVC** (Model View Controller) method. At the moment we are using Puma (Rails in-built server) to run the app and Heroku to host and run it. Finally, our database is Postgresql (a SQL database). 
 
@@ -384,28 +384,36 @@ To finish with, we did a quick, efficient google search for every function we di
 
 *18. Provide an overview and description of your Source control process.*
 
+According to [Feliciano](https://www.codenewbie.org/blogs/what-is-source-control) (2015) we can refer to the **source**, which is the "*group of files that you are working on*" (in our case, the code of Barrio), and the **control** or "*access to your project at certain points in its development, allowing for more detailed editing*".
+
+For source control we have used [GitHub](https://github.com/). The very first thing we did was creating a new repo with one GitHub account and make the other one join as a collaborator. Both of us had our own branch appart from the master one.
+
+Each time one of us finished one unit of work (being that a sprint or one task within a sprint),both would apply the three git commands of add, commit and push. Then we would fix conflicts, discussing them, merge, and pull.
+
 *19. Provide an overview and description of your Testing process.*
 
 *20. Discuss and analyse requirements related to information system security.*
 
 There are several common threats for web applications:
 
-..* Phishing Attack: threats designed to look like legitimate emails, with the goal of acquiring sensitive information.
-..* Cross-Site Scripting (XSS): alterations of "*the function of an app by injecting new “script” and forcing the application to execute it, in turn giving them control of a website or application and all content seen by users*" ([Palac](https://bigdata-madesimple.com/7-common-security-threats-to-web-cloud-based-apps-and-how-to-counter-them/), 2018). It doesn´t target the web but the users. A way of solving XSS attacks is having a **content security policy** to determine which scripts can’t be loaded by the app.
-..* Injection Attacks: A good example is SQL Injection (SQLI), SQL code to manipulate database back-ends in what is called hijacking. Specially vulnerable are forms and sessions if data is stored in them. It helps to apply the **principle of least privilege** (POLP), which consists in granting users only the permissions they strictly need.
-..* Malicious Software (Malware): "*any piece of software that was written with the intent of doing harm to data, devices or to people*" [(Lemonnier, 2016)](https://www.avg.com/en/signal/what-is-malware). Spyware, Viruses, Ransomware, Worms, and Trojans are malware. **Firewalls** shoud be installed and ketp updated to combat malware.
-....*Backdoor Attack: a kind of malware in which "*a backdoor circumvents login authentication to enter a system*" ([Svartman](https://www.imperva.com/blog/top-9-web-app-threats/), 2018).
-..* Cross-Site Request Forgery (CSRF): "*can transfer funds in an authorized manner and change passwords, in addition to stealing session cookies and business data*" (Svartman, 2018).
-..* Web Scraping: seems to be a special threat for ecommerce sites. It is not bad itself, but may affect data analytics, and some scraping programmes deploy bots to steal database information. A way to avoid the former is providing an **API** which gives non sensible data about your site.
-
-
-To prevent from injection attacks, we **encrypt every password**, **never store credit card** information, and apply **POLP** (our users can only edit their own profiles and listings, and can only access the app main functions after logging in). In addition, **Devise** is in charge of authentication. Moreover, **payment details is handled by the Stripe service**. 
-
-Furthermore, **Rails** has helper methods which prevent SQL injections. Another common attack vectors of web sites are forms. For Rails 5.2 encrypted cookies and sessions are protected using AES GCM encryption. 
-
-Some powerful tools for Malware Scanning are listed [here](https://geekflare.com/website-malware-scanning/).
+- Phishing Attack: threats designed to look like legitimate emails, with the goal of acquiring sensitive information.
+- Cross-Site Scripting (XSS): alterations of "*the function of an app by injecting new “script” and forcing the application to execute it, in turn giving them control of a website or application and all content seen by users*" ([Palac](https://bigdata-madesimple.com/7-common-security-threats-to-web-cloud-based-apps-and-how-to-counter-them/), 2018). It doesn´t target the web but the users. A way of solving XSS attacks is having a **content security policy** to determine which scripts can’t be loaded by the app.
+- Injection Attacks: A good example is SQL Injection (SQLI), SQL code to manipulate database back-ends in what is called hijacking. Specially vulnerable are forms and sessions if data is stored in them. It helps to apply the **principle of least privilege** (POLP), which consists in granting users only the permissions they strictly need.
+- Malicious Software (Malware): "*any piece of software that was written with the intent of doing harm to data, devices or to people*" [(Lemonnier, 2016)](https://www.avg.com/en/signal/what-is-malware). Spyware, Viruses, Ransomware, Worms, and Trojans are malware. **Firewalls** shoud be installed and ketp updated to combat malware. Some powerful tools for Malware Scanning are listed [here](https://geekflare.com/website-malware-scanning/).
+  - Backdoor Attack: a kind of malware in which "*a backdoor circumvents login authentication to enter a system*" ([Svartman](https://www.imperva.com/blog/top-9-web-app-threats/), 2018).
+- Cross-Site Request Forgery (CSRF): "*can transfer funds in an authorized manner and change passwords, in addition to stealing session cookies and business data*" (Svartman, 2018).
+- Web Scraping: seems to be a special threat for ecommerce sites. It is not bad itself, but may affect data analytics, and some scraping programmes deploy bots to steal database information. A way to avoid the former is providing an **API** which gives non sensible data about your site.
 
 *21. Discuss methods you will use to protect information and data.*
+
+To prevent from injection attacks, we **encrypt every password**, **never store credit card** information, and apply **POLP** (our users can only edit their own profiles and listings, and can only access the app main functions after logging in). 
+
+In addition, **Devise** is in charge of authentication and the Devise gem we installed is built on top of **Warden** (handles cookies, verifies the logged-in user and allows for restricted access) and uses **Bcrypt** password hashing algorithm (this is how we encrypt the passwords).
+
+Moreover, **payment details are handled by the Stripe service**. 
+
+Furthermore, **Rails** has helper methods which prevent SQL injections. Common attack vectors of web sites are forms, but we used Rails form helper methods to avoid CSRF attacks with **authenticity tokens**. Moreover Rails 5.2 encrypted cookies and sessions are protected using **AES GCM encryption**.
+
 
 *22. Research what your legal obligations are in relation to handling user data.*
 

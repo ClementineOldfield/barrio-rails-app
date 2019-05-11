@@ -4,6 +4,7 @@
   <p class="alert"><%= alert %></p>
   <div class="flex-container">
 
+
   <% if user_signed_in? %>
     <%= link_to dash_path do %> 
       <div class="logo">
@@ -18,6 +19,9 @@
         <%= material_icon.mail_outline %>
       </div>
     <% end%>
+    <div class="notifications">
+      <%= render "shared/notifications" if user_signed_in? and current_user.address != nil %>
+    </div>
     <div class="dropdown">
       <div id="dropdown-button" class="dropdown-link">
         <div class="current-user">

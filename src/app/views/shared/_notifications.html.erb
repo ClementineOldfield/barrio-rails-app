@@ -1,0 +1,22 @@
+<div class="new-notifications">
+<% if @unread.count > 0 %>
+  <%= fa_icon "exclamation" %>
+  <% @unread.each do |notification|%>
+    <%= notification.title %>
+    <%= notification.body %>
+  <% end %>
+<% end %>
+</div>
+<div class="old-notifications">
+<% if @read.count > 0 %>
+  <%= fa_icon "check" %>
+  <% @read.each do |notification|%>
+    <%= notification.title %>
+    <%= notification.body %>
+  <% end %>
+<% else %>
+<% end %>
+<% if @notifications.count == 0 %>
+  <p>There are no notifications</p>
+<% end %>
+</div>
