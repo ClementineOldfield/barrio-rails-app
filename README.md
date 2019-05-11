@@ -160,6 +160,17 @@ Screenshots of Trello board(s)
 
 *7. Identify and describe the production database setup (i.e. postgres instance).* 
 
+As stated by ArcGIS, "**[a] production database contains the data you are using for production tasks such as creating and updating features**". We used [postgres](https://www.postgresql.org/docs/8.3/app-postgres.html), which is an open-source database server offered by PostgresQL.
+
+In plain words, how this service operates is starting a separate server located in the specific place where the data to be managed is placed. That is why "*one postgres instance can run on a system at one time, so long as they use different data areas and different communication ports*" ([postgres documentation](https://www.postgresql.org/docs/8.3/app-postgres.html)).
+
+Postgress allows its users to create, edit and destroy databases.
+
+Each session contains three programs: a supervisory daemon process (postmaster), the user's psql program (front-end application), and the one or more backend database servrs (the postgres process itself).
+
+But the most important characteristic of postgress is that it is a relational database, which means that its structure permits users to identify and access data in relation to another piece of data that is also in the database. As the majority of the relational databases, postgress is organized in tables. 
+
+Tables are divided in columns and rows, having each of the latter only one, unique, permanent object identifier.
 
 *8. Describe the architecture of your App.*
 Application Architecture or Information Systems Architecture is, according to [Orbus Software](https://www.orbussoftware.com/us/application-architecture/what-is-application-architecture/), concerned about "*ensuring the applications and systems in an organziation are fit for purpose*". In other words, it must provide coherence between the business strategy and the technical strategy.
@@ -274,7 +285,6 @@ To sum up, decentralized, searching digital marketplaces´ core functionalities 
 Another one-step-further feature we didn´t speak about would be mail alerts and notifications: very important for marketing and sales purposes.
 
 To finish with, Barrio ideally would have a reviews system, more often present in centralized sites like Amazon.
-
 
 *12. Describe your project’s models in terms of the relationships (active record associations) they have with each other.*
 
