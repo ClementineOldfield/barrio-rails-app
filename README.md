@@ -38,8 +38,11 @@ Working within the specifications provided, we decided to build a community focu
 
 #### 2. Identify the problem you’re trying to solve by building this particular marketplace App? Why is it a problem that needs solving?
 
+Nowadays, strong and fierce competition among multinational companies makes it difficult for new entrepreneurs to come along with new ideas and projects that can give a benefit to society. Moreover, although globalization has expand business, progress and whealth possibilities, consumers struggle to know where the products they buy are produced.
 
-Barrio (the Spanish word for Neighbourhood) aims to satisfy the very specific needs of locally established businesses & entrepreneurs that have a close set of customers whose needs are location-dependent. It aims to **increase their success opportunities**, therefore **encouraging entrepreneurship within the regular population** and **supporting local economy**.
+Within that context, Barrio (the Spanish word for Neighbourhood) aims to satisfy the very specific needs of locally established businesses & entrepreneurs that have a close set of customers whose needs are location-dependent. It aims to **increase their success opportunities**, therefore **encouraging entrepreneurship within the regular population** and **supporting local economy**.
+
+Furthermore, the in-person approach of this marketplace will allow customers **be aware of the origin** of the products they are acquiring.
 
 Because *what is given to the citizens, returns to society*.
 
@@ -51,7 +54,7 @@ For this solution to be successful and useful, we plan to implement both the Goo
 
 That way, the interested buyer will **easily meet the seller** in the address the latter has set up for that purpose.
 
-Furthermore, each user will have their own profile page where they can share some information about themselves and the products they offer to the public. In addition, there will be an in-app messaging system, so that **buyer and seller can agree on the time and the manner** of completing the exchange. 
+Furthermore, each user will have their own profile page where they can share some information about themselves and the products they offer to the public. In addition, there will be an in-app messaging system,so that **buyer and seller can agree on the time and the manner** of completing the exchange. 
 
 Everything will be carried out under the helpful knowledge that **payments will be done safely** with a third party service thanks to Stripe.
 
@@ -202,6 +205,14 @@ To achieve that persistency in Ruby on Rails, we are using [ActiveRecord](https:
 
 In addition, we use several Ruby Gems: Stripe, AWS, Devise, Font Awesome, Material Icons, Faker and Simple Form. All of them are detailed in question 10. More complex logic was abstracted out of the controller: AWS, Heroku, Stripe, Devise. They all are explained in question 10.
 
+Barrio has the following models: user, listing, image, category, purchase, favourite, cart, address, notification, conversation and message.
+
+There is only one type of user as every user can both create a listing and buy others´. That capability of buying explains the need of the purchase model, and the cart model.
+
+In addition, any user can add (and later, remove) listings from their favourites (then the favourite model takes place), thus every listed can be favourited. Also,every listing need to be categorized (category model). 
+
+To finish with, users can interact with each other through the messaging system (message model). The active associations will be discussed deeply in answer to question 12.
+
 *10. Detail any third party services that your App will use.*
 - Amazon Simple Storage Service (Amazon S3): this service makes web-scale computing easier thanks to its simple interface. Apparently, it gives access to the storage infrastructure Amazon benefits from.
 - Google Maps Javascript API and Geocoding API from Google: the latter is a service which core function is turning addresses to coordinates (in latitude, longitude format). The former generates a dynamic map with one or more markers if necessary and depending on the developer´s requirements. Put along together an address can be taken from the user as an input, being this address turned into coordinates with Geocoding API and then marked in the map with Google Maps.
@@ -242,7 +253,6 @@ That way, eBay makes it easier for users to find what they want to buy as well a
 
 Regarding eBay´s data structure, it contains 6 ways to find an ítem: product pages, left navigation, category pages, eBay deal, search on eBay, and product reviews. To know more about eBay, visit [their webpage](https://pages.ebay.com/seller-center/seller-updates/2019-spring/marketplace-updates.html).
 
-
 Although eBay has "only" 9 categories, it has a lot of subcategories so the search by that parameter might be more precise. eBay allows user to search by brand and interest as well. 
 
 Gumtree, on the other side, takes into account the location of the user, in addition to a maximum distance, to display near offers. Also, it has 12 categories to tag its listings so far.
@@ -268,7 +278,15 @@ To finish with, Barrio ideally would have a reviews system, more often present i
 
 *12. Describe your project’s models in terms of the relationships (active record associations) they have with each other.*
 
-For the user to address relationship, we had to decide between a 'one-to-one' relationship or a 'one-to-many' to allow for multiple users to live at the same address. We decided to go with a one-to-one, possibly creating duplicate addresses, to avoid any issues if/when the user decided to change their address.
+The customer path would be: 
+- A person signs up creating a user with an address (**user** and **address** models; a user has one address which is dependent of the user and is destroyed if the user canceles their account, and the address belongs to the user) and either a profile image or the default one (therefore, user has_one_attached :image; **image** model). For the user to address relationship, we had to decide between a 'one-to-one' relationship or a 'one-to-many' to allow for multiple users to live at the same address. We decided to go with a one-to-one, possibly creating duplicate addresses, to avoid any issues if/when the user decided to change their address.
+- That user creates a new listing (**listing**) which belongs to a category (a **category** has many listings and a listing belongs to a category, as well as a listing belongs to a user who has many listings). The listing also has_one_attached :image (image model).
+- The user searches for a product he needs and finds some listings which meet their requirements. The user favourites one of them (each listing has many **favourites** and has many **favourited users** through the favourites table).
+- The user decides purchasing the favourited listing. In our project, the **purchase** and the **cart** belong to a user and to a listing. The user has many purchases and many carts.
+- Then the user sends a **message** to the seller (message model), therefore initiating a **conversation** (conversation model) and they arrange a meeting (message model). A user has many messages and conversations. Both conversation and message belong to the user, but a conversation has also many messages which belong in a dependence way to the conversation (if the latter is erased, the messages within it dissappear).
+- Every time the seller replies to the user, the latter receives a notification (the **notification** belongs to a user and is a polymorfic table which belong to every notificationable model. That is why we set it up in the application_controller). A user must receive a notification if: one of their listings has been bought, if they receive a message, if a favourited listing is edited or if their own listing is favourited (or removed from favourites).
+
+A user can only see their profile, see or edit any listing (and thus apply the favourite option), send or receive messages, receive notifications and use the map if they are logged in.
 
 *13. Provide your database schema design.*
 
@@ -473,3 +491,4 @@ As we are using AWS services, we will make easy to access their privacy policy, 
 To finish with, we will be also ruled by ISO/IEC 27000 series of information security.
 
 5. “destruction or de-identification of the personal information when it is no longer needed”.
+When a user decides to cancel their account, all the information related to them will be deleted. It may be less convenient for them if they want to recover their transactions and favourites, but we believe security is worth the matter.
