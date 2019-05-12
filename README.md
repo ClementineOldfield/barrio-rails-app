@@ -4,6 +4,9 @@
 Github Link:
 https://github.com/ClementineOldfield/barrio-rails-app
 
+Heroku Link:
+https://barrio-2019.herokuapp.com
+
 ## Setup instructions
 
 TODO: Instructions
@@ -29,11 +32,22 @@ Problem definition / purpose
 
 #### 1. What is the need (i.e. challenge) that you will be addressing in your project?
 
-We were tasked to create a two-sided marketplace as an assessment for Coder Academy´s second term.
-
-The product was to incorporate authentication and authorisation systems, file uploading capability (images),a payment system, and the appropriate gems. It was then to be deployed to Heroku or AWS.
+We were tasked to create a two-sided marketplace as an assessment for Coder Academy´s second term. The product was to incorporate authentication and authorisation systems, file uploading capability (images),a payment system, and the appropriate gems. It was then to be deployed to Heroku or AWS.
 
 Working within the specifications provided, we decided to build a community focused, "Trading Post"-like application. 
+
+<<<<<<< Updated upstream
+With the growing amount of mass-produced products and on-demand online shoppping, there can sometimes be a lack of personal touch and community in the everyday experience of today. Our application, Barrio (the Spanish word for Neighbourhood) aims to utilize the technology of today whilst maintaining the sense of close community you get from buying local produce from local businesses.
+
+Being a two-sided marketplace, Barrio will allow people to act both as entrepreneur and customer on the same platform.
+=======
+With the growing amount of mass-produced products and on-demand on
+
+When people are organising an event, there are several different things that must be considered. One of the most crucial; what food will there be. This is a decision that can take hours, pouring over individual caterer websites, reading reviews and comparing prices. Through the implementation of our app, CaterLog, we are addressing the need for customers to have access to all caterers in Sydney, in one convenient location, saving them time and money. 
+	
+	Similarly, on the caterer side, CaterLog provides a platform for caterers to offer their services to potential customers.
+	
+>>>>>>> Stashed changes
 
 
 #### 2. Identify the problem you’re trying to solve by building this particular marketplace App? Why is it a problem that needs solving?
@@ -152,10 +166,6 @@ Friday 10th May: App finished & Styled,
 
 ## Project Management
 Screenshots of Trello board(s)
-
-
-
-# Section 2.2 (Short Responses)
 
 
 *7. Identify and describe the production database setup (i.e. postgres instance).* 
