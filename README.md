@@ -9,7 +9,7 @@ https://barrio-2019.herokuapp.com
 
 ## Setup instructions
 
-TODO: Instructions
+
 
 ## Project Outline
 ```
@@ -36,25 +36,16 @@ We were tasked to create a two-sided marketplace as an assessment for Coder Acad
 
 Working within the specifications provided, we decided to build a community focused, "Trading Post"-like application. 
 
-<<<<<<< Updated upstream
 With the growing amount of mass-produced products and on-demand online shoppping, there can sometimes be a lack of personal touch and community in the everyday experience of today. Our application, Barrio (the Spanish word for Neighbourhood) aims to utilize the technology of today whilst maintaining the sense of close community you get from buying local produce from local businesses.
 
 Being a two-sided marketplace, Barrio will allow people to act both as entrepreneur and customer on the same platform.
-=======
-With the growing amount of mass-produced products and on-demand on
-
-When people are organising an event, there are several different things that must be considered. One of the most crucial; what food will there be. This is a decision that can take hours, pouring over individual caterer websites, reading reviews and comparing prices. Through the implementation of our app, CaterLog, we are addressing the need for customers to have access to all caterers in Sydney, in one convenient location, saving them time and money. 
-	
-	Similarly, on the caterer side, CaterLog provides a platform for caterers to offer their services to potential customers.
-	
->>>>>>> Stashed changes
 
 
 #### 2. Identify the problem you’re trying to solve by building this particular marketplace App? Why is it a problem that needs solving?
 
-Nowadays, strong and fierce competition among multinational companies makes it difficult for new entrepreneurs to come along with new ideas and projects that can give a benefit to society. Moreover, although globalization has expand business, progress and whealth possibilities, consumers struggle to know where the products they buy are produced.
+Nowadays, strong and fierce competition among multinational companies makes it difficult for new businesses to come along with new ideas and projects that can give a benefit to society. Moreover, although globalization has expand business, progress and whealth possibilities, consumers struggle to know where the products they buy are produced.
 
-Within that context, Barrio (the Spanish word for Neighbourhood) aims to satisfy the very specific needs of locally established businesses & entrepreneurs that have a close set of customers whose needs are location-dependent. It aims to **increase their success opportunities**, therefore **encouraging entrepreneurship within the regular population** and **supporting local economy**.
+Within that context, Barrio aims to satisfy the very specific needs of locally established businesses & entrepreneurs that have a close set of customers whose needs are location-dependent. It aims to **increase their success opportunities**, therefore **encouraging entrepreneurship within the regular population** and **supporting local economy**.
 
 Furthermore, the in-person approach of this marketplace will allow customers **be aware of the origin** of the products they are acquiring.
 

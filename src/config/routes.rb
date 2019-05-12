@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :users
   resources :pages
   resources :addresses
+  resources :messages
 
   get "/privacy", to: "pages#privacy", as: "privacy"
 
@@ -39,7 +40,6 @@ Rails.application.routes.draw do
   patch "/listing/:id/unarchive", to: "listings#reactivate", as: "reactivate_listing"
 
   get "/user/:id/messages", to: "conversations#index", as: "conversations"
-  get "/messages/new", to: "messages#new", as: "new_message"
 
   get "/notifications", to: "notifications#index", as: "notifications"
 

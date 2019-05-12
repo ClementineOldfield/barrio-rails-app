@@ -1,6 +1,7 @@
-<h2>New message to <%= @recipient.first_name.capitalize %></h2>
+<h2>New message to <%= sanitize @recipient.first_name.capitalize %></h2>
 
 <%= form_with model: @message, local: true do |f| %>
+  <%= hidden_field_tag "message[user_id]", "#{params[:user].to_i}" %>
   <div class="field">
     <%= f.label :body %>
     <%= f.text_area :body %>
