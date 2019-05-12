@@ -133,7 +133,7 @@ Friday 10th May: App finished & Styled,
 ### **Sunday, 12th of May: DUE @ 10pm**
 -------
 
-*7. Identify and describe the production database setup (i.e. postgres instance).* 
+## *7. Identify and describe the production database setup (i.e. postgres instance).* 
 
 As stated by ArcGIS, "**[a] production database contains the data you are using for production tasks such as creating and updating features**". We used [postgres](https://www.postgresql.org/docs/8.3/app-postgres.html), which is an open-source database server offered by PostgresQL.
 
@@ -147,7 +147,8 @@ But the most important characteristic of postgress is that it is a relational da
 
 Tables are divided in columns and rows, having each of the latter only one, unique, permanent object identifier.
 
-*8. Describe the architecture of your App.*
+## *8. Describe the architecture of your App.*
+
 Application Architecture or Information Systems Architecture is, according to [Orbus Software](https://www.orbussoftware.com/us/application-architecture/what-is-application-architecture/), concerned about "*ensuring the applications and systems in an organziation are fit for purpose*". In other words, it must provide coherence between the business strategy and the technical strategy.
 
 If we were talking about a mobile app, we can find another, still very similar, definition in [peerbits](https://www.peerbits.com/blog/all-about-app-architecture-for-efficient-mobile-app-development.html) webpage: "*set of patterns and techniques which are required to be followed in order to build a fully structured mobile application. The techniques and patterns are formulated **keeping the vendor requirement** and industry standards in mind*"
@@ -167,10 +168,15 @@ The app architecture must be designed following three layers:
 ..* Business Layer: how the app proposes the value exchange to the user. Barrio displays the different listings and gives the buy and favourite options to the users. If the purchase decision is positive, then Stripe will be used to manage the payment. 
 ..* Data Layer: according to [magora](https://magora-systems.com/mobile-app-development-architecture/), "*[t]his layer complies with the app requirements to facilitate secure data transactions. You must design this dimension so that it can be rescaled over time as business needs change*".
 
-As we were asked to do a Rails project, there was no space for native apps but to use a **multi-platform framework** as ROR. Rails´ benefits include: many **ready made and efficient modules**; it’s **open source**; it’s **cost effective**; it’s **scaleable**, and it applies the **MVC** (Model View Controller) method. At the moment we are using Puma (Rails in-built server) to run the app and Heroku to host and run it. Finally, our database is Postgresql (a SQL database). 
+As we were asked to do a Rails project, there was no space for native apps but to use a **multi-platform framework** as ROR. Rails´ benefits include: 
+- Many **ready made and efficient modules** 
+- It’s **open source**; it’s **cost effective** 
+- It’s **scaleable**, and it applies the **MVC** (Model View Controller) method. 
+
+At the moment we are using Puma (Rails in-built server) to run the app and Heroku to host and run it. Finally, our database is Postgresql (a SQL database). 
 
 
-*9. Explain the different high-level components (abstractions) in your App.*
+## *9. Explain the different high-level components (abstractions) in your App.*
 
 To answer this question we must know what a level of abstraction is in software. PC Magazine Encyclopedia defines it as "*[t]he amount of complexity by which a system is viewed or programmed. The higher the level, the less detail. The lower the level, the more detail. The highest level of abstraction is the entire system. The next level would be a handful of components, and so on, while the lowest level could be millions of objects*". 
 
@@ -199,7 +205,7 @@ In addition, any user can add (and later, remove) listings from their favourites
 
 To finish with, users can interact with each other through the messaging system (message model). The active associations will be discussed deeply in answer to question 12.
 
-*10. Detail any third party services that your App will use.*
+## *10. Detail any third party services that your App will use.*
 - Amazon Simple Storage Service (Amazon S3): this service makes web-scale computing easier thanks to its simple interface. Apparently, it gives access to the storage infrastructure Amazon benefits from.
 - Google Maps Javascript API and Geocoding API from Google: the latter is a service which core function is turning addresses to coordinates (in latitude, longitude format). The former generates a dynamic map with one or more markers if necessary and depending on the developer´s requirements. Put along together an address can be taken from the user as an input, being this address turned into coordinates with Geocoding API and then marked in the map with Google Maps.
 - Heroku: this cloud platform enables businesses to develop, configure, analyze, tune, manage and scale their projects. It is a polyglot platform because it supports Ruby (the obly one Heroky supported at its beginning), Node, Java, Scala, PHP and more.
@@ -217,7 +223,7 @@ documentation, and gemspec.
 - [Font Awesome](https://fontawesome.com): a website dedicated to sharing stock iconography.
 - axios: Although it is also a [gem](https://github.com/axios/axios), we implemented it using cdn. It is necessary to get the coordinates information within the Geocode API of Google.
 
-*11. Describe (in general terms) the data structure of marketplace apps that are similar to your own (e.g. eBay, Airbnb). Discuss the database relations to be implemented.*
+## *11. Describe (in general terms) the data structure of marketplace apps that are similar to your own (e.g. eBay, Airbnb). Discuss the database relations to be implemented.*
 
 We realize data is a key point within any ecommerce while reading [McKinsey Digital insights](https://www.mckinsey.com/business-functions/digital-mckinsey/our-insights/creating-a-successful-internet-of-things-data-marketplace): “*Digital marketplaces are platforms that connect providers and consumers of data sets and data streams, ensuring high quality, consistency, and security*”. 
 
@@ -261,7 +267,7 @@ Another one-step-further feature we didn´t speak about would be mail alerts and
 
 To finish with, Barrio ideally would have a reviews system, more often present in centralized sites like Amazon.
 
-*12. Describe your project’s models in terms of the relationships (active record associations) they have with each other.*
+## *12. Describe your project’s models in terms of the relationships (active record associations) they have with each other.*
 
 The customer path would be: 
 - A person signs up creating a user with an address (**user** and **address** models; a user has one address which is dependent of the user and is destroyed if the user canceles their account, and the address belongs to the user) and either a profile image or the default one (therefore, user has_one_attached :image; **image** model). For the user to address relationship, we had to decide between a 'one-to-one' relationship or a 'one-to-many' to allow for multiple users to live at the same address. We decided to go with a one-to-one, possibly creating duplicate addresses, to avoid any issues if/when the user decided to change their address.
@@ -273,7 +279,7 @@ The customer path would be:
 
 A user can only see their profile, see or edit any listing (and thus apply the favourite option), send or receive messages, receive notifications and use the map if they are logged in.
 
-*13. Provide your database schema design.*
+## *13. Provide your database schema design.*
 
 ### Initial ER Diagram
 
@@ -289,19 +295,23 @@ A join-table called Favourites was necessary to incorporate the ability to favou
 
 Purchases and carts needed to have columns to reflect the Stripe transaction ID. 
 
-Images was technically not a table in the end, since it was handled by Rails' Active Storage, but we left it in the diagram in order to illustrate the data relationship.
+Images was technically not a table in the end, since it was handled by Rails' Active Storage,but we left it in the diagram in order to illustrate the data relationship.
+
+In order to maintain the integrity of the data and prevent orphaned purchases if users/listings were deleted, we did not add the ability to completely delete a user's account or listing/s. We instead implemented a "soft delete" functionality that would deactivate the user's account or archive the listing. This allowed other tables to keep referencing those items without errors. 
+
 
 ### Final ER Diagram
 
 ![Final ER Diagram](docs/barrio-er-diagram-final.png)
 
-*14. Provide User stories for your App.*
 
-## User stories
+## *14. Provide User stories for your App.*
+
+### User stories
 
 We brainstormed a few user stories to get a feel for the overall user experience we were going for:
 
-### First round of user stories:
+#### First round of user stories:
 
 - As Georgie, I want to keep track of my neighbourhood products, to support local business.
 - As Garret, I need a platform that will keep me informed of what is happening in my local community. 
@@ -330,7 +340,7 @@ When starting development, we reworked our user stories to follow [Atlassian´s 
 
 9. "As a user I would like to be able to message and receive messages from other users so that I can deal with potential customers".
 
-*15. Provide Wireframes for your App.*
+## *15. Provide Wireframes for your App.*
 
 We did a pen and paper first version and a more accurate one with [Balsamiq](https://balsamiq.com).
 
@@ -374,7 +384,7 @@ We did a pen and paper first version and a more accurate one with [Balsamiq](htt
 
 ![Map for desktop](docs/wireframes/map-desktop.png)
 
-*16. Describe the way tasks are allocated and tracked in your project.*
+## *16. Describe the way tasks are allocated and tracked in your project.*
 
 As we followed an Agile methodology, our main needs were teamwork and frequent inspection. Therefore, communication was a key part of the project. That is why we consantly talked through [Slack](https://slack.com/intl/es-es/) when wwe were outside the workplace.
 
@@ -394,8 +404,8 @@ However, the part we have been working on the most are the Sprints, a clear appl
 
 First, we decided which features had to be implemented first. Then, each day we allocated them depending on what each of us was more comfortable with and the relevance of each task regarding the project as a whole.
 
-*17. Discuss how Agile methodology is being implemented in your project.*
-To approach a project through an Agile methodology we must take into account the [Agile Manifesto](http://agilemanifesto.org), whose main statements are: 
+## *17. Discuss how Agile methodology is being implemented in your project.*
+To approach a project through an Agile methodology we must take into account the [Agile Manifesto](http://agilemanifesto.org), which can be boiled down to a few key points: 
 
 - "**Individuals and interactions** over processes and tools".
 - "**Working software** over comprehensive documentation".
@@ -418,7 +428,7 @@ Furtermore, we also did **stand-up sessions** to say out loud our feelings and d
 
 To finish with, we did a quick, efficient google search for every function we didn´t know how to approach at first. After that, a new discussion would take place and what the group decided would be done. That way, we included some gems and APIs to the project.
 
-*18. Provide an overview and description of your Source control process.*
+## *18. Provide an overview and description of your Source control process.*
 
 According to [Feliciano](https://www.codenewbie.org/blogs/what-is-source-control) (2015) we can refer to the **source**, which is the "*group of files that you are working on*" (in our case, the code of Barrio), and the **control** or "*access to your project at certain points in its development, allowing for more detailed editing*".
 
@@ -426,12 +436,35 @@ For source control we have used [GitHub](https://github.com/). The very first th
 
 Each time one of us finished one unit of work (being that a sprint or one task within a sprint),both would apply the three git commands of add, commit and push. Then we would fix conflicts, discussing them, merge, and pull.
 
-*19. Provide an overview and description of your Testing process.*
-We carried out testing in two ways: manual and automated. The first one consisted in going page by page trying to find bugs, acting as a user was supposed and not supposed to behave. Later we discussed everything, and after fixing the bugs we had found, we did the automated testing with [Cypress](cypress tree).
+## *19. Provide an overview and description of your Testing process.*
+We carried out testing in two ways: manual and automated. The first one consisted of going page by page trying to find bugs, acting as a user was supposed and not supposed to behave. Later we discussed everything, and after fixing the bugs we had found, we did the automated testing with [Cypress](cypress tree).
 
 Cypress is a end-to-end testing service which seems to behave as a human and displays each page it is testing. It allows users to test while building their app locally. Furthermore, it records the test runs.
 
-*20. Discuss and analyse requirements related to information system security.*
+We based our testing process around the user stories, for example:
+
+```
+2. "As a user I want to be able to edit my profile so that I can keep it updated".
+```
+
+We created three cypress tests to cover this user story (each with a 'BeforeEach' cypress method to login to the system using the UI): 
+- Edit user bio
+- Edit user account details
+- Delete account
+
+```
+7. "As a User I need to be able to create and manage my own listings so that I can sell what I produce.".
+
+```
+
+We created four cypress tests to cover this user story: 
+- Create a listing
+- View a Listing
+- Edit/Update a Listing
+- Archive a Listing
+
+
+## *20. Discuss and analyse requirements related to information system security.*
 
 There are several common threats for web applications:
 
@@ -443,7 +476,7 @@ There are several common threats for web applications:
 - Cross-Site Request Forgery (CSRF): "*can transfer funds in an authorized manner and change passwords, in addition to stealing session cookies and business data*" (Svartman, 2018).
 - Web Scraping: seems to be a special threat for ecommerce sites. It is not bad itself, but may affect data analytics, and some scraping programmes deploy bots to steal database information. A way to avoid the former is providing an **API** which gives non sensible data about your site.
 
-*21. Discuss methods you will use to protect information and data.*
+## *21. Discuss methods you will use to protect information and data.*
 
 To prevent from injection attacks, we **encrypt every password**, **never store credit card** information, and apply **POLP** (our users can only edit their own profiles and listings, and can only access the app main functions after logging in). 
 
@@ -454,7 +487,7 @@ Moreover, **payment details are handled by the Stripe service**.
 Furthermore, **Rails** has helper methods which prevent SQL injections. Common attack vectors of web sites are forms, but we used Rails form helper methods to avoid CSRF attacks with **authenticity tokens**. Moreover Rails 5.2 encrypted cookies and sessions are protected using **AES GCM encryption**.
 
 
-*22. Research what your legal obligations are in relation to handling user data.*
+## *22. Research what your legal obligations are in relation to handling user data.*
 
 For a project like this to be legally assessed, several topics must be taken into account. The first one, though, very important these days, is the personal information security. It requires certain measures used to avoid any loss of integrity, compromise or unavailability of information generated by an entity or individual not meant to be publicly available.
 

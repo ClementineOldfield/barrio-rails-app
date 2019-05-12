@@ -6,12 +6,6 @@
         <%= fa_icon "heart" %> Favourites
       <% end %>
     </li>
-    <li class="category-header">Categories</li>
-    <ul>
-    <% categories.each do |category| %>
-      <li> <%= category.name %> </li>
-    <% end %>
-    </ul>
     <hr>
     <ul class="links">
       <li><%= link_to "My Profile", user_path(current_user[:id]) %></li>
