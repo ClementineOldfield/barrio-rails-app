@@ -40,81 +40,6 @@ You must build a two sided marketplace. This App will cater to two markets that 
 - Uber with travellers & drivers
 ```
 
-## Problem definition / Purpose
-
-
-#### 1. What is the need (i.e. challenge) that you will be addressing in your project?
-
-We were tasked to create a two-sided marketplace as an assessment for Coder Academy´s second term. The product was to incorporate authentication and authorisation systems, file uploading capability (images),a payment system, and the appropriate gems. It was then to be deployed to Heroku or AWS.
-
-Working within the specifications provided, we decided to build a community focused, "Trading Post"-like application. 
-
-With the growing amount of mass-produced products and on-demand online shoppping, there can sometimes be a lack of personal touch and community in the everyday experience of today. Our application, Barrio (the Spanish word for Neighbourhood) aims to utilize the technology of today whilst maintaining the sense of close community you get from buying local produce from local businesses.
-
-Being a two-sided marketplace, Barrio will allow people to act both as entrepreneur and customer on the same platform.
-
-
-#### 2. Identify the problem you’re trying to solve by building this particular marketplace App? Why is it a problem that needs solving?
-
-Nowadays, strong and fierce competition among multinational companies makes it difficult for new businesses to come along with new ideas and projects that can give a benefit to society. Moreover, although globalization has expand business, progress and whealth possibilities, consumers struggle to know where the products they buy are produced.
-
-Within that context, Barrio aims to satisfy the very specific needs of locally established businesses & entrepreneurs that have a close set of customers whose needs are location-dependent. It aims to **increase their success opportunities**, therefore **encouraging entrepreneurship within the regular population** and **supporting local economy**.
-
-Furthermore, the in-person approach of this marketplace will allow customers **be aware of the origin** of the products they are acquiring.
-
-Because *what is given to the citizens, returns to society*.
-
-#### 3. Describe the project you will be conducting and how your App will address the needs.
-
-We are developing a two-sided marketplace which will connect local businesses and potential customers, and we want it to **ensure an in person relationship** between them. That is the reason why a fundamental part of out application has to do with location, as the user is only shown the offers within a certain radius from their home address.
-
-For this solution to be successful and useful, we plan to implement both the Google Maps Javascript API and the Geocoding API from Google. A map will output the nearest to the user offers, and the dashboard will display a list of them, also taking into account the launch date. Rails structure will be crucial for both objectives as well.
-
-That way, the interested buyer will **easily meet the seller** in the address the latter has set up for that purpose.
-
-Furthermore, each user will have their own profile page where they can share some information about themselves and the products they offer to the public. In addition, there will be an in-app messaging system,so that **buyer and seller can agree on the time and the manner** of completing the exchange. 
-
-Everything will be carried out under the helpful knowledge that **payments will be done safely** with a third party service thanks to Stripe.
-
-To allow the user to keep track of the products (listings) they are interested in and would like to access in the near future, we will implement a favourite option for each offer. The favourite listings will be accessible from the user's dashboard.
-
-## Tech stack
-
-- HTML5
-- CSS3
-- SCSS
-- Ruby on Rails
-- Puma
-
-#### 4. Describe the network infrastructure the App may be based on.
-
-Rails has a built in HTTP 1.1 server called Puma, which can be used to deploy locally or on the cloud. It is build for simplicity and speed, and is highly concurrent, so can handle a large amount of client requests at the same time in parallel.
-
-After development, we will deploy the app on Heroku on the internet's Wide Area Network (WAN). Heroku is a cloud-based platform which provides a highly scalable infrastructure for developers to deploy applications built in Ruby, Java, Node.js, Scala, Clojure, Python, PHP, and Go. 
-
-It uses Dynos (compartmentalized, completely independent, Linux "containers") for each application and also provides a database system. It supports Postgresql, which we will be using for our app, and integrates with a Github repository for each project which allows for version control provides automated application builds. 
-
-#### 5. Identify and describe the software to be used in your App.
-
-Barrio is built in [Ruby on Rails](https://rubyonrails.org/) as the framework. Rails is a web-application framework for Ruby that uses an MVC (Model, View, Controller) architectural structure to handle the communication between the data, logic and browser-rendered content.
-
-Image upload will be handled by Rails' inbuilt ActiveStorage and stored on an AWS (Amazon Web Services) bucket. 
-
-We use a Google Maps API to display the user's address based on longitude and latitude.
-
-On completion, the app will be deployed on Heroku, which is a platform that allows developers to deploy, run and manage applications entirely on the cloud.
-
-#### 6. Identify the database to be used in your App and provide a justification for your choice.
-
-The database is Postgresql. An open-source SQL database. Rails integrates nicely with the database, allowing us to query it with Ruby, instead of writing SQL directly.
-
-The fact that it is open source means there is a large support community available for developers. It also supports greater complexity than Sqlite, which is the other most popular choice of database to use with rails.
-
-Postgresql also has recently added support for JSON, allowing it to integrate with NoSQL. This is something that we would be interested in looking into in future versions of the app.
-
-
-# The Planning Process
-
 ## Project Timeline
 
 26th: Project idea approval
@@ -132,6 +57,78 @@ Friday 10th May: App finished & Styled,
 
 ### **Sunday, 12th of May: DUE @ 10pm**
 -------
+
+## Problem definition / Purpose
+
+
+## 1. What is the need (i.e. challenge) that you will be addressing in your project?
+
+We were tasked to create a two-sided marketplace as an assessment for Coder Academy's second term. The product was to incorporate authentication and authorisation systems, file uploading capability (images), a payment system, and the appropriate gems. It was then to be deployed to Heroku or AWS.
+
+Working within the specifications provided, we decided to build a community focused, "Trading Post"-like application. 
+
+With the growing amount of mass-produced products and on-demand online shoppping, there can sometimes be a lack of personal touch and community in the everyday experience of today. Our application, Barrio (the Spanish word for Neighbourhood) aims to utilize the technology of today whilst maintaining the sense of close community you get from buying local produce from local businesses.
+
+Being a two-sided marketplace, Barrio will allow people to act both as entrepreneur and customer on the same platform.
+
+
+## 2. Identify the problem you’re trying to solve by building this particular marketplace App? Why is it a problem that needs solving?
+
+Nowadays, strong and fierce competition among multinational companies makes it difficult for new businesses to come along with new ideas and projects that can give a benefit to society. Moreover, although globalization has expand business, progress and whealth possibilities, consumers struggle to know where the products they buy are produced.
+
+Within that context, Barrio aims to satisfy the very specific needs of locally established businesses & entrepreneurs that have a close set of customers whose needs are location-dependent. It aims to **increase their success opportunities**, therefore **encouraging entrepreneurship within the regular population** and **supporting local economy**.
+
+Furthermore, the in-person approach of this marketplace will allow customers **be aware of the origin** of the products they are acquiring.
+
+Because *what is given to the citizens, returns to society*.
+
+## 3. Describe the project you will be conducting and how your App will address the needs.
+
+We are developing a two-sided marketplace which will connect local businesses and potential customers, and we want it to **ensure an in person relationship** between them. That is the reason why a fundamental part of out application has to do with location, as the user is only shown the offers within a certain radius from their home address.
+
+For this solution to be successful and useful, we plan to implement both the Google Maps Javascript API and the Geocoding API from Google. A map will output the nearest to the user offers, and the dashboard will display a list of them, also taking into account the launch date. Rails structure will be crucial for both objectives as well.
+
+That way, the interested buyer will **easily meet the seller** in the address the latter has set up for that purpose.
+
+Furthermore, each user will have their own profile page where they can share some information about themselves and the products they offer to the public. In addition, there will be an in-app messaging system,so that **buyer and seller can agree on the time and the manner** of completing the exchange. 
+
+Everything will be carried out under the helpful knowledge that **payments will be done safely** with a third party service thanks to Stripe.
+
+To allow the user to keep track of the products (listings) they are interested in and would like to access in the near future, we will implement a favourite option for each offer. The favourite listings will be accessible from the user's dashboard.
+
+### Tech stack
+
+- HTML5
+- CSS3
+- SCSS
+- Ruby on Rails
+- Puma
+
+## 4. Describe the network infrastructure the App may be based on.
+
+Rails has a built in HTTP 1.1 server called Puma, which can be used to deploy locally or on the cloud. It is build for simplicity and speed, and is highly concurrent, so can handle a large amount of client requests at the same time in parallel.
+
+After development, we will deploy the app on Heroku on the internet's Wide Area Network (WAN). Heroku is a cloud-based platform which provides a highly scalable infrastructure for developers to deploy applications built in Ruby, Java, Node.js, Scala, Clojure, Python, PHP, and Go. 
+
+It uses Dynos (compartmentalized, completely independent, Linux "containers") for each application and also provides a database system. It supports Postgresql, which we will be using for our app, and integrates with a Github repository for each project which allows for version control provides automated application builds. 
+
+## 5. Identify and describe the software to be used in your App.
+
+Barrio is built in [Ruby on Rails](https://rubyonrails.org/) as the framework. Rails is a web-application framework for Ruby that uses an MVC (Model, View, Controller) architectural structure to handle the communication between the data, logic and browser-rendered content.
+
+Image upload will be handled by Rails' inbuilt ActiveStorage and stored on an AWS (Amazon Web Services) bucket. 
+
+We use a Google Maps API to display the user's address based on longitude and latitude.
+
+On completion, the app will be deployed on Heroku, which is a platform that allows developers to deploy, run and manage applications entirely on the cloud.
+
+## 6. Identify the database to be used in your App and provide a justification for your choice.
+
+The database is Postgresql. An open-source SQL database. Rails integrates nicely with the database, allowing us to query it with Ruby, instead of writing SQL directly.
+
+The fact that it is open source means there is a large support community available for developers. It also supports greater complexity than Sqlite, which is the other most popular choice of database to use with rails.
+
+Postgresql also has recently added support for JSON, allowing it to integrate with NoSQL. This is something that we would be interested in looking into in future versions of the app.
 
 ## *7. Identify and describe the production database setup (i.e. postgres instance).* 
 
@@ -154,9 +151,14 @@ Application Architecture or Information Systems Architecture is, according to [O
 If we were talking about a mobile app, we can find another, still very similar, definition in [peerbits](https://www.peerbits.com/blog/all-about-app-architecture-for-efficient-mobile-app-development.html) webpage: "*set of patterns and techniques which are required to be followed in order to build a fully structured mobile application. The techniques and patterns are formulated **keeping the vendor requirement** and industry standards in mind*"
 
 Before studying different sources from the Internet, we believe the main things we should take into account while deciding the app architecure are:
-..* Device: we have designed **mobile first** using CSS min-width property to be responsive.
-..* Bandwidths: "*There are times when connectivity is either intermittent or not available. Your app architecture needs to be build keeping in mind the worst network scenarios*" (peerbits). It is important to consider those regions where your target audience lives, as they can determine internet speed. Developers should think about power consumption and speed when choosing software and hardware protocols. We consider this part a stretch goal for the future.
-..* UI: we have implemented **minimalistic styling** . Regarding navigation methods, we have included a search bar, a nav bar, and some links which sends the users to about and contact pages, and to our legal information (Terms and Privacy). We tried our **styling and navigation within the app to be as simple and intuitive as possible**, as we are aiming Barrio to the masses. For it, we are using HTML and CSS.
+
+##### Device: 
+we have designed **mobile first** using CSS min-width property to be responsive.
+##### Bandwidths: 
+
+`"There are times when connectivity is either intermittent or not available. Your app architecture needs to be build keeping in mind the worst network scenarios"` (peerbits). It is important to consider those regions where your target audience lives, as they can determine internet speed. Developers should think about power consumption and speed when choosing software and hardware protocols. We consider this part a stretch goal for the future.
+#### UI: 
+we have implemented **minimalistic styling** . Regarding navigation methods, we have included a search bar, a nav bar, and some links which sends the users to about and contact pages, and to our legal information (Terms and Privacy). We tried our **styling and navigation within the app to be as simple and intuitive as possible**, as we are aiming Barrio to the masses. For it, we are using HTML and CSS.
 
 The following chart can help understand everything:
 
@@ -164,9 +166,13 @@ The following chart can help understand everything:
 
 The app architecture must be designed following three layers:
 
-..* Presentation Layer: básically UI or the location of the app features, and color palette and themes. Is the way the app is presented to the end consumer.
-..* Business Layer: how the app proposes the value exchange to the user. Barrio displays the different listings and gives the buy and favourite options to the users. If the purchase decision is positive, then Stripe will be used to manage the payment. 
-..* Data Layer: according to [magora](https://magora-systems.com/mobile-app-development-architecture/), "*[t]his layer complies with the app requirements to facilitate secure data transactions. You must design this dimension so that it can be rescaled over time as business needs change*".
+#### Presentation Layer: 
+basically UI or the location of the app features, and color palette and themes. Is the way the app is presented to the end consumer.
+
+#### Business Layer: 
+how the app proposes the value exchange to the user. Barrio displays the different listings and gives the buy and favourite options to the users. If the purchase decision is positive, then Stripe will be used to manage the payment. 
+#### Data Layer: 
+according to [magora](https://magora-systems.com/mobile-app-development-architecture/), `"this layer complies with the app requirements to facilitate secure data transactions. You must design this dimension so that it can be rescaled over time as business needs change"`.
 
 As we were asked to do a Rails project, there was no space for native apps but to use a **multi-platform framework** as ROR. Rails´ benefits include: 
 - Many **ready made and efficient modules** 
