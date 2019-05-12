@@ -305,7 +305,15 @@ A user can only see their profile, see or edit any listing (and thus apply the f
 
 The diagram above is the initial plan that we started from. For a few reasons (which we will detail below) we had to deviate slightly from it. 
 
+We did not have the time to implement events or reviews in this round. In future we would love to implement these features, but for now we had to remove them from the schema design.
 
+We had to introduce a new table called Carts that would keep track of the user's purchase before it was confirmed. This way we could access the purchase attributes after stripe redirected us back to our own url.
+
+A join-table called Favourites was necessary to incorporate the ability to favourite/follow listings and therefore get notifications regarding those listings. 
+
+Purchases and carts needed to have columns to reflect the Stripe transaction ID. 
+
+Images was technically not a table in the end, since it was handled by Rails' Active Storage, but we left it in the diagram in order to illustrate the data relationship.
 
 ### Final ER Diagram
 
