@@ -1,4 +1,5 @@
 class NotificationsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_notifications, only: [:index, :set_notifications_as_read]
   after_action :set_notifications_as_read, only: :index
 

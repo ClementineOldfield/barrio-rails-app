@@ -1,10 +1,10 @@
 class ListingsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_listing, only: [:show, :confirmation, :edit, :update, :deactivate, :reactivate, :set_favourite, :unset_favourite]
   before_action :authorize_user, only: [:edit, :update, :destroy]
   before_action :is_owner?, only: [:show, :edit]
   before_action :set_categories, only: [:edit, :new]
  
-
   def index
     @listings = Listing.all
   end
