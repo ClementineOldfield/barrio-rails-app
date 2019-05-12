@@ -52,8 +52,14 @@ class MessagesController < ApplicationController
   end
 
   def set_conversation(user_id)
-    @conversation = @conversations.find {|c| 
-      ( c[:sender_id] == current_user[:id] and c[:recipient_id] == user_id ) or ( c[:sender_id] == user_id and c[:recipient_id] == current_user[:id] ) }
+    @conversation = @conversations.find {|c| ( c[:sender_id] == current_user[:id] and c[:recipient_id] == user_id ) or ( c[:sender_id] == user_id and c[:recipient_id] == current_user[:id] ) }
+    
+    if @conversation == nil
+      @conversation = Conversation.new(
+        sender_id: current_user[:id],
+        recipient_id: user_id
+      )  
+    end
   end
 
   def message_params
