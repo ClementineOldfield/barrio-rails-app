@@ -44,7 +44,6 @@ class ListingsController < ApplicationController
     )
 
     user = User.find(@listing.user_id)
-    byebug
     user.notifications.create(
       title: "Your listing has been purchased",
       body: "#{current_user.first_name} has bought your listing #{@listing.title}",
@@ -150,6 +149,7 @@ class ListingsController < ApplicationController
       body: "#{current_user.first_name} is interested in your listing: #{@listing.title}",
       read: false,
     )
+
     redirect_to listing_path params[:listing]
   end
 
