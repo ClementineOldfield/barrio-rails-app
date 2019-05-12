@@ -424,6 +424,9 @@ For source control we have used [GitHub](https://github.com/). The very first th
 Each time one of us finished one unit of work (being that a sprint or one task within a sprint),both would apply the three git commands of add, commit and push. Then we would fix conflicts, discussing them, merge, and pull.
 
 *19. Provide an overview and description of your Testing process.*
+We carried out testing in two ways: manual and automated. The first one consisted in going page by page trying to find bugs, acting as a user was supposed and not supposed to behave. Later we discussed everything, and after fixing the bugs we had found, we did the automated testing with [Cypress](cypress tree).
+
+Cypress is a end-to-end testing service which seems to behave as a human and displays each page it is testing. It allows users to test while building their app locally. Furthermore, it records the test runs.
 
 *20. Discuss and analyse requirements related to information system security.*
 
