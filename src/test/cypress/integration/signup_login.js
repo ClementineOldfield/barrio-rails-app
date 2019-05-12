@@ -1,4 +1,4 @@
-describe("Sign up & login using the UI", function () {
+describe("Sign up & login using the UI", function() {
   before(function(){
     cy.app('clean')
     cy.app('seed')

@@ -1,4 +1,4 @@
-describe("User edit & delete", function () {
+describe("User edit & delete", function() {
   beforeEach(function(){
     cy.app('clean')
     cy.app('seed')
