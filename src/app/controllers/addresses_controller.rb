@@ -13,7 +13,6 @@ class AddressesController < ApplicationController
     @address = current_user.create_address
     @states = Address.states.keys
     @show_errors = false if params[:show_errors] == nil
-
   end
 
   def others_offers

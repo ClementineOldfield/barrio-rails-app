@@ -146,11 +146,10 @@ class ListingsController < ApplicationController
     # notificationable = @listing.favourited_users.find(current_user.id)
     @listing.notifications.create(
       user_id: user.id,
-      title: "Someone FAV your listing",
-      body: "#{current_user.first_name} is interested in your listing #{@listing.title}",
+      title: "Someone favourited your listing",
+      body: "#{current_user.first_name} is interested in your listing: #{@listing.title}",
       read: false,
     )
-    byebug
     redirect_to listing_path params[:listing]
   end
 

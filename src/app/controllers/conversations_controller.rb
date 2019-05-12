@@ -2,11 +2,14 @@ class ConversationsController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    
     @users = User.all
     sent = Conversation.where(sender_id: current_user.id)
     received = Conversation.where(recipient_id: current_user.id)
     @conversations = (sent + received).sort_by {|c| c.messages.map{|m| m.created_at} }.reverse
-    params[:conversation].present? ? @conversation = @conversations.find(params[:conversation]).first : @conversation = @conversations.first
+    params[:conversation].present? ? @conversation = @conversations.find {|c| c[:id] == params[:conversation].to_i } : @conversation = @conversations.first
+    @current_user_class = "current-user"
+    
   end
 
   def create
