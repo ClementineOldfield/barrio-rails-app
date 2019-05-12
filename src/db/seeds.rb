@@ -9,6 +9,8 @@
 require 'faker'
 require 'geocoder'
 
+states = ["QLD", "NSW", "VIC", "ACT", "TAS", "SA", "WA", "NT"]
+
 if User.count == 0
   (1..10).each do |i|
     user = User.new(
@@ -111,8 +113,6 @@ p "Created test listing"
 test_listing.image.attach(io: File.open('app/assets/images/bread.jpeg'), filename: 'bread.jpeg', content_type: 'image/jpeg')
 p test_listing
 
-states = ["QLD", "NSW", "VIC", "ACT", "TAS", "SA", "WA", "NT"]
-
 if Address.count == 0
   users.each do |user|
     address = Address.create(
@@ -127,6 +127,14 @@ if Address.count == 0
     p "Created Address"
   end
 end
+
+test_user.create_address(
+  street_1: Faker::Address.street_name,
+  street_2: Faker::Address.secondary_address,
+  suburb: Faker::Address.city,
+  state: states[rand(0...states.length)],
+  postcode: Faker::Address.postcode,
+)
 
 if Conversation.count == 0
   users.each do |user|

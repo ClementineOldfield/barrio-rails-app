@@ -21,6 +21,8 @@ class ListingsController < ApplicationController
       listing_id: @listing.id,
       quantity: @quantity
     )
+
+    domain = request.base_url
     stripe_session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],
       client_reference_id: @cart.id,
@@ -34,7 +36,7 @@ class ListingsController < ApplicationController
       }],
       
       success_url: "http://localhost:3000/purchases/success?cart=#{@cart.id}",
-      cancel_url: 'http://localhost:3000/purchases/cancel'
+      cancel_url: "http://localhost:3000/purchases/cancel"
     ) 
 
     @stripe_session_id = stripe_session.id

@@ -36,4 +36,15 @@ describe("Sign up & login using the UI", function() {
     cy.location("pathname").should("eq", "/dashboard")
   });
 
+  it("Logout successfully", function() {
+    cy.visit("/login")
+    cy.get("input[name='user[email]']").type(email)
+    cy.get("input[name='user[password]'").type(password)
+    cy.get("input[type='submit'").click()
+    cy.location("pathname").should("eq", "/dashboard")
+    cy.contains("Test").click()
+    cy.get("a[href='/sign_out']").click()
+    cy.location("pathname").should("eq", "/")
+  })
+
 });

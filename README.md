@@ -93,7 +93,9 @@ On completion, the app will be deployed on Heroku, which is a platform that allo
 
 #### 6. Identify the database to be used in your App and provide a justification for your choice.
 
-The database is Postgresql. An open-source SQL database. Rails integrates nicely with the database, allowing us to query it with Ruby, instead of writing SQL.
+The database is Postgresql. An open-source SQL database. Rails integrates nicely with the database, allowing us to query it with Ruby, instead of writing SQL directly.
+
+The fact that it is open source means there is a large support community available for developers. It also supports greater complexity than Sqlite, which is the other most popular choice of database to use with rails.
 
 Postgresql also has recently added support for JSON, allowing it to integrate with NoSQL. This is something that we would be interested in looking into in future versions of the app.
 
@@ -107,6 +109,8 @@ lorem ipsum
 # Design processes
 
 ## User stories
+
+### First round of user stories:
 
 - As Georgie, I want to keep track of my neighbourhood products, to support local business.
 - As Garret, I need a platform that will keep me informed of what is happening in my local community. 
@@ -130,12 +134,6 @@ lorem ipsum
 lorem ipsum
 
 # The Planning Process
-
-## Database Design
-
-### Initial ER Diagram
-
-![Initial ER Diagram](docs/barrio-er-diagram.png)
 
 ## Project Timeline
 
@@ -301,9 +299,17 @@ A user can only see their profile, see or edit any listing (and thus apply the f
 
 *13. Provide your database schema design.*
 
+### Initial ER Diagram
+
+![Initial ER Diagram](docs/barrio-er-diagram.png)
+
+The diagram above is the initial plan that we started from. For a few reasons (which we will detail below) we had to deviate slightly from it.
+
+
+
 *14. Provide User stories for your App.*
 
-While declaring our User stories, we beared in mind that they are end-goals expressed in plain language and followed [Atlassian´s template](https://www.atlassian.com/agile/project-management/user-stories): "*As a [persona], I [want to], [so that].*".
+When starting development, we reworked our user stories to follow [Atlassian´s template](https://www.atlassian.com/agile/project-management/user-stories) ("*As a [persona], I [want to], [so that].*"). We kept in mind that they should be end-goals expressed in plain language. 
 
 1. "As a user I want to be able to upload profile images and featured images for my listings so that I can make my profile and listings more personal and attractive".
 
@@ -371,7 +377,7 @@ We did a pen and paper first version and a more accurate one with [Balsamiq](htt
 
 As we followed an Agile methodology, our main needs were teamwork and frequent inspection. Therefore, communication was a key part of the project. That is why we consantly talked through [Slack](https://slack.com/intl/es-es/) when wwe were outside the workplace.
 
-Brainstorming and ERDs design were done by the two of us. As a digression, when we designed the ERD diagram, we used [draw.io](https://www.draw.io), which enabled us to work on the same file at a time and upload it to Google Drive.
+Brainstorming and ERDs design were done by the two of us. As a digression, when we designed the ERD diagram, we used [LucidChart](www.lucidchart.com), which enabled us to collaborate on the file online. We found this to be the most user-friendly software that enabled the correct crows feet notation. 
 
 For both to know what we had to do, we used several [Trello](https://trello.com) Boards. The first one we created was the Tasks one, so we could have a "to-do list" for general requirements affecting all the project, like "Propose different ideas" or "Wireframing in Balsamiq".
 

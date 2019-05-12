@@ -11,8 +11,9 @@ class PurchasesController < ApplicationController
   end
 
   def stripe
+    puts "----------------------\n\n\n\n\n\n"
     p params
-    
+    puts "----------------------\n\n\n\n\n\n"
     @params = params[:data][:object]
     @cart = Cart.find(@params[:client_reference_id])
     @listing = Listing.find(@cart.listing.id)
