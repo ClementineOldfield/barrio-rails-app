@@ -35,8 +35,8 @@ class ListingsController < ApplicationController
         quantity: @quantity,
       }],
       
-      success_url: "http://localhost:3000/purchases/success?cart=#{@cart.id}",
-      cancel_url: "http://localhost:3000/purchases/cancel"
+      success_url: "http://barrio-2019.herokuapp.com/purchases/success?cart=#{@cart.id}",
+      cancel_url: "http://barrio-2019.herokuapp.com/purchases/cancel"
     ) 
 
     @stripe_session_id = stripe_session.id
