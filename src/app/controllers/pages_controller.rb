@@ -29,12 +29,6 @@ class PagesController < ApplicationController
     @listings = @favourites if params[:listings].present?
   end
 
-  def favourites; end
-
-  def search
-   
-  end
-
   private
   
   # Clears all previous carts from the current user except for their most recent one 
@@ -67,7 +61,4 @@ class PagesController < ApplicationController
     end
   end
 
-  def dash
-    set_notification_as_read
-  end
 end
