@@ -168,10 +168,6 @@ Friday 10th May: App finished & Styled,
 Screenshots of Trello board(s)
 
 
-
-# Section 2.2 (Short Responses)
-
-
 *7. Identify and describe the production database setup (i.e. postgres instance).* 
 
 As stated by ArcGIS, "**[a] production database contains the data you are using for production tasks such as creating and updating features**". We used [postgres](https://www.postgresql.org/docs/8.3/app-postgres.html), which is an open-source database server offered by PostgresQL.
