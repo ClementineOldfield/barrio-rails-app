@@ -9,6 +9,24 @@ https://barrio-2019.herokuapp.com
 
 ## Setup instructions
 
+- Clone/download the repo.
+```
+git clone https://github.com/ClementineOldfield/barrio-rails-app.git
+```
+- Ensure postgresql is running on your computer and create the database and migrate the tables.
+```
+rails db:create
+rails db:migrate
+```
+- Populate the database with dummy data
+```
+rails db:seed
+```
+- Launch the rails server 
+```
+rails s
+```
+- Go to localhost:3000 in your browser and you should see the Barrio home screen.
 
 
 ## Project Outline
@@ -22,11 +40,6 @@ You must build a two sided marketplace. This App will cater to two markets that 
 - Uber with travellers & drivers
 ```
 
----
-<!-- 
-Description of your project, including,
-Problem definition / purpose
--->
 ## Problem definition / Purpose
 
 
@@ -100,39 +113,6 @@ The fact that it is open source means there is a large support community availab
 Postgresql also has recently added support for JSON, allowing it to integrate with NoSQL. This is something that we would be interested in looking into in future versions of the app.
 
 
-## Functionality / features
-
-lorem ipsum
-
-
-
-# Design processes
-
-## User stories
-
-### First round of user stories:
-
-- As Georgie, I want to keep track of my neighbourhood products, to support local business.
-- As Garret, I need a platform that will keep me informed of what is happening in my local community. 
-- As Alfredo, I want an easy-to-use app so that my clients can easily pre-order what I sell.
-- As Lucrecia, I want a transparent platform so that I can know more about local businesses and their philosophies.
-- As Luke, I want a site to advertise my home-made jam.
-- As Leah, I would like to buy fresh produce, eggs and milk as locally as possible.
-
-## A workflow diagram of the user journey/s.
-
-lorem ipsum
-
-## Wireframes
-
-### First iteration of wireframes on paper
-
-![First iteration of wireframes](docs/wireframes/wireframes-paper-01.png)
-
-## Database Entity Relationship Diagrams
-
-lorem ipsum
-
 # The Planning Process
 
 ## Project Timeline
@@ -152,10 +132,6 @@ Friday 10th May: App finished & Styled,
 
 ### **Sunday, 12th of May: DUE @ 10pm**
 -------
-
-## Project Management
-Screenshots of Trello board(s)
-
 
 *7. Identify and describe the production database setup (i.e. postgres instance).* 
 
@@ -320,6 +296,19 @@ Images was technically not a table in the end, since it was handled by Rails' Ac
 ![Final ER Diagram](docs/barrio-er-diagram-final.png)
 
 *14. Provide User stories for your App.*
+
+## User stories
+
+We brainstormed a few user stories to get a feel for the overall user experience we were going for:
+
+### First round of user stories:
+
+- As Georgie, I want to keep track of my neighbourhood products, to support local business.
+- As Garret, I need a platform that will keep me informed of what is happening in my local community. 
+- As Alfredo, I want an easy-to-use app so that my clients can easily pre-order what I sell.
+- As Lucrecia, I want a transparent platform so that I can know more about local businesses and their philosophies.
+- As Luke, I want a site to advertise my home-made jam.
+- As Leah, I would like to buy fresh produce, eggs and milk as locally as possible.
 
 When starting development, we reworked our user stories to follow [Atlassian´s template](https://www.atlassian.com/agile/project-management/user-stories) ("*As a [persona], I [want to], [so that].*"). We kept in mind that they should be end-goals expressed in plain language. 
 
