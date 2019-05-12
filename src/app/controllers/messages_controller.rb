@@ -1,7 +1,7 @@
 class MessagesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_recipient, only: [:new, :create]
-  before_action :set_conversation
+  before_action :set_recipient, only: [:new]
+  before_action :set_conversations, only: [:new, :create]
 
   def index
     @messages = @conversation.messages
@@ -22,13 +22,18 @@ class MessagesController < ApplicationController
   end
 
   def new
+    set_conversation params[:user].to_i
     @message = @conversation.messages.new
   end
 
   def create
+    set_conversation params[:message][:user_id].to_i
     @message = @conversation.messages.new(message_params)
+    @message.update(
+      user_id: params[:message][:user_id].to_i
+    )
     if @message.save
-      redirect_to conversation_messages_path(@conversation)
+      redirect_to conversations_path(@conversation)
     end
   end
 
@@ -39,11 +44,16 @@ class MessagesController < ApplicationController
   end
 
   def set_recipient
-    @recipient = User.find(params[:user])
+    @recipient = User.find(params[:user].to_i)
   end
 
-  def set_conversation
-    @conversation = Conversation.find(params[:conversation])
+  def set_conversations
+    @conversations = Conversation.all
+  end
+
+  def set_conversation(user_id)
+    @conversation = @conversations.find {|c| 
+      ( c[:sender_id] == current_user[:id] and c[:recipient_id] == user_id ) or ( c[:sender_id] == user_id and c[:recipient_id] == current_user[:id] ) }
   end
 
   def message_params

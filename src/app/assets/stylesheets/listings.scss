@@ -15,8 +15,12 @@
   width: 100%;
 }
 
-.listing-owner-container .avatar {
-  width: 200px;
+.listing-owner-container {
+  padding: 50px;
+
+  .avatar {
+    width: 200px;
+  }   
 }
 
 .card {
@@ -83,5 +87,11 @@ i.material-icons {
       min-width: 50%;
       margin: 0 auto;
     }
+  }
+}
+
+form {
+  input[value="Add to Favourites"] {
+    margin: 50px;
   }
 }
