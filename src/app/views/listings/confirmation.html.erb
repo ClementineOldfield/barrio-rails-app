@@ -2,7 +2,7 @@
   <h2>Purchase Confirmation</h2>
   <div class="item">
     <h3><%= sanitize @listing.title %></h3>
-    <p>Quantity: <%= sanitize @quantity %> </p>
+    <p>Quantity: <%= @quantity %> </p>
     <p>Total price: $<%= number_with_precision(@total_amount / 100, precision: 2) %> </p>
   </div>
   <button id="stripe_payment">Buy Now</button>
