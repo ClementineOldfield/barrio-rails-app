@@ -18,9 +18,11 @@
           <p><%= @user.bio %></p>
         </div>
       </div>
-      <div class="message-user">
-        <%= link_to "#{material_icon.mail_outline} Message #{@user.first_name.capitalize}".html_safe, new_message_path(user: params[:id]) %>
-      </div>
+      <% unless @user == current_user %>
+        <div class="message-user">
+          <%= link_to "#{material_icon.mail_outline} Message #{@user.first_name.capitalize}".html_safe, new_message_path(user: params[:id]) %>
+        </div>
+      <% end %>
     </div>
     <div class="section">
       <% if @user.id == current_user.id%>

@@ -45,6 +45,7 @@ class ListingsController < ApplicationController
       stripe_session_id: stripe_session.id
     )
 
+    #Would like to refactor this code into a new method since it is called multiple times and not very dry.
     user = User.find(@listing.user_id)
     user.notifications.create(
       title: "Your listing has been purchased",
@@ -79,14 +80,8 @@ class ListingsController < ApplicationController
   end
 
   def update
-    # new_params = params[:listing]
     @listing.update(listing_params)
-    #   image: new_params[:featured_image],
-    #   title: new_params[:title],
-    #   body: new_params[:body],
-    #   price: new_params[:price],
-    #   quantity: new_params[:quantity]
-    # )
+
     
     favourited_users = @listing.favourited_users
     favourited_users.each do |user| 
@@ -144,7 +139,6 @@ class ListingsController < ApplicationController
     )
     favourite.save!
     user = User.find(@listing.user_id)
-    # notificationable = @listing.favourited_users.find(current_user.id)
     @listing.notifications.create(
       user_id: user.id,
       title: "Someone favourited your listing",
@@ -193,5 +187,6 @@ class ListingsController < ApplicationController
       redirect_to dash_path
     end
   end
+
 end
 

@@ -295,11 +295,15 @@ A join-table called Favourites was necessary to incorporate the ability to favou
 
 Purchases and carts needed to have columns to reflect the Stripe transaction ID. 
 
-Images was technically not a table in the end, since it was handled by Rails' Active Storage, but we left it in the diagram in order to illustrate the data relationship.
+Images was technically not a table in the end, since it was handled by Rails' Active Storage,but we left it in the diagram in order to illustrate the data relationship.
+
+In order to maintain the integrity of the data and prevent orphaned purchases if users/listings were deleted, we did not add the ability to completely delete a user's account or listing/s. We instead implemented a "soft delete" functionality that would deactivate the user's account or archive the listing. This allowed other tables to keep referencing those items without errors. 
+
 
 ### Final ER Diagram
 
 ![Final ER Diagram](docs/barrio-er-diagram-final.png)
+
 
 ## *14. Provide User stories for your App.*
 
@@ -433,9 +437,32 @@ For source control we have used [GitHub](https://github.com/). The very first th
 Each time one of us finished one unit of work (being that a sprint or one task within a sprint),both would apply the three git commands of add, commit and push. Then we would fix conflicts, discussing them, merge, and pull.
 
 ## *19. Provide an overview and description of your Testing process.*
-We carried out testing in two ways: manual and automated. The first one consisted in going page by page trying to find bugs, acting as a user was supposed and not supposed to behave. Later we discussed everything, and after fixing the bugs we had found, we did the automated testing with [Cypress](cypress tree).
+We carried out testing in two ways: manual and automated. The first one consisted of going page by page trying to find bugs, acting as a user was supposed and not supposed to behave. Later we discussed everything, and after fixing the bugs we had found, we did the automated testing with [Cypress](cypress tree).
 
 Cypress is a end-to-end testing service which seems to behave as a human and displays each page it is testing. It allows users to test while building their app locally. Furthermore, it records the test runs.
+
+We based our testing process around the user stories, for example:
+
+```
+2. "As a user I want to be able to edit my profile so that I can keep it updated".
+```
+
+We created three cypress tests to cover this user story (each with a 'BeforeEach' cypress method to login to the system using the UI): 
+- Edit user bio
+- Edit user account details
+- Delete account
+
+```
+7. "As a User I need to be able to create and manage my own listings so that I can sell what I produce.".
+
+```
+
+We created four cypress tests to cover this user story: 
+- Create a listing
+- View a Listing
+- Edit/Update a Listing
+- Archive a Listing
+
 
 ## *20. Discuss and analyse requirements related to information system security.*
 

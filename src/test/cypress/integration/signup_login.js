@@ -4,14 +4,25 @@ describe("Sign up & login using the UI", function() {
     cy.app('seed')
   });
   
-  var email = "test@test.com"
+  var email = "test123@email.com"
   var password = "123456"
 
-  it("Sign Up succesfully, check if address errors are functioning and create address succesfully", function() {
+  it("Sign Up succesfully", function() {
     cy.visit("/users/signup")
     cy.get("input[name='user[first_name]'").type("Test")
     cy.get("input[name='user[last_name]'").type("McTest")
     cy.get("input[name='user[email]']").type(email)
+    cy.get("input[name='user[password]'").type(password)
+    cy.get("input[name='user[password_confirmation]'").type(password)
+    cy.get("input[type='submit'").click()
+    cy.location("pathname").should("eq", "/address/new")
+  });
+
+  it("Check if address errors are functioning and create address succesfully", function() {
+    cy.visit("/users/signup")
+    cy.get("input[name='user[first_name]'").type("Test")
+    cy.get("input[name='user[last_name]'").type("McTest")
+    cy.get("input[name='user[email]']").type("Test2@email.com")
     cy.get("input[name='user[password]'").type(password)
     cy.get("input[name='user[password_confirmation]'").type(password)
     cy.get("input[type='submit'").click()
@@ -30,21 +41,10 @@ describe("Sign up & login using the UI", function() {
 
   it("Login succesfully", function() {
     cy.visit("/login")
-    cy.get("input[name='user[email]']").type(email)
+    cy.get("input[name='user[email]']").type("Test2@email.com")
     cy.get("input[name='user[password]'").type(password)
     cy.get("input[type='submit'").click()
     cy.location("pathname").should("eq", "/dashboard")
   });
-
-  it("Logout successfully", function() {
-    cy.visit("/login")
-    cy.get("input[name='user[email]']").type(email)
-    cy.get("input[name='user[password]'").type(password)
-    cy.get("input[type='submit'").click()
-    cy.location("pathname").should("eq", "/dashboard")
-    cy.contains("Test").click()
-    cy.get("a[href='/sign_out']").click()
-    cy.location("pathname").should("eq", "/")
-  })
 
 });
