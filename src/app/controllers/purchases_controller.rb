@@ -24,7 +24,8 @@ class PurchasesController < ApplicationController
     @user.purchases.create(
       listing: @listing,
       total_amount: @item_params[:amount] * @item_params[:quantity],
-      quantity: @item_params[:quantity]
+      quantity: @item_params[:quantity],
+      stripe_transaction_id: @cart[:stripe_session_id]
     )
 
     remaining_stock = @listing.quantity - @cart.quantity

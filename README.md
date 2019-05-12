@@ -303,8 +303,11 @@ A user can only see their profile, see or edit any listing (and thus apply the f
 
 ![Initial ER Diagram](docs/barrio-er-diagram.png)
 
-The diagram above is the initial plan that we started from. For a few reasons (which we will detail below) we had to deviate slightly from it.
+The diagram above is the initial plan that we started from. For a few reasons (which we will detail below) we had to deviate slightly from it. 
 
+### Initial ER Diagram
+
+![Final ER Diagram](docs/barrio-er-diagram-final.png)
 
 
 *14. Provide User stories for your App.*
