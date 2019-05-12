@@ -30,8 +30,11 @@ class MessagesController < ApplicationController
     set_conversation params[:message][:user_id].to_i
     @message = @conversation.messages.new(message_params)
     @message.update(
-      user_id: params[:message][:user_id].to_i
+      conversation_id: @conversation[:id],
+      user_id: params[:message][:user_id].to_i,
+      read: false
     )
+    @message.save!
     if @message.save
       redirect_to conversations_path(@conversation)
     end
