@@ -40,11 +40,6 @@ You must build a two sided marketplace. This App will cater to two markets that 
 - Uber with travellers & drivers
 ```
 
----
-<!-- 
-Description of your project, including,
-Problem definition / purpose
--->
 ## Problem definition / Purpose
 
 
@@ -137,10 +132,6 @@ Friday 10th May: App finished & Styled,
 
 ### **Sunday, 12th of May: DUE @ 10pm**
 -------
-
-## Project Management
-Screenshots of Trello board(s)
-
 
 *7. Identify and describe the production database setup (i.e. postgres instance).* 
 
