@@ -62,6 +62,7 @@ class ListingsController < ApplicationController
       price: params[:listing][:price],
       quantity: params[:listing][:quantity],
       category_id: params[:listing][:category_id],
+      active: true
     )
     @listing.save!
     redirect_to listing_path(@listing.id)
