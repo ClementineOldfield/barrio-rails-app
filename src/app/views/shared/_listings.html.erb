@@ -4,7 +4,7 @@
 <hr>
 
 <% if listings.length > 0 %>
-  <% listings.each do |listing| %>
+  <% listings.reverse.each do |listing| %>
     <%= link_to listing_path(listing.id), class: "listing-link" do %>
       <div class="card">   
         <h4><%= sanitize listing.title %></h4>
