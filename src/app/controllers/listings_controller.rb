@@ -62,7 +62,6 @@ class ListingsController < ApplicationController
       price: params[:listing][:price],
       quantity: params[:listing][:quantity],
       category_id: params[:listing][:category_id],
-      # excerpt: params[:listing][:body][0..100]
     )
     @listing.save!
     redirect_to listing_path(@listing.id)
@@ -80,8 +79,9 @@ class ListingsController < ApplicationController
   end
 
   def update
+    newImage = params[:listing][:featured_image]
     @listing.update(listing_params)
-
+    @listing.update( image: newImage ) if newImage != nil
     
     favourited_users = @listing.favourited_users
     favourited_users.each do |user| 
