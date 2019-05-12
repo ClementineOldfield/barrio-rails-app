@@ -20,7 +20,7 @@
       </div>
     <% end%>
     <div class="notifications">
-      <%= render "shared/notifications" if user_signed_in? and current_user.address != nil %>
+      <%= link_to "Notifications", notifications_path if user_signed_in? and current_user.address != nil%>
     </div>
     <div class="dropdown">
       <div id="dropdown-button" class="dropdown-link">
