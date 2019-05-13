@@ -17,6 +17,7 @@ class PurchasesController < ApplicationController
     puts "----------------------\n\n\n\n\n\n"
     @params = params[:data][:object]
     @cart = Cart.find(@params[:client_reference_id])
+    p @cart
     @listing = Listing.find(@cart.listing.id)
     @user = User.find_by_email(@params[:customer_email])
 
