@@ -1,5 +1,5 @@
 class PurchasesController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:stripe]
   skip_before_action :verify_authenticity_token
 
   def index
@@ -24,7 +24,7 @@ class PurchasesController < ApplicationController
     @item_params = @params[:display_items][0]
 
     @user.purchases.create(
-      listing_id: @listing,
+      listing: @listing,
       total_amount: @item_params[:amount] * @item_params[:quantity],
       quantity: @item_params[:quantity],
       stripe_transaction_id: @cart[:stripe_session_id]
