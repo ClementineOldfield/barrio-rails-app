@@ -24,7 +24,7 @@ class PurchasesController < ApplicationController
     @item_params = @params[:display_items][0]
 
     @user.purchases.create(
-      listing: @listing,
+      listing_id: @listing,
       total_amount: @item_params[:amount] * @item_params[:quantity],
       quantity: @item_params[:quantity],
       stripe_transaction_id: @cart[:stripe_session_id]

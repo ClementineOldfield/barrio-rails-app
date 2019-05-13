@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   get "/address/new", to: "addresses#new", as: "new_user_address"
 
   post "/purchases/stripe", to: "purchases#stripe"
+  post "/purchases/create", to: "purchases#create"
   get "/purchases/success", to: "purchases#success"
   get "/purchases/:id", to: "purchases#index", as: "purchase_history"
 
